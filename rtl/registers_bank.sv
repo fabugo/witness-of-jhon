@@ -1,30 +1,48 @@
 /* 
-Módulo do Banco de Registradores, construído com parâmetros, facilitando a mudança do tamanho do dado e do endereço do 
+Módulo do Banco de Registradores, construído com constantes, facilitando a mudança do tamanho do dado e do endereço do 
 registrador.
 @author Kelvin Carmo
 @author Patricia Gomes
 */
 
-module registers_bank #(parameter M=16, N=5)(/* M = tamanho do dado ( tamanho do registrador) 
-N = tamanho do endereço do registrador*/
-	input [N-1:0] addr_1,
-	input [N-1:0] addr_2,
-	input [N-1:0] end_write,//endereço do registrador onde o dado será gravado.
+module registers_bank #(parameter size_reg=16, addr_reg=2)(/* size_reg = tamanho do dado ( tamanho do registrador) 
+addr_reg = tamanho do endereço do registrador*/
+	input [addr_reg-1:0] addr_1,
+	input [addr_reg-1:0] addr_2,
+	input [addr_reg-1:0] end_write,//endereço do registrador onde o dado será gravado.
 	input write_reg,
-	input read_reg,
-	input [M:0] write_data,
-	output reg [M:0] data_1,
-	output reg [M:0] data_2);
+	input clock,
+	input reset,
+	input [size_reg-1:0] write_data,
+	output reg [size_reg-1:0] data_1,
+	output reg [size_reg-1:0] data_2);
  
-reg [M:0] registers[0:(1'b1 << N)-1];//2^N registradores de M bits
+reg [size_reg-1:0] registers[0:(1'b1 << addr_reg)-1];//2^N registradores de M bits
 
-always @ (write_reg or read_reg) begin// sinal de escrita ou leitura
-	if (write_reg) registers[end_write] = write_data;/*escreve o dado no registrador destino, de endereço informado pela
-	entrada "end_wirte"*/
-	else if (read_reg) begin
-									data_1 = registers[addr_1]; 
-									data_2 = registers[addr_2];
-							 end
-end
+initial
+		begin
+			registers[0] = 16'b0000000000000000;
+			registers[1] = 16'b0000000000000000;
+			registers[2] = 16'b0000000000000000;
+			registers[3] = 16'b0000000000000000;
+		end
+
+
+always_comb begin
+					data_1 = registers[addr_1]; 
+					data_2 = registers[addr_2];
+				end
+
+always@(posedge clock, negedge reset) 
+						begin// sinal de escrita ou leitura
+								if(!reset) begin //Reset assíncrono
+												registers[0] = 16'b0000000000000000;
+												registers[1] = 16'b0000000000000000;
+												registers[2] = 16'b0000000000000000;
+												registers[3] = 16'b0000000000000000;
+												end
+								else if(write_reg) registers[end_write] <= write_data;/*escreve o dado no registrador destino, de endereço 
+								informado pela entrada "end_wirte"*/
+						end
 
 endmodule
