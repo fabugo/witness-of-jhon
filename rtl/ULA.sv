@@ -3,9 +3,9 @@ module ULA(operandoA, operandoB, resultadoOp, controle, Z, C, N, O);
     parameter bits_palavra = 16;
     parameter bits_controle = 5;
     
-		input signed [bits_controle:0] controle; // [16] -> bit de sinal e [15:0] -> valor
-		input signed [bits_palavra:0] operandoA, operandoB;
-		output reg signed [bits_palavra:0] resultadoOp;
+		input [bits_controle-1:0] controle; // [16] -> bit de sinal e [15:0] -> valor
+		input signed [bits_palavra-1:0] operandoA, operandoB;
+		output reg signed [bits_palavra-1:0] resultadoOp;
 		
 		output reg Z, // Zero - (Este bit fica a 1 quando o resultado da operação for 0)
 		           C, // Carry - (Indicar que há um bit de transporte) 
