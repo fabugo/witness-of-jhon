@@ -6,7 +6,6 @@ module ULA(operandoA, operandoB, resultadoOp, controle);
 		input [bits_controle-1:0] controle; // [16] -> bit de sinal e [15:0] -> valor
 		input signed [bits_palavra-1:0] operandoA, operandoB;
 		output reg signed [bits_palavra-1:0] resultadoOp;
-		
 		//output reg Z,  Zero - (Este bit fica a 1 quando o resultado da operação for 0)
 		           //C, // Carry - (Indicar que há um bit de transporte) 
 		              // Em qualquer das formas de deslocamento o bit de estado transporte recebe o bit que se perde com o deslocamento, o bit mais
@@ -15,110 +14,110 @@ module ULA(operandoA, operandoB, resultadoOp, controle);
 		           //O; // overflow (Quando o resultado tem uma magnitude que excede o valor máximo possível de representar com o número de bits disponíveis para o resultado)
 		
 				
-		always @(operandoA or operandoB or controle) 
+		always @(operandoA or operandoB or controle)
 		begin 
 		  
 			case(controle)
-			00000: begin // 00000 C = A + B
+			5'b00000: begin // 00000 C = A + B
 			   resultadoOp = operandoA + operandoB;
 				end
 				
-			00001: begin // 00001 C = A + B + 1
-			   resultadoOp = operandoA + operandoB + 1;			
+			5'b00001: begin // 00001 C = A + B + 1
+			   resultadoOp = operandoA + operandoB + 1;
 				end
 				
-			00011: begin // 00011 C = A + 1
-			   resultadoOp = operandoA + 1;
+			5'b00011: begin // 00011 C = A + 1
+			   resultadoOp = operandoA + 1; 
 				end
 				
-			00100: begin // 00100 C = A - B - 1
+			5'b00100: begin // 00100 C = A - B - 1
 			   resultadoOp = operandoA - operandoB - 1;
 				end
 				
-			00101: begin // 00101 C = A - B
+			5'b00101: begin // 00101 C = A - B
 			   resultadoOp = operandoA - operandoB;
 				end
 				
-			00110: begin // 00110 C = A - 1
+			5'b00110: begin // 00110 C = A - 1
 			   resultadoOp = operandoA - 1;
 				end
 				
-			01000: begin // 01000 C = Deslocamento Lógico Esq. (A)
+			5'b01000: begin // 01000 C = Deslocamento Lógico Esq. (A)
 			   //C = operandoA[16]; // Assume o bit mais significativo (perdido depois do deslocamento)
 			   resultadoOp = operandoA << 1;
 				end
 				
-			01001: begin // 01001 C = Deslocamento Aritmético Dir. (A)
+			5'b01001: begin // 01001 C = Deslocamento Aritmético Dir. (A)
 			   //C = operandoA[0]; // Assume o bit menos significativo (perdido depois do deslocamento)
 			   resultadoOp = operandoA >>> 1;
 				end
 				
-			10000: begin // 10000 C = 0 
+			5'b10000: begin // 10000 C = 0 
 			   resultadoOp = 0;
 				end
 				
-			10001: begin // 10001 C = A&B
+			5'b10001: begin // 10001 C = A&B
 			   resultadoOp = operandoA & operandoB;
 				end
 				
-			10010: begin // 10010 C = !A&B
-			   resultadoOp = (!operandoA) & operandoB;			
+			5'b10010: begin // 10010 C = ~A&B
+			   resultadoOp = (~operandoA) & operandoB;			
 				end
 				
-			10011: begin // 10011 C = B
+			5'b10011: begin // 10011 C = B
 			   resultadoOp = operandoB;
 				end
 				
-			10100: begin // 10100 C = A&!B
-			   resultadoOp = operandoA & (!operandoB);
+			5'b10100: begin // 10100 C = A&~B
+			   resultadoOp = operandoA & (~operandoB);
 				end
 				
-			10101: begin // 10101 C = A
+			5'b10101: begin // 10101 C = A
 			   resultadoOp = operandoA; 
 				end
 				
-			10110: begin // 10110 C = A xor B 
+			5'b10110: begin // 10110 C = A xor B 
 			   resultadoOp = operandoA ^ operandoB;
 				end
 				
-			10111: begin // 10111 C = A | B
+			5'b10111: begin // 10111 C = A | B
 			   resultadoOp = operandoA | operandoB;
 				end
 				
-			11000: begin // 11000 C = !A&!B
-			   resultadoOp = (!operandoA) & (!operandoB);
+			5'b11000: begin // 11000 C = ~A&~B
+			   resultadoOp = (~operandoA) & (~operandoB);
 				end
 				
-			11001: begin // 11001 C = !(A xor B) 
-			   resultadoOp = !(operandoA ^ operandoB);
+			5'b11001: begin // 11001 C = ~(A xor B) 
+			   resultadoOp = ~(operandoA ^ operandoB);
 				end
 				
-			11010: begin // 11010 C = !A
-			   resultadoOp = (!operandoA);
+			5'b11010: begin // 11010 C = ~A
+			   resultadoOp = (~operandoA);
 				end
 				
-			11011: begin // 11011 C = !A|B
-			   resultadoOp = (!operandoA) | (operandoB);
+			5'b11011: begin // 11011 C = ~A|B
+			   resultadoOp = (~operandoA) | (operandoB);
 				end
 				
-			11100: begin // 11100 C = !B
-			   resultadoOp = (!operandoB);
+			5'b11100: begin // 11100 C = ~B
+			   resultadoOp = (~operandoB);
 				end
 				
-			11101: begin // 11101 C = A|!B
-			   resultadoOp = operandoA | (!operandoB);
+			5'b11101: begin // 11101 C = A|~B
+			   resultadoOp = operandoA | (~operandoB);
 				end
 				 
-			11110: begin // 11110 C = !A|!B
-			   resultadoOp = (!operandoA) | (!operandoB);
+			5'b11110: begin // 11110 C = ~A|~B
+			   resultadoOp = (~operandoA) | (~operandoB);
 				end
 				
-			11111: begin // 11111 C = 1
+			5'b11111: begin // 11111 C = 1
 			   resultadoOp = 1;
 				end
 				
 			default: begin
-			   resultadoOp = 0;
+				resultadoOp = controle;
 				end
 			endcase // fim do case
 			
