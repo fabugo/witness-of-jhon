@@ -3,24 +3,28 @@ include "..\\rtl\\ULA.sv";
 module ula_tb;
     parameter bits_palavra = 16;
 
-	// criando variaveis e instanciando link com variaveis do modulo a ser testado
+	// criando variaveis
 	logic signed [bits_palavra-1:0] opA, opB, resOp;
 	logic [4:0] cont;
 	logic Z, C, S, O;
 	integer file, max = 2;
 
+	// criando conexao com o modulo incluido
 	ULA bula(.operandoA(opA), .operandoB(opB), .resultadoOp(resOp), .controle(cont), .Z(Z), .C(C), .S(S), .O(O));
 	
 	initial begin
+		// definir, de acordo com o parametro o valor maximo
 		repeat (bits_palavra-1) begin
 			max = max * 2;
 		end
 
+		// abrindo arquivo e iniciando o controle
 		file=$fopen("out_tb.txt");
 		cont = 5'b00000;
 
+		// laco para operar todas as possiveis operacoes
 		repeat(32)begin
-
+			// define numeros aleatorio de acordo com o valor maximo definido pelo parametro
 			opA = $random % max;
 			opB = $random % max;
 
