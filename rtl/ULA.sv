@@ -1,3 +1,9 @@
+/* 
+Módulo da ULA, Unidade Logica e Aritmetica
+@author Jussara Machado
+@author Jhone Almeida
+*/		
+		
 module ULA(operandoA, operandoB, resultadoOp, controle);
   
     parameter bits_palavra = 16;
@@ -6,12 +12,12 @@ module ULA(operandoA, operandoB, resultadoOp, controle);
 		input [bits_controle-1:0] controle; // [16] -> bit de sinal e [15:0] -> valor
 		input signed [bits_palavra-1:0] operandoA, operandoB;
 		output reg signed [bits_palavra-1:0] resultadoOp;
-		//output reg Z,  Zero - (Este bit fica a 1 quando o resultado da operação for 0)
-		           //C, // Carry - (Indicar que há um bit de transporte) 
+		output reg //Z,  Zero - (Este bit fica a 1 quando o resultado da operação for 0)
+		           C, // Carry - (Indicar que há um bit de transporte) 
 		              // Em qualquer das formas de deslocamento o bit de estado transporte recebe o bit que se perde com o deslocamento, o bit mais
                   // significativo do operando no caso de deslocamentos à esquerda, ou o bit menos significativo nos deslocamentos à direita.
 		           //N, // Sinal - (O bit mais significativo do resultado. Este bit indica quando o resultado deu negativo)
-		           //O; // overflow (Quando o resultado tem uma magnitude que excede o valor máximo possível de representar com o número de bits disponíveis para o resultado)
+		           O; // overflow (Quando o resultado tem uma magnitude que excede o valor máximo possível de representar com o número de bits disponíveis para o resultado)
 		
 				
 		always @(operandoA or operandoB or controle)
@@ -124,7 +130,10 @@ module ULA(operandoA, operandoB, resultadoOp, controle);
 			
 			// *** Eu quero deslocar um número com sinal, há diferença entre deslocar um número com sinal e deslocar um número sem sinal?
 			// *** A lógica para o cálculo do bit de estado carry (C) é calculada fazendo-se uma and entre os dois bits mais significativos dos operandos?		
-			
+			C = 0;
+			for (i = 0; i < 16; i = i +1) begin
+				C = (C & (operandoA[i] | operandoB[i])) | (operandoA[i] & operandoB[i]);
+			end
 			//N = resultadoOp[16]; // Sinal -  Atualiza o bit de sinal, se o bit for 0, o resultado da operação foi positiva, se o bit for 1 o resultado foi negativo
 			
 			//if(resultadoOp == 0) // Zero - Verifica se o resultado da operação foi 0
