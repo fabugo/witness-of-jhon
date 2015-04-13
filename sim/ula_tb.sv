@@ -1,22 +1,27 @@
 include "..\\rtl\\ULA.sv";
+
 module ula_tb;
+    parameter bits_palavra = 16;
 
 	// criando variaveis e instanciando link com variaveis do modulo a ser testado
-	logic signed [15:0] opA, opB, resOp;
+	logic signed [bits_palavra-1:0] opA, opB, resOp;
 	logic [4:0] cont;
-
 	ULA bula(.operandoA(opA), .operandoB(opB), .resultadoOp(resOp), .controle(cont));
-	integer file;
+	integer file, max;
 
 	initial begin
+		repeat (bits_palavra) begin
+			max = max * 2;
+		end
 
 		file=$fopen("out_tb.txt");
-		opA = 16'b000000000000001;
-		opB = 16'b000000000000010;
 		cont = 5'b00000;
 
 		repeat(32)begin
-			//$fmonitor(file, "Operador1: %d Operador2: %d Resultado: %d", opA, opB, resOp);
+
+			opA = $random % max;
+			opB = $random % max;
+
 			case(cont)
 				5'b00000: begin 
 					$fdisplay(file,"Soma: ");
@@ -138,13 +143,11 @@ module ula_tb;
 					#10// espera o resultado
 					$fdisplay(file,"Controle: %b // Operando A: %b // Operando B: %b // Resultado: %b // Flag:  \n",cont,opA,opB,resOp); 
 				end
-				default: begin 
-					$fdisplay(file,"Instrução Invalida:\n");
-				end
+				default: begin end
 			endcase
 			cont ++;
 		end
-		$fdisplay(file,"\n\n______________________________________________________________________________________________________\n\n");
+		$fdisplay(file,"\n\n\n_________________________________________________________________________________________________________________\n\n\n");
 		$fclose(file);
 	end
 
