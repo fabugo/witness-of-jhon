@@ -1,5 +1,4 @@
 include "..\\rtl\\ULA.sv";
-
 module ula_tb;
     parameter bits_palavra = 16;
 

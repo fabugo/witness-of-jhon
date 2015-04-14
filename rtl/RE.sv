@@ -12,7 +12,7 @@ always @(C_RE or E)
 				5'b01000, 5'b01001: begin // Flag's atualizadas: S, C, Z
 					ZCSO[0] = Z;
 					ZCSO[1] = C;
-					ZCSO[2] = S;					
+					ZCSO[2] = S;
 					end
 				
 				5'b10001, 5'b10010: begin // Flag's atualizadas: Z, S
