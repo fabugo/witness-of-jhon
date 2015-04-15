@@ -5,10 +5,11 @@
 * Purpose: Modulo responsável por armazenar os registros.
 */
 	
-module Banco_Registro (
+module BR (
   Hab_Escrita, // Habilita a escrita no registrador
-  Sel_E_SA,    // Endereco da entrada de dados e da saida de dados A, sua função depende do estado de "Hab_Escrita"
+  Sel_SA,    	// Endereco da saida de dados A
   Sel_SB,      // Endereco da saida de dados B
+  Sel_SC,		// Endereco de entrada de dados C
   reset,       // Limpa todos os registros 
   clock,       // Pulso de clock
   A,           // Saida A do Banco de Registros
@@ -21,7 +22,7 @@ module Banco_Registro (
   
   output reg [bits_palavra-1:0] A, B;
   input [bits_palavra-1:0] E;
-  input [end_registros-1:0] Sel_E_SA, Sel_SB; 
+  input [end_registros-1:0] Sel_SA, Sel_SB, Sel_SC; 
   input Hab_Escrita, reset, clock;
   
   reg [bits_palavra-1:0] registro [num_registros-1:0];	// Um vetor de "end_registros" palavras de "bits_palavra" bits
@@ -35,10 +36,9 @@ module Banco_Registro (
 			end
 	
 	always_comb 
-	begin
-		if(!Hab_Escrita)             // Se a escrita não estiver habilitada
-			A = registro[Sel_E_SA]; // Coloca na saída o dado do registrador informado pela entrada Sel_E_SA
-		B = registro[Sel_SB]; // Coloca na saída o dado do registrador informado pela entrada Sel_SB
+	begin   
+		A = registro[Sel_SA];// Coloca na saída o dado do registrador informado pela entrada Sel_E_SA
+		B = registro[Sel_SB];// Coloca na saída o dado do registrador informado pela entrada Sel_SB
 	end
 
 	always@(posedge clock, posedge reset) 
@@ -51,7 +51,7 @@ module Banco_Registro (
 					registro[3] = 16'b0000000000000000;
 				end
 			else if(Hab_Escrita) // Se a escrita estiver habilitada
-				registro[Sel_E_SA] <= E; // Escreve o dado no registrador de acordo com o endereço informado pela entrada "Sel_E_SA"
+				registro[Sel_SC] <= E; // Escreve o dado no registrador de acordo com o endereço informado pela entrada "Sel_E_SA"
 		end
 	 
 endmodule

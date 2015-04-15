@@ -9,9 +9,8 @@
 module ULA(operandoA, operandoB, resultadoOp, controle, Z, C, S, O);
   
     parameter bits_palavra = 16;
-    parameter bits_controle = 5;
     
-	input signed [bits_controle-1:0] controle; // [00000 - 11111]
+	input signed [4:0] controle; // [00000 - 11111]
 	input signed [bits_palavra-1:0] operandoA, operandoB; // [15] -> bit de sinal e [14:0] -> valor (de -32768 à 32767)
 	output reg signed [bits_palavra-1:0] resultadoOp; // [15] -> bit de sinal e [14:0] -> valor (de -32768 à 32767)
 
@@ -36,6 +35,7 @@ module ULA(operandoA, operandoB, resultadoOp, controle, Z, C, S, O);
 	  		end 
 			5'b00001: begin // 00001 C = A + B + 1
 			   	aux_resultadoOp = operandoA + operandoB + 1;
+			   	resultadoOp = aux_resultadoOp;
 				flags = 2'b11;		
 		   	end
 			5'b00011: begin // 00011 C = A + 1
@@ -44,20 +44,24 @@ module ULA(operandoA, operandoB, resultadoOp, controle, Z, C, S, O);
 		  	end 
 			5'b00100: begin // 00100 C = A - B - 1 
 			   	aux_resultadoOp = operandoA - operandoB - 1;
+			   	resultadoOp = aux_resultadoOp;
 				flags = 2'b11;
 		 	end  
 			5'b00101: begin // 00101 C = A - B 
 			   	aux_resultadoOp = operandoA - operandoB;
+			   	resultadoOp = aux_resultadoOp;
 				flags = 2'b11;
 		  	end 
 			5'b00110: begin // 00110 C = A - 1  
 			   	aux_resultadoOp = operandoA - 1;
+			   	resultadoOp = aux_resultadoOp;
 				flags = 2'b11;
 		   	end
 			5'b01000: begin // 01000 C = Deslocamento Lógico Esq. (A)
 			   	aux_resultadoOp = operandoA << 1;
 				S = aux_resultadoOp[bits_palavra-1];
 				C = aux_resultadoOp[bits_palavra];// Assume o bit mais significativo (perdido depois do deslocamento)
+				resultadoOp = aux_resultadoOp;
 				flags = 2'b10;
 			end
 			5'b01001: begin // 01001 C = Deslocamento Aritmético Dir. (A)
