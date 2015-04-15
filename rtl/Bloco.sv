@@ -5,9 +5,9 @@
 * Purpose: Ligação de todos os modulos desenvolvidos (Banco de Registros, ULA e Registrador das flag's) 
 */
 
-include "BR.sv";
-include "ULA.sv";
-include "RE.sv";
+include "..\\rtl\\BR.sv";
+include "..\\rtl\\ULA.sv";
+include "..\\rtl\\RE.sv";
 
 module BLOCO(
   Hab_Escrita,  // Habilita a escrita no banco de registros
