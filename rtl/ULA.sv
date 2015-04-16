@@ -6,10 +6,12 @@
 * Purpose: Modulo responsavel por realizar as operacoes logicas, aritmeticas e de deslocamento. Parte no projeto da unidade micro processada. 
 */
 
-module ULA(operandoA, operandoB, resultadoOp, controle, Z, C, S, O);
+module ULA(operandoA, operandoB, resultadoOp, controle, bits_palavra, Z, C, S, O);
   
-    parameter bits_palavra = 16;
-    
+     parameter bits_palavra; // = 16;
+    	if(bits_palavra == 0) begin
+		bits_palavra = 16;
+	end
 	input signed [4:0] controle; // [00000 - 11111]
 	input signed [bits_palavra-1:0] operandoA, operandoB; // [15] -> bit de sinal e [14:0] -> valor (de -32768 � 32767)
 	output reg signed [bits_palavra-1:0] resultadoOp; // [15] -> bit de sinal e [14:0] -> valor (de -32768 � 32767)
