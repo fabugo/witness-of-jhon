@@ -42,9 +42,9 @@ module BR (
 		B = registro[Sel_SB];// Coloca na sa�da o dado do registrador informado pela entrada Sel_SB
 	end
 
-	always_ff@(posedge clock, negedge reset) 
+	always@(posedge clock, negedge reset) 
 		begin
-			if(!reset) //Reset ass�ncrono
+			if(reset) //Reset ass�ncrono
 				begin 
 					registro[0] = 16'b0000000000000000;
 					registro[1] = 16'b0000000000000000;

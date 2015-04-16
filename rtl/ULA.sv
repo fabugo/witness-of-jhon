@@ -18,7 +18,7 @@ module ULA(operandoA, operandoB, resultadoOp, controle, bits_palavra, Z, C, S, O
 
 	logic signed [bits_palavra:0] aux_resultadoOp; // [16]-> carry out e [15]-> sinal (utilizado para detectar overflow) [14:0]-> valor
 	
-	output wire Z, 	// Zero - (Este bit fica a 1 quando o resultado da opera��o for 0)
+	output reg Z, 	// Zero - (Este bit fica a 1 quando o resultado da opera��o for 0)
 	           C, 	/* Carry - (Indicar que h� um bit de transporte) 
 	              	Em qualquer das formas de deslocamento o bit de estado transporte recebe o bit que se perde com o deslocamento, o bit mais
 	              	significativo do operando no caso de deslocamentos � esquerda, ou o bit menos significativo nos deslocamentos � direita.
