@@ -14,7 +14,8 @@ module BR (
   clock,       // Pulso de clock
   A,           // Saida A do Banco de Registros
   B,           // Saida B do Banco de Registros
-  E);          // Entrada E do Banco de Registros - novo registro a ser armazenado
+  E
+  );          // Entrada E do Banco de Registros - novo registro a ser armazenado
   
   parameter bits_palavra = 16;
   parameter end_registros = 2; // Quantidade de bits necessários para endereçar os registros
@@ -24,15 +25,15 @@ module BR (
   input [bits_palavra-1:0] E;
   input [end_registros-1:0] Sel_SA, Sel_SB, Sel_SC; 
   input Hab_Escrita, reset, clock;
-  
+
   reg [bits_palavra-1:0] registro [num_registros-1:0];	// Um vetor de "end_registros" palavras de "bits_palavra" bits
 	
 	initial // Inicializa os registradores.
 			begin
-				registro[0] = 16'b0000000000000000;
-				registro[1] = 16'b0000000000000000;
-				registro[2] = 16'b0000000000000000;
-				registro[3] = 16'b0000000000000000;
+				registro[0] <= 16'b0000000000000001;
+				registro[1] <= 16'b0000000000000001;
+				registro[2] <= 16'b0000000000000000;
+				registro[3] <= 16'b0000000000000000;
 			end
 	
 	always_comb 

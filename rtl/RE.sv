@@ -3,12 +3,12 @@
 * Module: RE
 * Purpose: Modulo responsável por armazenar o estados das Flag's.
 */
-module RE(Z, C, S, O, controleOperacao, ZCSO, clock, reset);
+module RE(Z, C, S, O, controleOperacao, clock, reset);
 
 	input reg Z, C, S, O; // Flag Zero | Flag Carry | Flag Sinal | Flag Overflow 
 	input [4:0] controleOperacao; // Controle RE - Enable Específico: [Z][C][N][O]
 	input clock, reset;
-	output reg [3:0] ZCSO; // Saída das flags
+	reg [3:0] ZCSO;
 	
 	always @(posedge clock or posedge reset or controleOperacao)
 		begin
