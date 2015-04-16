@@ -1,4 +1,6 @@
+%
 % Portuguese-BR vertion
+% 
 \documentclass{report}
 
 \usepackage{ipprocess}
@@ -14,7 +16,7 @@
 \begin{document}
 
 \DocumentTitle{Documento de Arquitetura}
-\Project{*Nome do Projeto*}
+\Project{ULA}
 \Organization{Universidade Estadual de Feira de Santana (UEFS)}
 \Version{Build 1.4}
 
@@ -34,12 +36,12 @@
       \cellcolor[gray]{0.9}
       \textbf{Date} & \cellcolor[gray]{0.9} \textbf{Versão}  &\cellcolor[gray]{0.9}\textbf{Descrição} & \cellcolor[gray]{0.9}\textbf{Autor(s)}\\
       \hline
-      22/03/2015 & 1.0 & Concepção e estruturação do Documento & Patrícia Gomes e Pedro Mota \\ \hline      
-      26/03/2015 & 1.1 & \textit{Stakeholders} & Patrícia Gomes \\ \hline
-      26/03/2015 & 1.2 & Adição do conjunto de componentes utilizados na concepção do jogo & Patrícia Gomes \\ \hline
-	  28/03/2015 & 1.3 & Adição do datapath do gerador de números aleatórios & Kelvin Carmo \\ \hline      
-      28/03/2015 & 1.4 & Descrição da Arquitetura & Alexandre Cavalcanti e Jhone Mendes \\ \hline
-      29/03/2015 & 1.5 & Finalização dos tópicos e revisão & Alexandre Cavalcanti \\ \hline
+      8/04/2015 & 1.0 & Concepção e estruturação do Documento & Alexandre Cavalcanti \\ \hline      
+      09/04/2015 & 1.1 & \textit{Stakeholders} & Alexandre Cavalcanti \\ \hline
+      10/04/2015 & 1.2 & Adição de conteúdo na sessão ULA & Alexandre Cavalcanti \\ \hline      
+      11/04/2015 & 1.3 & Datapath & Alexandre Cavalcanti \\ \hline      
+      13/04/2015 & 1.4 & Banco de Registradores & Kelvin Carmo, Patrícia Gomes \\ \hline
+      15/04/2015 & 1.5 & Conclusão dos tópicos e revisão & Alexandre Cavalcanti \\ \hline      
     \end{tabular}
   \end{table}
 
@@ -52,8 +54,7 @@
 \chapter{Introdução}
   
   \section{Propósito do Documento}
-  Este documento descreve a arquitetura do projeto *Nome do Projeto*, "incluindo especificações dos circuitos internos, além da máquina de estados e o datapath do sistema. O documento apresenta também os módulos funcionais e como eles interagem entre si, assim como as definições de entrada e saída. O principal objetivo deste documento é definir as especificações do projeto e prover uma visão geral do mesmo."
-
+  Este documento descreve a implementação de uma unidade lógica aritmética e de um banco de registradores, elementos que compõe a arquitetura de um processador de uso comum. incluindo especificações dos circuitos internos, além do datapath do sistema. O documento apresenta também os módulos funcionais e como eles interagem entre si, assim como as definições de entrada e saída.Serão detalhados os elementos utilizados na arquitetura, assim como as motivações que levaram a tais escolhas e a influência destes elementos no produto final.
   
   \section{Stakeholders}
     \FloatBarrier
@@ -63,9 +64,9 @@
           \hline 
           \cellcolor[gray]{0.9}\textbf{Nome} & \cellcolor[gray]{0.9}\textbf{Papel/Responsabilidades} \\ \hline
           Alexandre Cavalcanti, Fábio Barros, Jhone Mendes, Jussara Machado, Kelvin Carmo, Lucas Morais, Patricia Gomes, Pedro Mota & Desenvolvimento\\ \hline
-          Jussara Machado, Fábio Barros, Kelvin Carmo & Implementação\\ \hline
-          Lucas Morais, Pedro Mota & Testes\\ \hline
-          Patrícia Gomes, Jhone Mendes, Alexandre Cavalcanti & Confecção da documentação\\ \hline
+          Fábio Barros, Jhone Mendes, Jussara Machado, Lucas Morais, Pedro Mota & Implementação\\ \hline
+          & Testes\\ \hline
+          Alexandre Cavalcanti, Kelvin Carmo & Confecção da documentação\\ \hline
         \end{tabular}
       \end{center}
     \end{table} 
@@ -73,13 +74,14 @@
 \section{Visão Geral do Documento}
 
 O presente documento é apresentado como segue:
-  
-  \begin{itemize}
-  \item \textbf{Sessão 2 -} Apresenta uma visão geral do sistema de acordo com seus requisitos.
-  \item \textbf{Sessão 3 -} Descreve detalhadamente a arquitetura, explanando os módulos e componentes do projeto.
-  \item \textbf{Sessão 4 -} Descreve o funcionamento básico do sistema de controle.
-  \end{itemize}
 
+\begin{itemize}
+  
+  \item Sessão 2 - Apresenta uma visão geral sobre a ULA e o banco de registradores de acordo com seus requisitos.
+  \item Sessão 3 - Descreve detalhadamente a arquitetura, explanando os módulos e componentes do projeto.
+  \item Sessão 4 - Descreve o funcionamento básico do sistema de controle.
+
+\end{itemize}
 
   % inicio das definições do documento
   \section{Definições}
@@ -90,7 +92,7 @@ O presente documento é apresentado como segue:
           \hline
           \cellcolor[gray]{0.9}\textbf{Termo} & \cellcolor[gray]{0.9}\textbf{Descrição} \\ \hline
           Datapath & Caminho de dados percorrido para a execução de uma instrução. \\ \hline
-          GNR & Módulo responsável por gerar números aleatórios. \\ \hline
+          Overflow & Quando um determinado valor a ser representado ultrapassa a quantidade de bits disponíveis na ULA \\ \hline         
         \end{tabular}
       \end{center}
     \end{table}  
@@ -104,39 +106,87 @@ O presente documento é apresentado como segue:
         \begin{tabular}[pos]{|m{2cm} | m{12cm}|} 
           \hline
           \cellcolor[gray]{0.9}\textbf{Sigla} & \cellcolor[gray]{0.9}\textbf{Descrição} \\ \hline
-            GNR & Gerador de Número Randômico \\ \hline
+            ULA & Unidade Lógica Aritmética \\ \hline
         \end{tabular}
       \end{center}
     \end{table}  
   % fim
 
 \chapter{Visão Geral}
+\section{ULA}
 
-    Simon Says é um jogo que consiste em desafiar o jogador a acertar uma determinada sequência de cores que tem seus elementos gerados aleatoriamente pelo próprio jogo. As cores, neste protótipo proposto neste documento, são representadas por quatro leds. É esperado que o jogador digite corretamente a sequência indicada dentro de 5 segundos pressionando botões correspondes às cores exibidas. O jogo apresenta dois modos e quatro níveis de dificuldade.
-    No modo 1 o próprio sistema gera a sequência de cores, no modo 2 o jodador é o responsável por gerar essa sequência. Em cada nível aumenta a sequência de cores geradas. O jogador poderá ver ainda a última sequência gerada que ficará armazenada na memória enquanto o dispositivo estiver ligado.
-\paragraph{}
-    O sistema conta com uma interface de software que produz os comandos para o hardware de forma que seja possível que o mesmo apresente as cores nos LEDs e compare a cor do botão pressionado pelo jogador com a cor mostrada na sequência.
-\paragraph{}
-    A figura 2.1 apresenta o modelo de arquitetura do Warmup cujos elementos serão descritos na sessão seguinte:
-\paragraph{}
-
-%\begin{figure}[h] \centering \includegraphics[width=1.2\textwidth]{DataPath1.jpeg} \caption{Datapath do Sistema} \label{fig:mesh1} \end{figure}
-  
-
-% inicio das descrições de arquitetura para cada componente do sistema
-\chapter{Descrição da Arquitetura}
-
-  Abaixo os blocos apresentados na Figura 2.1 serão descritos:
-
+    A unidade Lógica Aritmética(ULA) é um circuito combinatório responsável por realizar operações aritméticas e lógicas dentro de um processador. As operações a serem executadas são determinadas através dos sinais de controle recebidos pela ULA em sua entrada de operação. Logo após os dados de entrada são computados e o resultado é obtido na saída do circuito.
     
-  \section{Banco de Registradores}
-  \paragraph{}
-  
-  1.	Banco de Registradores
-O banco de registradores é onde os dados que serão manipulados estarão salvos temporariamente. Inicialmente o banco de registradores possui 3 registradores, os dois primeiros para os operandos e o terceiro para o resultado da operação .
+    
+\paragraph{}
+    A complexidade da ULA é proporcional à complexidade do sistema em que será utilizada, assim, como o propósito é desenvolver uma ULA que irá atuar num processador de uso geral, utilizaremos uma ULA simples, contendo operandos de 2bytes.
+
+\begin{figure}[H] \centering \includegraphics[width=0.9\textwidth]{datapathrs123.png}                \caption{Datapath ULA} \label{fig:mesh1} 
+    \end{figure}
+
+\paragraph{}
+    A ULA deve possuir comportamento semelhante ao da tabela abaixo:
+        \begin{table}[H] 
+      \begin{center}
+        \begin{tabular}[pos]{|m{2cm} | m{4cm}| m{3cm}| m{3.5cm}|} 
+          \hline 
+          \cellcolor[gray]{0.9}\textbf{Código} & \cellcolor[gray]{0.9}\textbf{Operação} & \cellcolor[gray]{0.9}\textbf{Mnemônico} & \cellcolor[gray]{0.9}\textbf{Flags Atualizadas} \\ \hline
+00000 & C = A + B & add c, a, b & todas\\ \hline
+00001 & C = A + B + 1 & addinc, c, a, b & todas\\ \hline
+00011 & C = A + 1 & inca c, a & todas\\ \hline
+00100 & C = A – B – 1 & subdec c, a, b & todas\\ \hline
+00101 & C = A – B & sub c, a, b & todas\\ \hline
+00110 & C = A – 1 & deca c, a & todas\\ \hline
+01000 & C = Deslocamento Lógico Esq. (A) & lsl c, a & S, C, Z\\ \hline
+01001 & C = Deslocamento Aritmético Dir. (A) & asr c, a & S, C, Z\\ \hline
+10000 & C = 0 & zeros c & nenhuma\\ \hline
+10001 & C = A.B & and c,a,b & Z, S\\ \hline
+10010 & C = !A.B & andnota c, a, b & Z, S\\ \hline
+10011 & C = B & passb c, a & nenhuma\\ \hline
+10100 & C = A.!B & andnotb c, a, b & Z, S\\ \hline
+10101 & C = A & passa, c, a & Z, S\\ \hline
+10110 & C = A & xor B xor c, a, b & Z, S\\ \hline
+10111 & C = A | B & or c, a, b & Z, S\\ \hline
+11000 & C = !A.!B & nand c, a, b & Z, S\\ \hline
+11001 & C = !(A xor B) & xnor c, a, b & Z, S\\ \hline
+11010 & C = !A & passnota c, a & Z, S\\ \hline
+11011 & C = !A|B & ornota c, a, b & Z, S\\ \hline
+11100 & C = !B & passnotb c, b & Z, S\\ \hline
+11101 & C = A|!B & ornotb c, a, b & Z, S\\ \hline
+11110 & C = !A|!B & nor c, a, b & Z, S\\ \hline
+11111 & C = 1 & ones c & nenhuma\\ \hline
+          
+    \end{tabular}
+    \end{center}
+    \end{table}
+    
+\section{Banco de Registradores}
+O banco de registradores é onde os dados que serão manipulados estarão salvos, sujeitos a alterações futuras. Inicialmente o banco de registradores possui 3 registradores, os dois primeiros para os operandos e o terceiro para o resultado da operação .
 Para representar os registradores, os mesmos foram divididos em registradores de entrada e registrador de saída. Cada registrador possui a capacidade de armazenamento de 16 bits e para endereçá-los foram usados 2 bits, sendo possível dessa forma o endereçamento de até 4 registradores.
 
-1.2 Entradas
+
+\subsection{Registradores de Estado ( Flags )}
+São registradores responsáveis por sinalizar um determinado acontecimento inesperado após a execução de uma instrução. Na ULA implementada estão presentes quatro flags: Uma para quando o valor resultante de uma operação da ULA estoure a faixa de números representáveis pela mesma(Overflow), "Vai um" (Carry Out), Zero e de sina.
+
+
+
+\chapter{Especificações Técnicas}
+    \section{ULA}
+    \subsection{Entradas}
+\begin{itemize}
+\item Duas entradas de 16 bits, responsáveis por receber dos registradores A e B os dados referentes aos operandos.
+\item Um sinal para controle de operação.
+\end{itemize}
+
+
+    \subsection{Saídas}
+\begin{itemize}
+\item Uma saída de 16 bits, através da qual o resultado da operação realizada será salvo no banco de registradores;
+\item Uma saída para sinalizar uma das flags, caso necessário.
+\end{itemize}
+
+    \section{Banco de Registradores}
+    \subsection{Entradas}
 \begin{itemize}
         \item $addr_A$ (2 bits): Entrada do endereço do primeiro registrador que será lido;
 		\item $addr_B$ (2 bits): Entrada do endereço do segundo registrador que será lido;
@@ -144,160 +194,19 @@ Para representar os registradores, os mesmos foram divididos em registradores de
 		\item $write_data$ (8 bits): Entrada do dado que será armazenado no registrador de 				resultado especificado pelo endereço em $addr_R$.
 \end{itemize}
 
-
-1.3	Saídas
+\subsection{Saídas}
 \begin{itemize}
 \item $data_A$ (8 bits): Saída do dado do registrador especificado pelo endereço $address_RegA$;
 \item $data_A$ (8 bits): Saída do dado do registrador especificado pelo endereço $address_RegB$.
 \end{itemize}
 
-1.4	Sinais de controle
+\subsection{Sinais de Controle}
 \begin{itemize}
 \item $write_Reg$ (1 bit): Sinal para controle da escrita dos registradores, seu estado é baixo para manter o mesmo dado no registrador até que uma instrução termine de ser executada, o mesmo pode ser alterado para alto, apenas quando uma escrita de dados for necessária;
 \item $clock$: Entrada de clock;
 \item $reset$: Sinal de reset. Zera todos os dados contidos nos registradores;
 \end{itemize}
-  
     
- 
-    \section{Gerador de Número Aleatório}
-  Módulo responsável por gerar uma sequência aleatória de 2 bits. O sinal de entrada "next" serve para solicitar uma nova sequência. O "randomize" para receber um vetor de bits como semente, para começar a gerar os bits. Por último a "start-over", que dá origem a uma nova semente para gerar os bits.
-  
-    \subsection{Datapath Interno}
-    \paragraph{}
-    
-%    \begin{figure}[H] \centering \includegraphics[width=0.9\textwidth]{datapath_gnr.jpeg}                \caption{Módulo Gerador Randômico} \label{fig:mesh1} 
-%\end{figure}
-    
-   
-  \section{Controle de Acesso à Memória}
-  
-  Este módulo é responsável pelo controle de uso dos dados contidos na memória (módulo memory). Ele libera o fluxo entre a memória e o gerador randômico (GNR) permitindo que o código de uma nova cor (color code) seja armazenado, controlando também quando todos os dados devem ser apagados (new game). Por meio deste também, é feita a operação de exibição da última sequência.
-  
-    \subsection{Definições de Entrada e Saída}
-     \begin{table}[H]
-       \centering
-        \begin{tabular}[pos]{|m{2cm} |m{2cm}| m{3cm} | m{5cm}|} 
-         \hline
-          \cellcolor[gray]{0.9}
-           \textbf{Nome} & \cellcolor[gray]{0.9} \textbf{Tamanho}  &\cellcolor[gray]{0.9}\textbf{Direção} & \cellcolor[gray]{0.9}\textbf{Descrição}\\ \hline
-                Resposta & 1 Bit & Saída & Resposta da comparação entre valor na memória e valor de entrada dado pelo usuário\\ \hline
-                Códigos* & 2 Bits & Entrada & Valores de mudança de estado do Controller no que diz respeito a memória. 
-Onde: 00 = Comparar
-01 = Nova cor
-10 = Última sequência
-11 = Limpar memória
-  \\ \hline
-                Códigos** & 2 Bits & Saída & Operações com a memória. 
-Onde: 00 = Pegar o código (color code)
-01 = Nova cor
-10 = Última sequência
-11 = Limpar memória
- \\ \hline
-                Código de Cores & 2 Bits & Entrada & Referente a cor do botão pressionado. \\ \hline
-        \end{tabular}
-       \end{table}
-    
-    
-  \section{Memória}
-  
-    Módulo responsável por armazenar as sequências de cores na memória. São utilizadas 64 posições de memória, sendo que são seis bits de endereço e cada posição guarda dois bits.
-    \subsection{Definições de Entrada e Saída}
-    
-      \begin{table}[H]
-       \centering
-        \begin{tabular}[pos]{|m{2cm} |m{2cm}| m{6cm} | m{3cm}|} 
-         \hline
-          \cellcolor[gray]{0.9}
-           \textbf{Nome} & \cellcolor[gray]{0.9} \textbf{Tamanho}  &\cellcolor[gray]{0.9}\textbf{Direção} & \cellcolor[gray]{0.9}\textbf{Descrição}\\ \hline
-                read-address & 5 & Entada & Endereço usado na leitura\\ \hline
-                write-address & 5 & Entrada & Endereço usada na escrita  \\ \hline
-                write-data & 2 & Entrada & Dado a ser escrito \\ \hline
-                read-data & 2 & Saída & Dado que sai da memória \\ \hline
-                read-enable & -- & Entrada & Habilitador da leitura \\ \hline
-                write-enable & -- & Entrada & Habilitador da escrita \\ \hline
-                reset & -- & Entrada & Limpa a memória \\ \hline
-        \end{tabular}
-       \end{table}
-    
-    \subsection{Datapath}
-    
-    \begin{figure}[H] \centering \includegraphics[width=0.9\textwidth]{memo.jpg} \caption{Datapath da memória} \label{fig:mesh1} \end{figure}
-    
-  \section{Contador}
-  
-  O contador é a unidade responsável por registrar o(s) intervalo(s) de tempo entre a(s) ação(ões) do jogador. Recebe o sinal de 1Hz do divisor de frequência afim de contar cinco segundos, que é o tempo que o jogador tem para apertar algum botão a partir do momento em que a sequência de comandos é gerada pelo GNR. No momento em que o um botão de cor é acionado o controller envia um sinal resetando o contador.
-  
-    \subsection{Definições de Entrada e Saída}
-    
-O contador possui duas entradas, sendo uma por onde chega o sinal proveniente do divisor de frequência e uma segunda entrada por onde o controller envia o sinal de reset, e possui uma saída enviando o sinal para o controller. A entrada e a saída são de 1bit.
-
-   
-  \section{Decodificador}
-  
-  O decodificador tem como função receber o dado referente a que cor deve "piscar" no jogo. Ele recebe uma(s) informação(ões) de dois bits da memória(que representa qual led deve "acender") e habilita o led correspondente.
-  
-    \subsection{Definições de Entrada e Saída}
-    Possui uma entrada de dois bits(o valor binário vindo da memória) e quatro saídas de 1 bit.
-    \paragraph{}
-    
-    
- \section{Controlador}
- O Controller é o módulo que representa o controlador, responsável por permitir a comunicação entre o \textit{software} e o \textit{hardware}. 
- As entradas do controlador são realizadas por quatro botões correspondentes às cores dos LEDs. Os botões podem ser pressionados tanto para reproduzir a sequência correta gerada pelo sistema, como para gerar a sequência no modo 2.
- \paragraph{}
-   O modo e os níveis são escolhidos a partir de chaves de duas e quatro posições respectivamente e o botão \textit{Start} inicia o jogo. Além disso, existe também um botão responsável por apresentar a última sequência gerada.
- 
-    \subsection{Máquina de Estados}
-    \begin{figure}[H] \centering \includegraphics[width=0.9\textwidth]{Figura2.jpg}                \caption{Máquina de estados} \label{fig:mesh1} 
-    \end{figure}
-     
-    
-\chapter{Características}
-    \section{Características Principais}
-    A versão inicial do jogo possui as seguinte características:
-     \begin{itemize}
-        \item Mecanismo de controle modo de jogo e nível de dificuldade;
-        \item Mecanismo de geração de sequência aleatória;
-        \item Mecanismo de armazenamento da sequência gerada;
-        \item Mecanismo de comparação da sequência gerada com a sequência armazenada;
-        \item Comandos de controle formado a partir de um conjunto de operações.
-      \end{itemize}
-    
-    \section{Comandos de Controle}
-    O sistema de comandos para o jogo segue o padrão de codificação formado por dois bits como apresentado abaixo:
-    \begin{table}[H]
-       \centering
-        \begin{tabular}[pos]{|m{2cm} |m{2cm}| m{6cm} | m{3cm}|} 
-         \hline
-          \cellcolor[gray]{0.9}
-           \textbf{Código} & \cellcolor[gray]{0.9} \textbf{Descrição} \\ \hline
-                00 & Compare \\ \hline
-                01 & New Color \\ \hline
-                10 & Last Sequence \\ \hline
-                11 & Clean \\ \hline
-                
-        \end{tabular}
-       \end{table}
-       
-    \section{Comandos de Resposta}
-    O sistema de controle processa e transmite sinais de respostas que indicam as cores, apresentadas em forma de luz de LED.
-    \begin{table}[H]
-       \centering
-        \begin{tabular}[pos]{|m{2cm} |m{2cm}| m{6cm} | m{3cm}|} 
-         \hline
-          \cellcolor[gray]{0.9}
-           \textbf{Código} & \cellcolor[gray]{0.9} \textbf{Descrição} \\ \hline
-                00 & LED vermelho \\ \hline
-                01 & LED verde \\ \hline
-                10 & LED amarelo \\ \hline
-                11 & LED azul \\ \hline
-                
-        \end{tabular}
-       \end{table}
-    
-
-
 
 % Optional bibliography section
 % To use bibliograpy, first provide the ipprocess.bib file on the root folder.
