@@ -2,7 +2,7 @@
 * @author Patricia Gomes
 * @author Kelvin Carmo
 * Module: Banco_Registro
-* Purpose: Modulo responsável por armazenar os registros.
+* Purpose: Modulo responsï¿½vel por armazenar os registros.
 */
 	
 module BR (
@@ -18,7 +18,7 @@ module BR (
   );          // Entrada E do Banco de Registros - novo registro a ser armazenado
   
   parameter bits_palavra = 16;
-  parameter end_registros = 2; // Quantidade de bits necessários para endereçar os registros
+  parameter end_registros = 2; // Quantidade de bits necessï¿½rios para endereï¿½ar os registros
   parameter num_registros = 4; // Quantidade de registros do Banco de Registros (num_registros = (end_registros^2)-1;)
   
   output reg [bits_palavra-1:0] A, B;
@@ -38,13 +38,13 @@ module BR (
 	
 	always_comb 
 	begin   
-		A = registro[Sel_SA];// Coloca na saída o dado do registrador informado pela entrada Sel_E_SA
-		B = registro[Sel_SB];// Coloca na saída o dado do registrador informado pela entrada Sel_SB
+		A = registro[Sel_SA];// Coloca na saï¿½da o dado do registrador informado pela entrada Sel_E_SA
+		B = registro[Sel_SB];// Coloca na saï¿½da o dado do registrador informado pela entrada Sel_SB
 	end
 
-	always@(posedge clock, posedge reset) 
+	always_ff@(posedge clock, negedge reset) 
 		begin
-			if(reset) //Reset assíncrono
+			if(!reset) //Reset assï¿½ncrono
 				begin 
 					registro[0] = 16'b0000000000000000;
 					registro[1] = 16'b0000000000000000;
@@ -52,7 +52,7 @@ module BR (
 					registro[3] = 16'b0000000000000000;
 				end
 			else if(Hab_Escrita) // Se a escrita estiver habilitada
-				registro[Sel_SC] <= E; // Escreve o dado no registrador de acordo com o endereço informado pela entrada "Sel_E_SA"
+				registro[Sel_SC] <= E; // Escreve o dado no registrador de acordo com o endereï¿½o informado pela entrada "Sel_E_SA"
 		end
 	 
 endmodule

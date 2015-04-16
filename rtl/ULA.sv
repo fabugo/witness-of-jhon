@@ -11,15 +11,15 @@ module ULA(operandoA, operandoB, resultadoOp, controle, Z, C, S, O);
     parameter bits_palavra = 16;
     
 	input signed [4:0] controle; // [00000 - 11111]
-	input signed [bits_palavra-1:0] operandoA, operandoB; // [15] -> bit de sinal e [14:0] -> valor (de -32768 à 32767)
-	output reg signed [bits_palavra-1:0] resultadoOp; // [15] -> bit de sinal e [14:0] -> valor (de -32768 à 32767)
+	input signed [bits_palavra-1:0] operandoA, operandoB; // [15] -> bit de sinal e [14:0] -> valor (de -32768 ï¿½ 32767)
+	output reg signed [bits_palavra-1:0] resultadoOp; // [15] -> bit de sinal e [14:0] -> valor (de -32768 ï¿½ 32767)
 
 	logic signed [bits_palavra:0] aux_resultadoOp; // [16]-> carry out e [15]-> sinal (utilizado para detectar overflow) [14:0]-> valor
 	
-	output reg Z, 	// Zero - (Este bit fica a 1 quando o resultado da operação for 0)
-	           C, 	/* Carry - (Indicar que há um bit de transporte) 
+	output wire Z, 	// Zero - (Este bit fica a 1 quando o resultado da operaï¿½ï¿½o for 0)
+	           C, 	/* Carry - (Indicar que hï¿½ um bit de transporte) 
 	              	Em qualquer das formas de deslocamento o bit de estado transporte recebe o bit que se perde com o deslocamento, o bit mais
-	              	significativo do operando no caso de deslocamentos à esquerda, ou o bit menos significativo nos deslocamentos à direita.
+	              	significativo do operando no caso de deslocamentos ï¿½ esquerda, ou o bit menos significativo nos deslocamentos ï¿½ direita.
           			*/ 
 	           S, 	// Sinal - (O bit mais significativo do resultado. Este bit indica o sinal do resultado)
 	           O; 	// Overflow - (Quando o resultado tem uma magnitude que excede o valor alterando o bit de sinal)
@@ -57,14 +57,14 @@ module ULA(operandoA, operandoB, resultadoOp, controle, Z, C, S, O);
 			   	resultadoOp = aux_resultadoOp;
 				flags = 2'b11;
 		   	end
-			5'b01000: begin // 01000 C = Deslocamento Lógico Esq. (A)
+			5'b01000: begin // 01000 C = Deslocamento Lï¿½gico Esq. (A)
 			   	aux_resultadoOp = operandoA << 1;
 				S = aux_resultadoOp[bits_palavra-1];
 				C = aux_resultadoOp[bits_palavra];// Assume o bit mais significativo (perdido depois do deslocamento)
 				resultadoOp = aux_resultadoOp;
 				flags = 2'b10;
 			end
-			5'b01001: begin // 01001 C = Deslocamento Aritmético Dir. (A)
+			5'b01001: begin // 01001 C = Deslocamento Aritmï¿½tico Dir. (A)
 			   	resultadoOp = operandoA >>> 1;
 				resultadoOp[bits_palavra-1] = operandoA[bits_palavra-1];
 				C = operandoA[0];// Assume o bit menos significativo (perdido depois do deslocamento)

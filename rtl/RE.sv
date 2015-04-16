@@ -1,16 +1,16 @@
 /*
 * @author Jussara Gomes
 * Module: RE
-* Purpose: Modulo responsável por armazenar o estados das Flag's.
+* Purpose: Modulo responsï¿½vel por armazenar o estados das Flag's.
 */
-module RE(Z, C, S, O, controleOperacao, clock, reset);
+module RE(Z, C, S, O, controleOperacao,ZCSO, clock, reset);
 
-	input reg Z, C, S, O; // Flag Zero | Flag Carry | Flag Sinal | Flag Overflow 
-	input [4:0] controleOperacao; // Controle RE - Enable Específico: [Z][C][N][O]
+	input wire Z, C, S, O; // Flag Zero | Flag Carry | Flag Sinal | Flag Overflow 
+	input [4:0] controleOperacao; // Controle RE - Enable Especï¿½fico: [Z][C][N][O]
 	input clock, reset;
-	reg [3:0] ZCSO;
+	output reg [3:0] ZCSO;
 	
-	always @(posedge clock or posedge reset or controleOperacao)
+	always @(posedge clock or posedge reset)
 		begin
 			if(reset) begin
 				ZCSO[0] = 1'b0;
@@ -18,7 +18,7 @@ module RE(Z, C, S, O, controleOperacao, clock, reset);
 				ZCSO[2] = 1'b0;
 				ZCSO[3] = 1'b0;
 			end
-		
+		else begin
 			case(controleOperacao)
 				 
 				5'b01000, 5'b01001: begin // Flag's atualizadas: S, C, Z
@@ -55,5 +55,6 @@ module RE(Z, C, S, O, controleOperacao, clock, reset);
 					
 				default: begin end // Flag's atualizadas: Nenhuma
 			endcase
+			end
 	end
 endmodule 
