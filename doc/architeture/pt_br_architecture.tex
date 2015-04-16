@@ -54,7 +54,7 @@
 \chapter{Introdução}
   
   \section{Propósito do Documento}
-  Este documento descreve a implementação de uma unidade lógica aritmética e de um banco de registradores, elementos que compõe a arquitetura de um processador de uso comum. incluindo especificações dos circuitos internos, além do datapath do sistema. O documento apresenta também os módulos funcionais e como eles interagem entre si, assim como as definições de entrada e saída.Serão detalhados os elementos utilizados na arquitetura, assim como as motivações que levaram a tais escolhas e a influência destes elementos no produto final.
+  Este documento descreve a implementação de uma unidade lógica aritmética e de um banco de registradores, elementos que compõe a arquitetura de um processador de uso comum, incluindo especificações dos circuitos internos, além do datapath do sistema. O documento apresenta também os módulos funcionais e como eles interagem entre si, assim como as definições de entradas e saídas.Serão detalhados os elementos utilizados na arquitetura, assim como as motivações que levaram a tais escolhas e a influência destes elementos no produto final.
   
   \section{Stakeholders}
     \FloatBarrier
@@ -77,8 +77,8 @@ O presente documento é apresentado como segue:
 
 \begin{itemize}
   
-  \item Sessão 2 - Apresenta uma visão geral sobre a ULA e o banco de registradores de acordo com seus requisitos.
-  \item Sessão 3 - Descreve detalhadamente a arquitetura, explanando os módulos e componentes do projeto.
+  \item Sessão 2 - Apresenta uma visão geral sobre a ULA,banco de registradores e banco de flags, abordando questões como, função determinada no sistema.
+  \item Sessão 3 - Descreve detalhadamente a arquitetura, explanando os módulos e componentes do projeto, explicando e citando suas restrições.
   \item Sessão 4 - Descreve o funcionamento básico do sistema de controle.
 
 \end{itemize}
@@ -119,7 +119,14 @@ O presente documento é apresentado como segue:
     
     
 \paragraph{}
-    A complexidade da ULA é proporcional à complexidade do sistema em que será utilizada, assim, como o propósito é desenvolver uma ULA que irá atuar num processador de uso geral, utilizaremos uma ULA simples, contendo operandos de 2bytes.
+    A complexidade da ULA é proporcional à complexidade do sistema em que será utilizada, assim, como o propósito é desenvolver uma ULA que irá atuar num processador de uso geral, utilizaremos uma ULA simples, contendo operandos de 2bytes, podendo assim representar números de -128 até 127.A ULA tbm é capaz de decidir através do resultado da operação a ocorrência de flags. Essas são:
+    
+    \begin{itemize}
+    \item ZERO : Flag que sinaliza se o resultado da operação é 0;
+    \item CARRY : Flag que indica se há um "vai-um" para fora do Bit Mais Significativo;
+    \item SIGNED : Flag que indica se o resultado da operação é negativo ou positivo;
+    \item OVERFLOW : Flag que indica que o resultado da operação excede a representção máxima de números do sistema;
+    \end{itemize}
 
 \begin{figure}[H] \centering \includegraphics[width=0.9\textwidth]{datapathrs123.png}                \caption{Datapath ULA} \label{fig:mesh1} 
     \end{figure}
@@ -161,53 +168,85 @@ O presente documento é apresentado como segue:
     \end{table}
     
 \section{Banco de Registradores}
-O banco de registradores é onde os dados que serão manipulados estarão salvos, sujeitos a alterações futuras. Inicialmente o banco de registradores possui 3 registradores, os dois primeiros para os operandos e o terceiro para o resultado da operação .
-Para representar os registradores, os mesmos foram divididos em registradores de entrada e registrador de saída. Cada registrador possui a capacidade de armazenamento de 16 bits e para endereçá-los foram usados 2 bits, sendo possível dessa forma o endereçamento de até 4 registradores.
+O banco de registradores é onde os dados que serão manipulados estarão salvos, sujeitos a alterações futuras. Inicialmente o banco de registradores possui 3 registradores, os dois primeiros para os operandos e o terceiro para o resultado da operação . Cada registrador possui a capacidade de armazenamento de 16 bits e para endereçá-los foram usados 2 bits, sendo possível dessa forma o endereçamento de até 4 registradores.
 
 
 \subsection{Registradores de Estado ( Flags )}
-São registradores responsáveis por sinalizar um determinado acontecimento inesperado após a execução de uma instrução. Na ULA implementada estão presentes quatro flags: Uma para quando o valor resultante de uma operação da ULA estoure a faixa de números representáveis pela mesma(Overflow), "Vai um" (Carry Out), Zero e de sina.
+São registradores responsáveis por sinalizar um determinado acontecimento inesperado após a execução de uma operação.Esse bloco recebe da ULA os sinais necessários para a ativação das flags necessárias.
 
 
 
 \chapter{Especificações Técnicas}
     \section{ULA}
+    \paragraph{} 
+    Segue abaixo uma representação em bloco da ULA, com suas respectivas entradas e saídas para uma visualização mais dedicada e explicativa sobre o módulo. 
+    
+    \begin{figure}[H] \centering \includegraphics[width=0.9\textwidth]{ULA.jpeg}                \caption{Datapath ULA; Z = ZERO, C = CARRY, S = SIGNED, O = OVERFLOW} \label{fig:mesh1} 
+    \end{figure}
+    
     \subsection{Entradas}
 \begin{itemize}
-\item Duas entradas de 16 bits, responsáveis por receber dos registradores A e B os dados referentes aos operandos.
-\item Um sinal para controle de operação.
+\item $operandoA$ $e$ $operandoB$: Duas entradas de 16 bits, responsáveis por receber dos registradores A e B os dados referentes aos operandos.
+\item $controle$ : Entrada de 5 bits para controle de operação.
 \end{itemize}
 
 
     \subsection{Saídas}
 \begin{itemize}
-\item Uma saída de 16 bits, através da qual o resultado da operação realizada será salvo no banco de registradores;
-\item Uma saída para sinalizar uma das flags, caso necessário.
+\item $resultadoOp$ : Saída de 16 bits, através da qual o resultado da operação realizada será salvo no banco de registradores;
+\item $Z$, $C$, $S$ $e$ $O$ : 4 Saídas de 1 bit que será enviado para o Banco de registrador de flags para ativação das flags necessárias; 
 \end{itemize}
 
     \section{Banco de Registradores}
+    \paragraph{} 
+    Segue abaixo uma representação em bloco do Banco de Registradores, com suas respectivas entradas e saídas para uma visualização mais dedicada e explicativa sobre o módulo. 
+    
+    \begin{figure}[H] \centering \includegraphics[width=0.9\textwidth]{banco_de_registradores.jpeg}                \caption{Datapath Banco de Registradores} \label{fig:mesh1} 
+    \end{figure}
     \subsection{Entradas}
 \begin{itemize}
-        \item $addr_A$ (2 bits): Entrada do endereço do primeiro registrador que será lido;
-		\item $addr_B$ (2 bits): Entrada do endereço do segundo registrador que será lido;
-		\item $addr_D$ (2 bits): Entrada do endereço do registrador de destino, para 					armazenar um resultado da ULA;
-		\item $write_data$ (8 bits): Entrada do dado que será armazenado no registrador de 				resultado especificado pelo endereço em $addr_R$.
+        \item $Sel_SA$ (2 bits): Entrada do endereço do primeiro registrador que será lido;
+		\item $Sel_SB$ (2 bits): Entrada do endereço do segundo registrador que será lido;
+		\item $Sel_SC$ (2 bits): Entrada do endereço do registrador de destino, para 					armazenar um resultado da ULA;
+		\item $dado_escrita$ (8 bits): Entrada do dado que será armazenado no registrador de 				resultado especificado pelo endereço em $Sel_SC$.
 \end{itemize}
 
 \subsection{Saídas}
 \begin{itemize}
-\item $data_A$ (8 bits): Saída do dado do registrador especificado pelo endereço $address_RegA$;
-\item $data_A$ (8 bits): Saída do dado do registrador especificado pelo endereço $address_RegB$.
+\item $A$ (8 bits): Saída do dado do registrador especificado pelo endereço $address_RegA$;
+\item $B$ (8 bits): Saída do dado do registrador especificado pelo endereço $address_RegB$.
 \end{itemize}
 
 \subsection{Sinais de Controle}
 \begin{itemize}
-\item $write_Reg$ (1 bit): Sinal para controle da escrita dos registradores, seu estado é baixo para manter o mesmo dado no registrador até que uma instrução termine de ser executada, o mesmo pode ser alterado para alto, apenas quando uma escrita de dados for necessária;
+\item $HabEscrita$ (1 bit): Sinal para controle da escrita dos registradores, seu estado é baixo para manter o mesmo dado no registrador até que uma instrução termine de ser executada, o mesmo pode ser alterado para alto, apenas quando uma escrita de dados for necessária;
 \item $clock$: Entrada de clock;
 \item $reset$: Sinal de reset. Zera todos os dados contidos nos registradores;
 \end{itemize}
     
+\section{Registradores de Flags}
+    \paragraph{} 
+    Segue abaixo uma representação em bloco do Registradores de Flags, com suas respectivas entradas e saídas para uma visualização mais dedicada e explicativa sobre o módulo. 
+    
+    \begin{figure}[H] \centering \includegraphics[width=0.9\textwidth]{reg_flags.jpeg}                \caption{Datapath Banco de Registradores de Flags} \label{fig:mesh1} 
+    \end{figure}
+    
+    \subsection{Entradas}
+\begin{itemize}
+        \item $controleOperacao$ (5 bits): Entrada do controle de operação da ULA, que serve para determinar ao registrador quais flags devem ser atualizadas dependendo da operação realizada;
+		\item $Z$, $C$, $S$ $e$ $O$ (2 bits): Entradas de 1 bit , vindas da ULA , com os valores das flags(ZERO, CARRY, SIGNED, E OVERFLOW) atualizadas a depender da operação;
+\end{itemize}
 
+\subsection{Saídas}
+\begin{itemize}
+\item $ZCSO$ (4 bits): Saída das 4 flags finalmente atualizadas;
+\end{itemize}
+
+\subsection{Sinais de Controle}
+\begin{itemize}
+\item $clock$: Entrada de clock;
+\item $reset$: Sinal de reset. Zera todos os dados contidos nos registradores;
+\end{itemize}
 % Optional bibliography section
 % To use bibliograpy, first provide the ipprocess.bib file on the root folder.
 % \bibliographystyle{ieeetr}
