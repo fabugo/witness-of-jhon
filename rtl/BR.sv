@@ -15,14 +15,14 @@ module BR (
   A,           // Saida A do Banco de Registros
   B,           // Saida B do Banco de Registros
   E
-  );          // Entrada dado_escrita do Banco de Registros - novo registro a ser armazenado
+  );          // Entrada E do Banco de Registros - novo registro a ser armazenado
   
   parameter bits_palavra = 16;
   parameter end_registros = 2; // Quantidade de bits necess�rios para endere�ar os registros
   parameter num_registros = 4; // Quantidade de registros do Banco de Registros (num_registros = (end_registros^2)-1;)
   
   output reg [bits_palavra-1:0] A, B;
-  input [bits_palavra-1:0] dado_escrita;
+  input [bits_palavra-1:0] E;
   input [end_registros-1:0] Sel_SA, Sel_SB, Sel_SC; 
   input Hab_Escrita, reset, clock;
 
