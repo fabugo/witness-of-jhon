@@ -14,7 +14,7 @@ module BR (
   clock,       // Pulso de clock
   A,           // Saida A do Banco de Registros
   B,           // Saida B do Banco de Registros
-  dado_escrita
+  E
   );          // Entrada dado_escrita do Banco de Registros - novo registro a ser armazenado
   
   parameter bits_palavra = 16;
@@ -52,7 +52,7 @@ module BR (
 					registro[3] = 16'b0000000000000000;
 				end
 			else if(Hab_Escrita) // Se a escrita estiver habilitada
-				registro[Sel_SC] <= dado_escrita; // Escreve o dado no registrador de acordo com o endere�o informado pela entrada "Sel_E_SA"
+				registro[Sel_SC] <= E; // Escreve o dado no registrador de acordo com o endere�o informado pela entrada "Sel_E_SA"
 		end
 	 
 endmodule
