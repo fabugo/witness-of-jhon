@@ -14,15 +14,15 @@ module BR (
   clock,       // Pulso de clock
   A,           // Saida A do Banco de Registros
   B,           // Saida B do Banco de Registros
-  E
-  );          // Entrada E do Banco de Registros - novo registro a ser armazenado
+  dado_escrita
+  );          // Entrada dado_escrita do Banco de Registros - novo registro a ser armazenado
   
   parameter bits_palavra = 16;
   parameter end_registros = 2; // Quantidade de bits necess�rios para endere�ar os registros
   parameter num_registros = 4; // Quantidade de registros do Banco de Registros (num_registros = (end_registros^2)-1;)
   
   output reg [bits_palavra-1:0] A, B;
-  input [bits_palavra-1:0] E;
+  input [bits_palavra-1:0] dado_escrita;
   input [end_registros-1:0] Sel_SA, Sel_SB, Sel_SC; 
   input Hab_Escrita, reset, clock;
 
@@ -42,9 +42,9 @@ module BR (
 		B = registro[Sel_SB];// Coloca na sa�da o dado do registrador informado pela entrada Sel_SB
 	end
 
-	always_ff@(posedge clock, negedge reset) 
+	always@(posedge clock, negedge reset) 
 		begin
-			if(!reset) //Reset ass�ncrono
+			if(reset) //Reset ass�ncrono
 				begin 
 					registro[0] = 16'b0000000000000000;
 					registro[1] = 16'b0000000000000000;
@@ -52,7 +52,7 @@ module BR (
 					registro[3] = 16'b0000000000000000;
 				end
 			else if(Hab_Escrita) // Se a escrita estiver habilitada
-				registro[Sel_SC] <= E; // Escreve o dado no registrador de acordo com o endere�o informado pela entrada "Sel_E_SA"
+				registro[Sel_SC] <= dado_escrita; // Escreve o dado no registrador de acordo com o endere�o informado pela entrada "Sel_E_SA"
 		end
 	 
 endmodule
