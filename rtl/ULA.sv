@@ -6,12 +6,10 @@
 * Purpose: Modulo responsavel por realizar as operacoes logicas, aritmeticas e de deslocamento. Parte no projeto da unidade micro processada. 
 */
 
-module ULA(operandoA, operandoB, resultadoOp, controle, bits_palavra, Z, C, S, O);
+module ULA(operandoA, operandoB, resultadoOp, controle, Z, C, S, O);
   
-     parameter bits_palavra; // = 16;
-    	if(bits_palavra == 0) begin
-		bits_palavra = 16;
-	end
+    parameter bits_palavra = 3; // = 16; 
+    	
 	input signed [4:0] controle; // [00000 - 11111]
 	input signed [bits_palavra-1:0] operandoA, operandoB; // [15] -> bit de sinal e [14:0] -> valor (de -32768 � 32767)
 	output reg signed [bits_palavra-1:0] resultadoOp; // [15] -> bit de sinal e [14:0] -> valor (de -32768 � 32767)
@@ -28,7 +26,7 @@ module ULA(operandoA, operandoB, resultadoOp, controle, bits_palavra, Z, C, S, O
 	logic [1:0] flags;
 				
 	always @(operandoA or operandoB or controle) begin
-
+		//bits_palavra = bits_palavra;
 		case(controle)
 			5'b00000: begin // 00000 C = A + B
 			   	aux_resultadoOp = operandoA + operandoB;
@@ -78,11 +76,11 @@ module ULA(operandoA, operandoB, resultadoOp, controle, bits_palavra, Z, C, S, O
 			end
 			5'b10001: begin // 10001 C = A&B
 			   	resultadoOp = operandoA & operandoB;
-			   	flags = 2'b10;
+			   	flags = 2'b01;
 			end
 			5'b10010: begin // 10010 C = ~A&B
 			   	resultadoOp = (~operandoA) & operandoB;
-			   	flags = 2'b10;	
+			   	flags = 2'b01;	
 			end
 			5'b10011: begin // 10011 C = B
 			   	resultadoOp = operandoB;
@@ -90,47 +88,47 @@ module ULA(operandoA, operandoB, resultadoOp, controle, bits_palavra, Z, C, S, O
 			end
 			5'b10100: begin // 10100 C = A&~B
 			   	resultadoOp = operandoA & (~operandoB);
-			   	flags = 2'b10;
+			   	flags = 2'b01;
 			end
 			5'b10101: begin // 10101 C = A
 			   	resultadoOp = operandoA;
-			   	flags = 2'b10;
+			   	flags = 2'b01;
 			end
 			5'b10110: begin // 10110 C = A xor B 
 			   	resultadoOp = operandoA ^ operandoB;
-			   	flags = 2'b10;
+			   	flags = 2'b01;
 			end
 			5'b10111: begin // 10111 C = A | B
 			   	resultadoOp = operandoA | operandoB;
-			   	flags = 2'b10;
+			   	flags = 2'b01;
 			end
 			5'b11000: begin // 11000 C = ~A&~B
 			   	resultadoOp = (~operandoA) & (~operandoB);
-			   	flags = 2'b10;
+			   	flags = 2'b01;
 			end
 			5'b11001: begin // 11001 C = ~(A xor B) 
 			   	resultadoOp = ~(operandoA ^ operandoB);
-			   	flags = 2'b10;
+			   	flags = 2'b01;
 			end
 			5'b11010: begin // 11010 C = ~A
 			   	resultadoOp = (~operandoA);
-			   	flags = 2'b10;
+			   	flags = 2'b01;
 			end
 			5'b11011: begin // 11011 C = ~A|B
 			   	resultadoOp = (~operandoA) | (operandoB);
-			   	flags = 2'b10;
+			   	flags = 2'b01;
 			end
 			5'b11100: begin // 11100 C = ~B
 			   	resultadoOp = (~operandoB);
-			   	flags = 2'b10;
+			   	flags = 2'b01;
 			end
 			5'b11101: begin // 11101 C = A|~B
 			   	resultadoOp = operandoA | (~operandoB);
-			   	flags = 2'b10;
+			   	flags = 2'b01;
 			end
 			5'b11110: begin // 11110 C = ~A|~B
 			   	resultadoOp = (~operandoA) | (~operandoB);
-			   	flags = 2'b10;
+			   	flags = 2'b01;
 			end
 			5'b11111: begin // 11111 C = 1
 			   	resultadoOp = 1;
@@ -159,7 +157,7 @@ module ULA(operandoA, operandoB, resultadoOp, controle, bits_palavra, Z, C, S, O
 				else
 					Z = 0;
 			end
-			2'b10: begin //S,Z
+			2'b01: begin //S,Z
 				if(!resultadoOp)
 					Z = 1;
 				else
