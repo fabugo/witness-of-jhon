@@ -30,7 +30,7 @@ module BR (
 	
 	initial // Inicializa os registradores.
 			begin
-				registro[0] <= 16'b0000000000000001;
+				registro[0] <= 16'b0000000000000000;
 				registro[1] <= 16'b0000000000000001;
 				registro[2] <= 16'b0000000000000000;
 				registro[3] <= 16'b0000000000000000;
