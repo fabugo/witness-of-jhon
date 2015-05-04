@@ -18,7 +18,7 @@ module BLOCO_TB;
 	initial begin
 		Hab_Escrita = 1'b1;
 		controleOperacao = 5'b00000;
-		Sel_SA = 2'b00; 
+		Sel_SA = 2'b01; 
 		Sel_SB = 2'b01; 
 		Sel_SC = 2'b00;
 	end
