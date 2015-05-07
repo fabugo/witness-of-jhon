@@ -14,7 +14,7 @@ module ULA(operandoA, operandoB, resultadoOp, controle, Z, C, S, O);
 	input signed [bits_palavra-1:0] operandoA, operandoB; // [15] -> bit de sinal e [14:0] -> valor (de -32768 � 32767)
 	output reg signed [bits_palavra-1:0] resultadoOp; // [15] -> bit de sinal e [14:0] -> valor (de -32768 � 32767)
 
-	logic signed [bits_palavra:0] aux_resultadoOp; // [16]-> carry out e [15]-> sinal (utilizado para detectar overflow) [14:0]-> valor
+	reg signed [bits_palavra:0] aux_resultadoOp; // [16]-> carry out e [15]-> sinal (utilizado para detectar overflow) [14:0]-> valor
 	
 	output reg Z, 	// Zero - (Este bit fica a 1 quando o resultado da opera��o for 0)
 	           C, 	/* Carry - (Indicar que h� um bit de transporte) 
@@ -29,7 +29,8 @@ module ULA(operandoA, operandoB, resultadoOp, controle, Z, C, S, O);
 		//bits_palavra = bits_palavra;
 		case(controle)
 			5'b00000: begin // 00000 C = A + B
-			   	aux_resultadoOp = operandoA + operandoB;
+			   	aux_resultadoOp = ( 0 & operandoA) + ( 0 & operandoB) ;
+			   	$display("auxiliar aqui %b",aux_resultadoOp);
 			   	resultadoOp = aux_resultadoOp;
 				flags = 2'b11;
 	  		end 
@@ -144,7 +145,8 @@ module ULA(operandoA, operandoB, resultadoOp, controle, Z, C, S, O);
 					Z = 1;
 				else
 					Z = 0;
-				if((operandoA[bits_palavra-1] == operandoB[bits_palavra-1]) && (operandoA[bits_palavra-1] != resultadoOp[bits_palavra-1]))
+				if((operandoA[bits_palavra-1] == operandoB[bits_palavra-1]) 
+					&& (operandoA[bits_palavra-1] != resultadoOp[bits_palavra-1]))
 					O = 1;
 				else
 					O = 0;

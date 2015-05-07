@@ -1,4 +1,4 @@
-include "..\\rtl\\ULA.sv";
+include "RTL\\ULA.sv";
 module ULA_TB;
 
 
@@ -11,10 +11,7 @@ module ULA_TB;
 	initial begin
 
 		controle = 5'b00000;
-		operandoA = 3'b000;
-		operandoB = 3'b111;
 		#10;
-		$display("%b,\n%b,\n%b,\n%b,\n%b,\n%b,\n%b",operandoA, operandoB, resultadoOp, controle, Z, C, S, O);
 		//Testes de flag
 		$display("Adicao simples \n");
 		if(controle == 5'b00000) begin

@@ -4,9 +4,9 @@
 * Module: Bloco
 * Purpose: Ligação de todos os modulos desenvolvidos (Banco de Registros, ULA e Registrador das flag's) 
 */
-include "..\\rtl\\BR.sv";
-include "..\\rtl\\ULA.sv";
-include "..\\rtl\\RE.sv";
+include "RTL\\BR.sv";
+include "RTL\\ULA.sv";
+include "RTL\\RE.sv";
 
 
 module BLOCO(

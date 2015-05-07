@@ -1,4 +1,4 @@
-include "..\\rtl\\BLOCO.sv";
+include "RTL\\BLOCO.sv";
 module BLOCO_TB;
 
 	parameter bits_palavra = 16;
