@@ -35,7 +35,7 @@ clk
 
 	BR Banco_Registradores(.Hab_Escrita(Hab_Escrita),.Sel_SA(Sel_SA),.Sel_SB(Sel_SB),.Sel_SC(Sel_SC),.reset(reset_Ban_Registros),
 		.clock(clk),.A(A),.B(B),.E(resultadoOperacao));
-   ULA Unidade_Logica_Aritimetica(.operandoA(A),.operandoB(B),.resultadoOp(resultadoOperacao),.controle(controleOperacao),.Z(Z),.C(C),.S(S),.O(O));
+   	ULA Unidade_Logica_Aritimetica(.operandoA(A),.operandoB(B),.resultadoOp(resultadoOperacao),.controle(controleOperacao),.Z(Z),.C(C),.S(S),.O(O));
 	
 	RE Banco_Estados(.Z(Z),.C(C),.S(S),.O(O),.controleOperacao(controleOperacao),.clock(clk),.reset(reset_Flags));
 
