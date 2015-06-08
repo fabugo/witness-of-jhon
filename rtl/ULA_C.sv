@@ -3,23 +3,17 @@
 * Module: ULA_C
 * Purpose: Ula especial para operacoes com constante. 
 */
-module ULA_C (dado,constante,tipo,R,resultOP
-	/*F,
-	S*/
-	);
+module ULA_C (dado,constante,formato,R,resultOP);
 
 	parameter bits_palavra = 16;
 
 	input reg [bits_palavra-1:0] constante, dado;
-	input logic [1:0] tipo; // tipo de operação, podendo ser carregar em um determinado byte(11) ou passar valor
-	input logic R; // controle para o tipo (11) carregar lcl: 0 / lch: 1
+	input logic [1:0] formato; // formato de operação, podendo ser carregar em um determinado byte(11) ou passar valor
+	input logic R; // controle para o formato (11) carregar lcl: 0 / lch: 1
 	output reg resultOP;
-	/*output reg S, // flags
-				Z;
-	*/
 
-	always @(constante or tipo or R) begin
-		case (tipo)
+	always @(constante or formato or R) begin
+		case (formato)
 			2'b01:begin//passa valor para resultado
 				resultOP = constante;
 			end
@@ -31,10 +25,6 @@ module ULA_C (dado,constante,tipo,R,resultOP
 				end
 			end
 			default : /* default */;
-		endcase/*
-		//Controle de flags
-		if(!resultOP)
-			Z = 1;
-		S = resultOP[15];*/
+		endcase
 	end
 endmodule
