@@ -1,4 +1,4 @@
-module program_counter(
+module PC(
 	input write_pc,
 	input [15:0] next_address_in,
 	output reg [15:0] read_adress_out);
