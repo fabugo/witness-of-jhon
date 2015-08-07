@@ -32,7 +32,7 @@ module ULA_AR (
 			5'b00100: AUX = A-B-1;
 			5'b00101: AUX = A-B;
 			5'b00110: AUX = A-1;
-			default : AUX = OP;
+			default : ;
 		endcase
 		RESU = AUX;
 		case (OP[2:1])
@@ -40,26 +40,29 @@ module ULA_AR (
 					O = 1;
 				else
 					O = 0;
-			2'b10:if((A[bits-1] != B[bits-1]) && (RESU[bits-1] != A[bits-1]))
+			2'b10:if((A[bits-1] != B[bits-1]) && (RESU[bits-1] != A[bits-1])) 
 					O = 1;
 				else
 					O = 0;
 			2'b11:if((A[bits-1]) && (RESU[bits-1] != A[bits-1]))
 					O = 1;
 				else
-					O = 0;
+					O = 0;					
 			2'b01:if((!A[bits-1]) && (RESU[bits-1] != A[bits-1]))
 					O = 1;
 				else
 					O = 0;
-			default :AUX = OP;
+			default:  
+				O = 0;						
 		endcase
-		if(A == ~B)
-			C = 1;
-		else
-			C = AUX[bits];
 		S = RESU [bits-1];
 		if(!RESU)
 			Z = 1;
+		else
+			Z = 0;
+		if(Z == 1 && A == (~B+1))
+			C = 1;
+		else
+			C = AUX[bits];
 	end
 endmodule

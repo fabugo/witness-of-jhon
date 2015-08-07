@@ -55,7 +55,7 @@ module ULA_LO (
 			5'b11100: RESU = (~B);
 			5'b11101: RESU = A | (~B);
 			5'b11110: RESU = (~A) | (~B);
-			default: RESU = OP;
+			default : ;
 		endcase
 		if (!((OP == 5'b10011) || (OP == 5'b11111)))begin
 			if(RESU == 0)
