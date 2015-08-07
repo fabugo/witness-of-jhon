@@ -1,3 +1,8 @@
+/*
+* @author Fábio
+* Module: ULA
+* Purpose: bloco que une as 2 ULAS: AR/LO em uma unica ULA
+*/
 include "ULA_AR.sv";
 include "ULA_LO.sv";
 
@@ -11,28 +16,28 @@ module ULA (
 	S,
 	Z
 );
-	input reg [2:0] A,B;
-	input reg [4:0] OP;
-	output reg [2:0] RESU;
-	output logic 	O,
-					C,
-					S,
-					Z;
-	reg [2:0] 	RES1,
-				RES2;
+	input reg [2:0] A,B;	//dados para operacao
+	input reg [4:0] OP;		//tipo de operacao
+	output reg [2:0] RESU;	//resultado da operacao
+	output logic 	O,		//flag que indica se ouve overflow na operacao
+					C,		//flag que indica se ouve carryout na operacao
+					S,		//flag que indica o sinal do resultado da operacao
+					Z;		//flag que indica que o resultado da operacao é Zero
+	reg [2:0] 	RES_AR,		//Resultado de operacao aritimetica
+				RES_LO;		//resultado de operacao logica
 
-	ULA_AR u_ar(.A(A),.B(B),.OP(OP),.RESU(RES1),.O(O1),.C(C1),.S(S1),.Z(Z1));
-	ULA_LO u_lo(.A(A),.B(B),.OP(OP),.RESU(RES2),.O(O2),.C(C2),.S(S2),.Z(Z2));
+	ULA_AR u_ar(.A(A),.B(B),.OP(OP),.RESU(RES_AR),.O(O1),.C(C1),.S(S1),.Z(Z1));
+	ULA_LO u_lo(.A(A),.B(B),.OP(OP),.RESU(RES_LO),.O(O2),.C(C2),.S(S2),.Z(Z2));
 
 	always @(A or B or OP)begin
 		if (OP[5:4] == 2'b00)begin
-			RESU = RES1;
+			RESU = RES_AR;
 			O = O1;
 			C = C1;
 			S = S1;
 			Z = Z1;
 		end else begin
-			RESU = RES2;
+			RESU = RES_LO;
 			O = O2;
 			C = C2;
 			S = S2;

@@ -1,3 +1,8 @@
+/*
+* @author Fábio
+* Module: ULA_AR
+* Purpose: Ula que realiza somente operaçoes aritimeticas
+*/
 module ULA_AR (
 	A,
 	B,
@@ -8,24 +13,24 @@ module ULA_AR (
 	S,
 	Z
 );
-	input reg [2:0] A,B;
-	input reg [4:0] OP;
-	output reg [2:0] RESU;
-	output logic 	O,
-					C,
-					S,
-					Z;
-	logic [3:0] TEMP;
+	input reg [2:0] A,B;	//dados para operacao
+	input reg [4:0] OP;		//tipo de operacao
+	output reg [2:0] RESU;	//resultado da operacao
+	output logic 	O,		//flag que indica se ouve overflow na operacao
+					C,		//flag que indica se ouve carryout na operacao
+					S,		//flag que indica o sinal do resultado da operacao
+					Z;		//flag que indica que o resultado da operacao é Zero
+	logic [3:0] AUX;		//Auxilia na identificação de carry e overflow
 
 	always @(A or B or OP) begin
 		case (OP)
-			5'b00000: TEMP = A+B;
-			5'b00001: TEMP = A+B+1;
-			5'b00011: TEMP = A+1;
-			5'b00100: TEMP = A-B-1;
-			5'b00101: TEMP = A-B;
-			5'b00110: TEMP = A-1;
-			default : TEMP = OP;
+			5'b00000: AUX = A+B;
+			5'b00001: AUX = A+B+1;
+			5'b00011: AUX = A+1;
+			5'b00100: AUX = A-B-1;
+			5'b00101: AUX = A-B;
+			5'b00110: AUX = A-1;
+			default : AUX = OP;
 		endcase
 		case (OP[2:1])
 			2'b00:if((A[2] == B[2]) && (RESU[2] != A[2]))
@@ -44,10 +49,10 @@ module ULA_AR (
 					O = 1;
 				else
 					O = 0;
-			default :TEMP = OP;
+			default :AUX = OP;
 		endcase
-		C = TEMP[3];
-		RESU = TEMP;
+		C = AUX[3];
+		RESU = AUX;
 		S = RESU [2];
 		if(!RESU)
 			Z = 1;

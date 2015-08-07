@@ -1,3 +1,8 @@
+/*
+* @author Fábio
+* Module: ULA_LO
+* Purpose: Ula que realiza somente operações logicas
+*/
 module ULA_LO (
 	A,
 	B,
@@ -8,27 +13,27 @@ module ULA_LO (
 	S,
 	Z
 );
-	input reg [2:0] A,B;
-	input reg [4:0] OP;
-	output reg [2:0] RESU;
-	output logic 	O,
-					C,
-					S,
-					Z;
-	logic [3:0] TEMP;
+	input reg [2:0] A,B;	//dados para operacao
+	input reg [4:0] OP;		//tipo de operacao
+	output reg [2:0] RESU;	//resultado da operacao
+	output logic 	O,		//flag que indica se ouve overflow na operacao
+					C,		//flag que indica se ouve carryout na operacao
+					S,		//flag que indica o sinal do resultado da operacao
+					Z;		//flag que indica que o resultado da operacao é Zero
+	logic [3:0] AUX;		//Auxilia na identificação de carry e overflow
 	
 	always @(A or B or OP)begin
 		case (OP)
-			5'b01000:begin// logico
-			   	TEMP = A << 1;
-				C = TEMP[3];
-				RESU = TEMP;
+			5'b01000:begin// deslocamento logico
+			   	AUX = A << 1;
+				C = AUX[3];
+				RESU = AUX;
 			end
-			5'b01001:begin// aritimetico
+			5'b01001:begin// deslocamento aritimetico
 				C = A[0];
-			   	TEMP = A >>> 1;
-			   	RESU = TEMP;
-			   	RESU[2] = TEMP[2-1];
+			   	AUX = A >>> 1;
+			   	RESU = AUX;
+			   	RESU[2] = AUX[2-1];
 		   end
 			5'b10011: RESU = B;
 			5'b11111: RESU = 1;
