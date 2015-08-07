@@ -1,8 +1,8 @@
 include "RTL\\ULA.sv";
 module ULA_TB;
+	parameter bits=3;
 
-
-	logic signed [2:0] operandoA, operandoB, resultadoOp;
+	logic signed [bits-1:0] operandoA, operandoB, resultadoOp;
 	logic [4:0] controle;
 	logic Z, C, S, O;
 
