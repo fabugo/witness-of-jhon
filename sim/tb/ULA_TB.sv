@@ -6,7 +6,7 @@ module ULA_TB;
 	logic [4:0] controle;
 	logic Z, C, S, O;
 
-	ULA u(operandoA, operandoB, resultadoOp, controle, Z, C, S, O);
+	ULA u(.A(operandoA),.B(operandoB),.OP(OP),.RESU(resultadoOp),.O(O),.C(C),.S(S),.Z(Z));
 
 	initial begin
 
