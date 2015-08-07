@@ -16,13 +16,13 @@ module ULA_AR (
 	parameter bits=3;
 
 	input reg signed [bits-1:0] A,B;	//dados para operacao
-	input reg [4:0] OP;			//tipo de operacao
+	input reg [4:0] OP;					//tipo de operacao
 	output reg signed [bits-1:0] RESU;	//resultado da operacao
-	output logic 	O,			//flag que indica se ouve overflow na operacao
-					C,			//flag que indica se ouve carryout na operacao
-					S,			//flag que indica o sinal do resultado da operacao
-					Z;			//flag que indica que o resultado da operacao é Zero
-	logic [bits:0] AUX;			//Auxilia na identificação de carry e overflow
+	output logic 	O,					//flag que indica se ouve overflow na operacao
+					C,					//flag que indica se ouve carryout na operacao
+					S,					//flag que indica o sinal do resultado da operacao
+					Z;					//flag que indica que o resultado da operacao é Zero
+	logic [bits:0] AUX;					//Auxilia na identificação de carry e overflow
 
 	always @(A or B or OP) begin
 		case (OP)
@@ -34,6 +34,7 @@ module ULA_AR (
 			5'b00110: AUX = A-1;
 			default : AUX = OP;
 		endcase
+		RESU = AUX;
 		case (OP[2:1])
 			2'b00:if((A[bits-1] == B[bits-1]) && (RESU[bits-1] != A[bits-1]))
 					O = 1;
@@ -53,8 +54,10 @@ module ULA_AR (
 					O = 0;
 			default :AUX = OP;
 		endcase
-		C = AUX[bits];
-		RESU = AUX;
+		if(A == ~B)
+			C = 1;
+		else
+			C = AUX[bits];
 		S = RESU [bits-1];
 		if(!RESU)
 			Z = 1;

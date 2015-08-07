@@ -1,4 +1,4 @@
-include "ULA_AR.sv";
+include "rtl\\ULA_AR.sv";
 
 module ULA_AR_TB;
 
@@ -17,5 +17,6 @@ module ULA_AR_TB;
 		A = 1;
 		B = -1;
 		#1;
+		
 	end
 endmodule
