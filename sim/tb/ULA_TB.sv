@@ -2,60 +2,39 @@ include "RTL\\ULA_AR.sv";
 module ULA_TB;
 
 
-	logic signed [2:0] operandoA, operandoB, resultadoOp;
-	logic [4:0] controle;
+	reg signed [2:0] operandoA, operandoB, resultadoOp;
+	reg [4:0] controle;
 	logic Z, C, S, O;
 
-	ULA u(.A(operandoA),.B(operandoB),.OP(controle),.RESU(resultadoOp),.O(O),.C(C),.S(S),.Z(Z));
+	ULA_AR u(.A(operandoA),.B(operandoB),.OP(controle),.RESU(resultadoOp),.O(O),.C(C),.S(S),.Z(Z));
 
 	initial begin
-		$display("OperandoA: %b", operandoA);
-		$display("OperandoB: %b", operandoB);
-		$display("Resultado: %b", resultadoOp);
-		$display("Overflow: %b", O);
-		$display("carry: %b", C);
 		controle = 5'b00000;
-		#10;
+		#1;
 		//Testes de flag
 		$display("Adicao simples \n");
-		$display("OperandoA: %b", operandoA);
-		$display("OperandoB: %b", operandoB);
-		$display("Resultado: %b", resultadoOp);
 		if(controle == 5'b00000) begin
 			//testando soma de positivo e negativo sem a presenca de overflow com carry
 			operandoA = 3'b001; // operandoA = 1 
 			operandoB = 3'b111; // operandoB = -1
 			#1;
-			$display("Depois da atribuicao de valor nos operandos",);
-			$display("OperandoA: %b", operandoA);
-			$display("OperandoB: %b", operandoB);
-			$display("Resultado: %b", resultadoOp);
-			$display("overflow: %b", O);
-			$display("carry: %b", C);
-			$display("controle: %b", controle);
-			if(C != 0 || O != 0 || S != 0 || Z != 1) begin
+			if(C != 1 || O != 0 || S != 0 || Z != 1) begin
 				$display("ERRO, flags apresentadas: (Overflow) %b, (Sinal) %b, (Zero) %b, (Carry) %b", O, S, Z, C);
 				$display("----, flags esperadas: Overflow = 0, Sinal == 0, Zero == 1, Carry == 1");
 				$display("Resultado: %b",resultadoOp);				
 			end
-			$display("overflow +1 -1: %b", O);
-			$display("carry +1 -1: %b", C);/*
 			//testando como estava sendo feita a escrita do dado
-			/*
+			
 			if(resultadoOp != 000) begin
 				$display("ERRO, resultadoOp apresentado: %b", resultadoOp);
 				$display("----, resultadoOp esperado: 000");
-			end*
+			end
 			//#10;
 			//teste de overflow com numeros positivos
 			operandoA = 3'b010; //opa = 2
 			operandoB = 3'b011; //opb = 3
-			#50;
-			$display("operando a: %b", operandoA);
-			$display("operando b: %b", operandoB);
-			$display("overflow: %b", O);
-			$display("carry: %b", C);
-			if (O != 0 || C != 0 || Z != 0 || S != 1) begin 
+			#1;
+			if (O != 1 || C != 0 || Z != 0 || S != 1) begin 
 				$display("ERRO, flags apresentadas: (Overflow) %b, (Sinal) %b, (Zero) %b, (Carry) %b", O, S, Z, C);
 				$display("----, flags esperadas: Overflow = 1, Sinal == 1, Zero == 0, Carry == 0");
 				$display("Resultado: %b",resultadoOp);
@@ -64,7 +43,7 @@ module ULA_TB;
 			//teste de overflow com numeros negativos
 			operandoA = 3'b100; //opA == -4
 			operandoB = 3'b111; //opB == -1
-			#10
+			#1;
 			if(O != 1 || C != 1 || Z != 0 || S != 0) begin
 				$display("ERRO, flags apresentadas: (Overflow) %b, (Sinal) %b, (Zero) %b, (Carry) %b", O, S, Z, C);
 				$display("----, flags esperadas: Overflow = 1, Sinal == 0, Zero == 0, Carry == 1");
@@ -73,34 +52,32 @@ module ULA_TB;
 			//#10;
 			//mudanca de instrução
 			controle = 5'b00001; // adição com incremento
-			#10;
+			#1;
 		end
 		$display("Adicao com incremento \n");
 		if(controle == 5'b00001) begin
 			//testando soma de possitivo e negativo sem a presença do overflow com carry
 			operandoA = 3'b000; //opA = 0
 			operandoB = 3'b111; //opB = -1
-			#10;
+			#1;
 			if(O != 0 || C != 1 || Z != 1 || S != 0) begin
 					$display("ERRO, flags apresentadas: (Overflow) %b, (Sinal) %b, (Zero) %b, (Carry) %b", O, S, Z, C);
 					$display("----, flags esperadas: Overflow = 0, Sinal == 0, Zero == 1, Carry == 1");
 					$display("Resultado: %b",resultadoOp);
 				end
-			#10;
 			//teste de overflow com numeros positivos
 			operandoA = 3'b001; //opA = 1
 			operandoB = 3'b010; //opB = 2
-			#10;
+			#1;
 			if (O != 1 || C != 0 || Z != 0 || S != 1) begin 
 				$display("ERRO, flags apresentadas: (Overflow) %b, (Sinal) %b, (Zero) %b, (Carry) %b", O, S, Z, C);
 				$display("----, flags esperadas: Overflow = 1, Sinal == 1, Zero == 0, Carry == 0");
 				$display("Resultado: %b",resultadoOp);
 			end
-			#10;
 			//teste de overflow com numeros negativos com overflow e carry
 			operandoA = 3'b110; //opA == -2
 			operandoB = 3'b110; //opB == -2
-			#10
+			#1;
 			if(O != 0 || C != 1 || Z != 0 || S != 1) begin
 				$display("ERRO, flags apresentadas: (Overflow) %b, (Sinal) %b, (Zero) %b, (Carry) %b", O, S, Z, C);
 				$display("----, flags esperadas: Overflow = 0, Sinal == 1, Zero == 0, Carry == 1");
@@ -109,34 +86,33 @@ module ULA_TB;
 			//teste de overflow com numeros positivos e negativos e carry
 			operandoA = 3'b100; //opA == -4
 			operandoB = 3'b111; //opB == -1
-			#10
-			if(O != 1 || C != 1 || Z != 1 || S != 1) begin
+			#1;
+			if(O != 0 || C != 1 || Z != 0 || S != 1) begin
 				$display("ERRO, flags apresentadas: (Overflow) %b, (Sinal) %b, (Zero) %b, (Carry) %b", O, S, Z, C);
-				$display("----, flags esperadas: Overflow = 1, Sinal == 1, Zero == 0, Carry == 1");
+				$display("----, flags esperadas: Overflow = 0, Sinal == 1, Zero == 0, Carry == 1");
 				$display("Resultado: %b",resultadoOp);
 			end
 
 			//mudando de instrucao
 			controle = 5'b00011; //incremento
-			#10;
+			#1;
 		end
 		$display("Incremento \n");
 		if(controle == 5'b00011) begin
 			//testando incremento com overflow
 			operandoA = 3'b011; //opA = 3
-			#10;
+			#1;
 			if(O != 1 || C != 0 || Z != 0 || S != 1) begin
 					$display("ERRO, flags apresentadas: (Overflow) %b, (Sinal) %b, (Zero) %b, (Carry) %b", O, S, Z, C);
 					$display("----, flags esperadas: Overflow = 1, Sinal == 1, Zero == 0, Carry == 0");
 					$display("Resultado: %b",resultadoOp);
 				end
-			#10;
 			//testando incremento de negativo com a presença do overflow e carry
 			operandoA = 3'b111; //opA = -1
-			#10;
-			if(O != 0 || C != 1 || Z != 0 || S != 0) begin
+			#1;
+			if(O != 0 || C != 1 || Z != 1 || S != 0) begin
 					$display("ERRO, flags apresentadas: (Overflow) %b, (Sinal) %b, (Zero) %b, (Carry) %b", O, S, Z, C);
-					$display("----, flags esperadas: Overflow = 0, Sinal == 0, Zero == 0, Carry == 1");
+					$display("----, flags esperadas: Overflow = 0, Sinal == 0, Zero == 1, Carry == 1");
 					$display("Resultado: %b",resultadoOp);
 				end
 			//mudando de instrucao
@@ -147,17 +123,16 @@ module ULA_TB;
 			//testando subtracao de negativos sem a presença do overflow com carry
 			operandoA = 3'b110; //opA = -2
 			operandoB = 3'b101; //opB = -3
-			#10;
-			if(O != 1 || C != 0 || Z != 1 || S != 0) begin
+			#1;
+			if(O != 0 || C != 1 || Z != 0 || S != 0) begin
 					$display("ERRO, flags apresentadas: (Overflow) %b, (Sinal) %b, (Zero) %b, (Carry) %b", O, S, Z, C);
-					$display("----, flags esperadas: Overflow = 1, Sinal == 0, Zero == 1, Carry == 0");
+					$display("----, flags esperadas: Overflow = 0, Sinal == 0, Zero == 0, Carry == 1");
 					$display("Resultado: %b",resultadoOp);
 				end
-			#10;
 			//teste de subtracao e decremento com numeros positivos
 			operandoA = 3'b011; //opA = 3
 			operandoB = 3'b001; //opB = 1
-			#10;//***
+			#1;
 			if (O != 0 || C != 1 || Z != 0 || S != 0) begin 
 				$display("ERRO, flags apresentadas: (Overflow) %b, (Sinal) %b, (Zero) %b, (Carry) %b", O, S, Z, C);
 				$display("----, flags esperadas: Overflow = 0, Sinal == 0, Zero == 0, Carry == 1");
@@ -166,11 +141,10 @@ module ULA_TB;
 			else begin
 				$display("Subtracao e decremento de 3 com 1 realizada com sucesso \n");
 			end
-			#10;
 			//teste de subtracao com decremento de numeros negativos e positivos com overflow e carry
 			operandoA = 3'b110; //opA == -3
 			operandoB = 3'b010; //opB == 2
-			#10
+			#1;
 			if(O != 1 || C != 0 || Z != 0 || S != 0) begin
 				$display("ERRO, flags apresentadas: (Overflow) %b, (Sinal) %b, (Zero) %b, (Carry) %b", O, S, Z, C);
 				$display("----, flags esperadas: Overflow = 1, Sinal == 0, Zero == 0, Carry == 0");
@@ -179,10 +153,10 @@ module ULA_TB;
 			//teste de subtracao com decremento de numeros positivos e negativos gerando overflow
 			operandoA = 3'b010; //opA == 2
 			operandoB = 3'b110; //opB == -3
-			#10
-			if(O != 1 || C != 1 || Z != 0 || S != 1) begin
+			#1;
+			if(O != 1 || C != 1 || Z != 0 || S != 0) begin
 				$display("ERRO, flags apresentadas: (Overflow) %b, (Sinal) %b, (Zero) %b, (Carry) %b", O, S, Z, C);
-				$display("----, flags esperadas: Overflow = 1, Sinal == 1, Zero == 0, Carry == 1");
+				$display("----, flags esperadas: Overflow = 1, Sinal == 0, Zero == 0, Carry == 1");
 				$display("Resultado: %b",resultadoOp);
 			end
 
@@ -197,7 +171,7 @@ module ULA_TB;
 		if(controle == 5'b00000) begin
 			operandoA = 3'b001; //opa = 1
 			operandoB = 3'b010; //opb = 2
-			#10
+			#1;
 			if (resultadoOp != 3'b011) begin
 					$display("ERRO na SOMA, resultado apresentado: %b", resultadoOp);
 					$display("----, resutaldo esperado: 011");
@@ -207,7 +181,7 @@ module ULA_TB;
 			end
 			operandoA = 3'b111; //opa = -1
 			operandoB = 3'b000; //opb = 0
-			#10
+			#1;
 			if (resultadoOp != 3'b111) begin
 					$display("ERRO na SOMA, resultado apresentado: %b", resultadoOp);
 					$display("----, resutaldo esperado: 111");
@@ -217,8 +191,9 @@ module ULA_TB;
 			end
 
 			//soma com flag de carry ativada, deu erro, escopo errado
-			/*operandoA = 3'b111; //opa = -1
+			operandoA = 3'b111; //opa = -1
 			operandoB = 3'b110; //opb = -2
+			#1;
 			if (resultadoOp != 3'b101) begin
 					$display("ERRO na SOMA, resultado apresentado: %b", resultadoOp);
 					$display("----, resutaldo esperado: 101");
@@ -230,7 +205,7 @@ module ULA_TB;
 
 		end
 		//FIM TESTES ARITMETICOS
-*/
+
 	end
-	end
+	
 endmodule

@@ -53,14 +53,14 @@ module ULA_AR (
 				else
 					O = 0;
 			default:  
-				O = 0;						
+				O = 0;	
 		endcase
 		S = RESU [bits-1];
 		if(!RESU)
 			Z = 1;
 		else
 			Z = 0;
-		if(Z == 1 && A == (~B+1))
+		if(Z == 1 && (A == ~B+1 || OP == 5'b00001 || OP == 5'b00100))
 			C = 1;
 		else
 			C = AUX[bits];
