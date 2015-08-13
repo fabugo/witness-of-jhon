@@ -124,9 +124,9 @@ module ULA_TB;
 			operandoA = 3'b110; //opA = -2
 			operandoB = 3'b101; //opB = -3
 			#1;
-			if(O != 0 || C != 1 || Z != 0 || S != 0) begin
+			if(O != 0 || C != 1 || Z != 1 || S != 0) begin
 					$display("ERRO, flags apresentadas: (Overflow) %b, (Sinal) %b, (Zero) %b, (Carry) %b", O, S, Z, C);
-					$display("----, flags esperadas: Overflow = 0, Sinal == 0, Zero == 0, Carry == 1");
+					$display("----, flags esperadas: Overflow = 0, Sinal == 0, Zero == 1, Carry == 1");
 					$display("Resultado: %b",resultadoOp);
 				end
 			//teste de subtracao e decremento com numeros positivos
@@ -145,9 +145,9 @@ module ULA_TB;
 			operandoA = 3'b110; //opA == -3
 			operandoB = 3'b010; //opB == 2
 			#1;
-			if(O != 1 || C != 0 || Z != 0 || S != 0) begin
+			if(O != 1 || C != 1 || Z != 0 || S != 0) begin
 				$display("ERRO, flags apresentadas: (Overflow) %b, (Sinal) %b, (Zero) %b, (Carry) %b", O, S, Z, C);
-				$display("----, flags esperadas: Overflow = 1, Sinal == 0, Zero == 0, Carry == 0");
+				$display("----, flags esperadas: Overflow = 1, Sinal == 0, Zero == 0, Carry == 1");
 				$display("Resultado: %b",resultadoOp);
 			end
 			//teste de subtracao com decremento de numeros positivos e negativos gerando overflow

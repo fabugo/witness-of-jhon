@@ -22,7 +22,7 @@ module ULA_AR (
 					C,					//flag que indica se ouve carryout na operacao
 					S,					//flag que indica o sinal do resultado da operacao
 					Z;					//flag que indica que o resultado da operacao é Zero
-	logic [bits:0] AUX;					//Auxilia na identificação de carry e overflow
+	logic [bits+1:0] AUX;				//Auxilia na identificação de carry e overflow
 
 	always @(A or B or OP) begin
 		case (OP)
@@ -64,5 +64,7 @@ module ULA_AR (
 			C = 1;
 		else
 			C = AUX[bits];
+		if (!C)
+			C = AUX[bits+1];
 	end
 endmodule
