@@ -1,6 +1,6 @@
-include "MUX_ULA.sv";
-include "ULA.sv";
-include "Memoria_Dados.sv";
+include "rtl\\MUX_ULA.sv";
+include "rtl\\ULA.sv";
+include "rtl\\Memoria_Dados.sv";
 
 module EX_MEN(clock, MD_Hab_Escrita, controleMUX_ULA, ULA_OP, A, B, constanteExtendida, Saida_ULA, Saida_MemoriaDados);
   input clock;

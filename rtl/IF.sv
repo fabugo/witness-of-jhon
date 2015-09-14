@@ -1,5 +1,5 @@
-include "PC.sv";    
-include "sp_rom.sv";
+include "rtl\\PC.sv";    
+include "rtl\\sp_rom.sv";
 
 module IF(clock, instrucao, controle_PC, Rom_sink_ren, Rom_sink_cen);
 	input clock;

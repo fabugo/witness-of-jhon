@@ -1,7 +1,7 @@
-include "IF.sv"; 
-include "ID_RF.sv";
-include "EX_MEN.sv";
-include "Controle.sv"; //Controle
+include "rtl\\IF.sv"; 
+include "rtl\\ID_RF.sv";
+include "rtl\\EX_MEN.sv";
+include "rtl\\Controle.sv"; //Controle
 
 module IntegracaoModulos();
   logic clock;
