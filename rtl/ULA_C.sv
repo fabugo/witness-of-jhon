@@ -14,7 +14,11 @@ module ULA_C (dado, 		// OP_A
 	input reg [bits_palavra-1:0] constante, dado;
 	input reg [1:0] formato; // formato de operação, podendo ser carregar em um determinado byte(11) ou passar valor
 	input reg R; // controle para o formato (11) carregar lcl: 0 / lch: 1
+<<<<<<< HEAD
 	output reg [15:0] resultOP;
+=======
+	output reg resultOP;
+>>>>>>> origin/mic_arq2
 	
 	always @(constante or formato or R) begin
 		case (formato)

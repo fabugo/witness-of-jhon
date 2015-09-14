@@ -21,6 +21,7 @@ module Banco_Registro (
   
   output reg [bits_palavra-1:0] A, B;
   input [bits_palavra-1:0] E;
+<<<<<<< HEAD:rtl/Banco_Registro.sv
   input reg [2:0] Sel_E_SA, Sel_SB; 
   input reset, clock;
   input reg Hab_Escrita;
@@ -29,6 +30,16 @@ module Banco_Registro (
 	initial // Inicializa os registradores. // Remover
 			begin						
 			    registro[0] = 16'b0110101111010101;     
+=======
+  input [end_registros-1:0] Sel_E_SA, Sel_SB; 
+  input reset, clock;
+  input reg Hab_Escrita;
+  reg [bits_palavra-1:0] registro [num_registros-1:0];	// Um vetor de "end_registros" palavras de "bits_palavra" bits
+	
+	initial // Inicializa os registradores. // Remover
+			begin				
+			  registro[0] = 16'b0110101111010101;     
+>>>>>>> origin/mic_arq2:rtl/Banco_Registro.sv
 				registro[1] = 16'b0001110111010110;
 				registro[2] = 16'b0001010101101011;
 				registro[3] = 16'b0010101011011101;
@@ -36,6 +47,7 @@ module Banco_Registro (
 				registro[5] = 16'b0000000010101100;
 				registro[6] = 16'b0000000000000101;
 				registro[7] = 16'b0000000010101011;
+<<<<<<< HEAD:rtl/Banco_Registro.sv
 			end
 	
 	
@@ -59,6 +71,23 @@ module Banco_Registro (
 				B = registro[Sel_SB];
 			end
 		
+=======
+				registro[8] = 16'b0000000000111111;     
+				registro[9] = 16'b0001010101100111;
+				registro[10] = 16'b0010101010110110;
+				registro[11] = 16'b0001110110101111;
+				registro[12] = 16'b0000101010000010;
+				registro[13] = 16'b0000001101010110;
+				registro[14] = 16'b0000110100100111;
+				registro[15] = 16'b0011100000100100;
+			end
+	
+	always_comb 
+	begin
+		//if(!Hab_Escrita)             	// Se a escrita não estiver habilitada
+			A = registro[Sel_E_SA]; 	// Coloca na saída o dado do registrador informado pela entrada Sel_E_SA
+		B = registro[Sel_SB]; 			// Coloca na saída o dado do registrador informado pela entrada Sel_SB
+>>>>>>> origin/mic_arq2:rtl/Banco_Registro.sv
 	end
 	
 endmodule

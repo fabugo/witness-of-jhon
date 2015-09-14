@@ -3,9 +3,14 @@
 * Module: ULA
 * Purpose: bloco que une as 2 ULAS: AR/LO em uma unica ULA
 */
+<<<<<<< HEAD
 include "rtl\\ULA_AR.sv";
 include "rtl\\ULA_LO.sv";
 include "rtl\\ULA_C.sv";
+=======
+include "ULA_AR.sv";
+include "ULA_LO.sv";
+>>>>>>> origin/mic_arq2
 
 module ULA (
 	A,
@@ -25,16 +30,26 @@ module ULA (
 	
 	output reg signed [bits-1:0] RESU;	//resultado da operacao
 	output reg	O,				  	//flag que indica se ouve overflow na operacao
+<<<<<<< HEAD
 				C,					//flag que indica se ouve carryout na operacao
 				S,					//flag que indica o sinal do resultado da operacao
 				Z;					//flag que indica que o resultado da operacao é Zero
+=======
+						 C,					//flag que indica se ouve carryout na operacao
+						 S,					//flag que indica o sinal do resultado da operacao
+						 Z;					//flag que indica que o resultado da operacao é Zero
+>>>>>>> origin/mic_arq2
 					
 
 	ULA_AR ULA_AR(.A(A),.B(B),.OP(OP[4:0]));
 	ULA_LO ULA_LO(.A(A),.B(B),.OP(OP[4:0]));
 	ULA_C ULA_C(.dado(A), .constante(B), .formato(OP[7:6]), .R(OP[5]));
 
+<<<<<<< HEAD
 	always  @(A or B or OP)  begin
+=======
+	always @(A or B or OP) begin
+>>>>>>> origin/mic_arq2
 	
 	if (OP[7:6] == 2'b10)
 		if (OP[4:3] == 2'b00) begin 
