@@ -1,108 +1,111 @@
-include "Clock.sv";
-include "PC.sv";  // PC
-include "Memoria_de_Instrucao.sv";  // Memoria_de_Instrucao
-include "BR.sv";
-include "ES.sv"; 
-include "MUX_ULA.sv";
 
+module Controle(clock, reset, instrucao, controlePC, Rom_sink_ren, Rom_sink_cen, BR_Sel_E_SA, BR_Sel_SB, BR_Hab_Escrita, MD_Hab_Escrita, EXconstante, EXcontrole, ULA_OP, Controle_Mux1, Controle_Mux2);
+  input reset, clock;
+  input reg [15:0] instrucao;
+  output logic controlePC, Rom_sink_ren, Rom_sink_cen, BR_Hab_Escrita, MD_Hab_Escrita, Controle_Mux1, Controle_Mux2;
+  
+  reg [1:0] estado, prox_estado;
+  reg [15:0]aux_PC,
+			BR_Entrada,
+			Saida_ULA;
+			
+  reg [4:0] RegFlag_Controle;
+  output reg [7:0] ULA_OP;
+  reg [7:0] auxULA_OP;  
+  output reg [10:0] EXconstante;
+	
+  logic primeiro_ciclo = 1'b1;
+  
+  output logic [1:0] EXcontrole; 
+  output logic [2:0] BR_Sel_E_SA, BR_Sel_SB;
+	
+  
+  initial begin
+   estado = 2'b00; 
+  end 
 
-module Controle(instrucao, botao);
-  input botao; 
-	input reg [15:0]instrucao;
-	reg [2:0] estado = 3'b000, prox_estado = 3'b000;	
-	
-	//------------------------------------------ 1º CICLO
-	logic controlePC;
-	
-	//------------------------------------------ 2º CICLO
-  parameter end_registros = 2; // Quantidade de bits necessários para endereçar os registros, atualmente 4 registro
+  always @(posedge clock) begin
+    /*if(reset)
+      estado<=2'b00;
+    else*/
+      estado <= prox_estado;
+   end
+     
+  always @(estado)
+  begin
+    case(estado)
+      2'b00:begin  // ==================================================================================================
+        prox_estado = 2'b01; 		
+		if(!primeiro_ciclo) begin
+			Rom_sink_ren = 1'b1; 
+			Rom_sink_cen = 1'b1;                                                                                      
+		    controlePC = 1'b1;			
+		end
+		primeiro_ciclo = 1'b0;
+      end
+      2'b01:begin  // ================================================================================================== 
+        prox_estado = 2'b10;                                                                                       
+		controlePC = 1'b0;
+		Rom_sink_ren = 1'b0; 
+		Rom_sink_cen = 1'b0;
+        
+		MD_Hab_Escrita = 1'b0;
+		BR_Hab_Escrita = 1'b0; 
+		if(instrucao[15:14] == 2'b10) begin                     
+		    BR_Sel_E_SA = instrucao[5:3];                                                                          
+		    BR_Sel_SB = instrucao[2:0];  			
+		end else if(instrucao[15:14] == 2'b01) begin                                                                      
+			EXconstante = instrucao[10:0];                                                                          
+			EXcontrole = 2'b00;
+		end else if(instrucao[15:14] == 2'b11) begin                                                                 
+			EXconstante = instrucao[7:0];
+			if(instrucao[10] == 1'b0)                                                                              
+				EXcontrole = 2'b01;                                                                               
+			if(instrucao[10] == 1'b1)                                                                              
+				EXcontrole = 2'b10;  
+		end
 
-  logic [15:0] BR_Entrada;
-  logic [end_registros-1:0] BR_Sel_E_SA, BR_Sel_SB; 
-  logic BR_Hab_Escrita, BR_reset;
-	reg [1:0] controleEX; 
-	logic [10:0] EX_constante;
- 	  
-	//------------------------------------------ 3º CICLO
-	logic controleMUX_ULA;
-	
-	Clock Clock (); 
-	PC PC(.controlePC(controlePC));
-	Memoria_de_Instrucao Memoria_de_Instrucao(.clk_MI(Clock.clk), .pc(PC.pc_out)); 
-	BR Banco_Registro(.Hab_Escrita(BR_Hab_Escrita), .Sel_E_SA(BR_Sel_E_SA), .Sel_SB(BR_Sel_SB), .reset(BR_reset), .clock(Clock.clk), .E(BR_Entrada));
-  ES Extensor(.controle(controleEx), .constante(EX_constante));
-	MUX_ULA MUX_ULA(.entrada_BR(Banco_Registro.B), .entrada_EX(Extensor.palavraSaida), .controle(controleMUX_ULA));
-	
-	always
-	 estado <= prox_estado; 
-	
-	always @(estado)
-	begin
-	  case(estado)
-	     
-	    3'b000: begin // Leitura da instrução a ser executada. ******************************************************************
-	      if(botao) begin	         
-		       instrucao = Memoria_de_Instrucao.instrucao;
-		       controlePC = 1'b1;
-	         prox_estado = 3'b001; 
-	        end  
-	       end
-	    
-	    3'b001: begin // A instrução é decodificada e os operandos são lidos do banco de registradores *************************
-	      if(instrucao[15:14] == 2'b10) begin // Caso instução Lógicas Aritméticas 
-	         BR_Hab_Escrita = 1'b0; // Certifica de desabilitar Escrita
-	         BR_Sel_E_SA = instrucao[5:3]; // Seleciona Op A
-	         BR_Sel_SB = instrucao[2:0]; // Seleciona Op B
-	      end  
+      end
+     2'b10:begin  // ==================================================================================================  
+        prox_estado = 2'b11;
+		
+		Controle_Mux1 = 1'b1;                             
 	      
-	      else if(instrucao[15:14] == 2'b01) begin // Caso instução Formato I 
-	         controleEX = 2'b00;
-	         EX_constante = instrucao[10:0];  
-	      end else if(instrucao[15:14] == 2'b11) begin // Caso instução Formato II
-	         if(instrucao[10] == 1'b0)
-	           controleEX = 2'b01; // lcl c, Const8
-	         if(instrucao[10] == 1'b1)
-	           controleEX = 2'b10; // lch c, Const8 
-	         EX_constante = instrucao[7:0];  
-	      end else begin
-	         prox_estado = 3'b000; // Estado Inicial
-	         break;
-	      end
-	      
-	      prox_estado = 3'b011; 
-	    end
-	    
-	    3'b011: begin // A instrução é executada e as condições dos resultados são calculados *********************************
-	      
-	      if(instrucao[15:14] == 2'b10) // Operações Logicas Aritméticas
-	         controleMUX_ULA = 1'b0;
-	      else
-	        controleMUX_ULA = 1'b1;
-	      
-	      /* Faltando a estrutura da ula completa e os codigos de ativação para as constantes 
-	      if(instrucao[15:14] == 2'b10)
-	        controleULA = instrucao[10:6];
-	      else if(instrucao[15:14] == 2'b01)
-	        controleULA = CódigoDeAtivaçao;
-	      else if(instrucao[15:14] == 2'b11)
-	        controleULA = CódigoDeAtivaçao;
-	        */
-	        
-	      prox_estado = 3'b100; 
-	    end
+		if(instrucao[15:14] == 2'b10) begin
+			Controle_Mux1 = 1'b0; 
+			if(instrucao[10:6] == 5'b01011) begin
+				BR_Hab_Escrita = 1'b0;  
+				MD_Hab_Escrita = 1'b1;
+			end	else begin                                                                       
+				auxULA_OP[4:0] = instrucao[10:6];  
+			end 
+		end
+		
+		auxULA_OP[7:6] = instrucao[15:14];                                                                       
+	   	auxULA_OP[5] = instrucao[10];
+	    ULA_OP = auxULA_OP;
+      end
+      2'b11:begin // ================================================================================================== 
+        prox_estado = 2'b00;
+				
+		Controle_Mux2 = 1'b0;		
+		BR_Hab_Escrita = 1'b1;	
+		BR_Sel_E_SA = instrucao[13:11];
+		
+		if(instrucao[15:14] == 2'b10) 
+			if(instrucao[10:6] == 5'b01010)  
+		        Controle_Mux2 = 1'b1;
+			else if(instrucao[10:6] == 5'b01011) begin
+				BR_Hab_Escrita = 1'b0; 
+			end		
+		
+      end
+        default: begin // =============================================================================================
+			prox_estado = 2'b00;
+		end
+      
+      endcase
 
-	    	    
-	    3'b100: begin // Os resultados são escritos no banco de registradores
-	      // BR_Entrada = ULA.RESU;
-	      BR_Hab_Escrita = 1'b1; // Habilita escrita
-	      prox_estado = 3'b000; 
-	    end
-	    
-	    default: begin
-	        prox_estado = 3'b001; // (volta ao primeiro ciclo)
-	    end
-		  
-	  endcase
-	end
-	
+  end
 endmodule
+

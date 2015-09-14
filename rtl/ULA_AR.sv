@@ -1,7 +1,7 @@
 /*
-* @author FÃ¡bio
+* @author Fábio
 * Module: ULA_AR
-* Purpose: Ula que realiza somente operaÃ§oes aritimeticas
+* Purpose: Ula que realiza somente operaçoes aritimeticas
 */
 module ULA_AR (
 	A,
@@ -13,7 +13,7 @@ module ULA_AR (
 	S,
 	Z
 );
-	parameter bits=3;
+	parameter bits=16;
 
 	input reg signed [bits-1:0] A,B;	//dados para operacao
 	input reg [4:0] OP;					//tipo de operacao
@@ -21,20 +21,30 @@ module ULA_AR (
 	output logic 	O,					//flag que indica se ouve overflow na operacao
 					C,					//flag que indica se ouve carryout na operacao
 					S,					//flag que indica o sinal do resultado da operacao
-					Z;					//flag que indica que o resultado da operacao Ã© Zero
-	logic [bits+1:0] AUX;				//Auxilia na identificaÃ§Ã£o de carry e overflow
+					Z;					//flag que indica que o resultado da operacao é Zero
+	reg [bits+1:0] AUX;				//Auxilia na identificação de carry e overflow
+
+
 
 	always @(A or B or OP) begin
+	
+		O = 1'b0;
+		C = 1'b0;
+		S = 1'b0;
+		Z = 1'b0;
+		
 		case (OP)
-			5'b00000: AUX = A+B;
+			5'b00000: begin AUX = A+B; end
 			5'b00001: AUX = A+B+1;
 			5'b00011: AUX = A+1;
 			5'b00100: AUX = A-B-1;
 			5'b00101: AUX = A-B;
 			5'b00110: AUX = A-1;
-			default : ;
+			default : AUX = 1'd0;
 		endcase
-		RESU = AUX;
+		RESU = AUX[bits-1:0];
+		
+		
 		case (OP[2:1])
 			2'b00:if((A[bits-1] == B[bits-1]) && (RESU[bits-1] != A[bits-1]))
 					O = 1;
