@@ -1,16 +1,11 @@
 /*
-* @author Fábio
+* @author Fï¿½bio
 * Module: ULA
 * Purpose: bloco que une as 2 ULAS: AR/LO em uma unica ULA
 */
-<<<<<<< HEAD
 include "rtl\\ULA_AR.sv";
 include "rtl\\ULA_LO.sv";
 include "rtl\\ULA_C.sv";
-=======
-include "ULA_AR.sv";
-include "ULA_LO.sv";
->>>>>>> origin/mic_arq2
 
 module ULA (
 	A,
@@ -25,21 +20,21 @@ module ULA (
 	parameter bits=16;
 
 	input reg signed [bits-1:0] A,B;	//dados para operacao
-	input reg [7:0] OP;				    // [7:6 = Constante][5 = R][4:0 = Operaçao Lóg Art]
-									
-	
+	input reg [7:0] OP;				    // [7:6 = Constante][5 = R][4:0 = Operaï¿½ao Lï¿½g Art]
+
+
 	output reg signed [bits-1:0] RESU;	//resultado da operacao
 	output reg	O,				  	//flag que indica se ouve overflow na operacao
 <<<<<<< HEAD
 				C,					//flag que indica se ouve carryout na operacao
 				S,					//flag que indica o sinal do resultado da operacao
-				Z;					//flag que indica que o resultado da operacao é Zero
+				Z;					//flag que indica que o resultado da operacao ï¿½ Zero
 =======
 						 C,					//flag que indica se ouve carryout na operacao
 						 S,					//flag que indica o sinal do resultado da operacao
-						 Z;					//flag que indica que o resultado da operacao é Zero
+						 Z;					//flag que indica que o resultado da operacao ï¿½ Zero
 >>>>>>> origin/mic_arq2
-					
+
 
 	ULA_AR ULA_AR(.A(A),.B(B),.OP(OP[4:0]));
 	ULA_LO ULA_LO(.A(A),.B(B),.OP(OP[4:0]));
@@ -50,9 +45,9 @@ module ULA (
 =======
 	always @(A or B or OP) begin
 >>>>>>> origin/mic_arq2
-	
+
 	if (OP[7:6] == 2'b10)
-		if (OP[4:3] == 2'b00) begin 
+		if (OP[4:3] == 2'b00) begin
 			RESU = ULA_AR.RESU;
 			O = ULA_AR.O;
 			C = ULA_AR.C;
@@ -65,8 +60,8 @@ module ULA (
 			S = ULA_LO.S;
 			Z = ULA_LO.Z;
 		end
-	else 
+	else
 		RESU = ULA_C.resultOP;
-	
-  end	
+
+  end
 endmodule
