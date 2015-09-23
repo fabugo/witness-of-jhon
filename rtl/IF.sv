@@ -1,8 +1,9 @@
 include "PC.sv";    
 include "sp_rom.sv";
 
-module IF(clock, instrucao, controle_PC, Rom_sink_ren, Rom_sink_cen);
-	input clock;
+module IF(clock, instrucao, controle_PC, Rom_sink_ren, Rom_sink_cen, jumpPC, habJump);
+	input habJump, clock;
+    input wire [15:0] jumpPC;
     input wire controle_PC, Rom_sink_ren, Rom_sink_cen;
 	output reg [15:0]instrucao;
 	wire [15:0] pc_out;
@@ -10,7 +11,9 @@ module IF(clock, instrucao, controle_PC, Rom_sink_ren, Rom_sink_cen);
 	PC PC(
 	.clock(clock), 
 	.pc_out(pc_out),
-	.controle(controle_PC)
+	.controle(controle_PC),
+	.jump_pc(jumpPC), 
+	.hab_jump(habJump)
 	);
 	
 	sp_rom sp_rom(

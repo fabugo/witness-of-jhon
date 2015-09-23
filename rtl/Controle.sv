@@ -1,13 +1,15 @@
 
-module Controle(clock, reset, instrucao, controlePC, Rom_sink_ren, Rom_sink_cen, BR_Sel_E_SA, BR_Sel_SB, BR_Hab_Escrita, MD_Hab_Escrita, EXconstante, EXcontrole, ULA_OP, Controle_Mux1, Controle_Mux2, botao);
+module Controle(clock, reset, instrucao, controlePC, Rom_sink_ren, Rom_sink_cen, BR_Sel_E_SA, BR_Sel_SB, BR_Hab_Escrita, MD_Hab_Escrita, EXconstante, EXcontrole, ULA_OP, Controle_Mux1, Controle_Mux2, botao, hab_jump, jump_pc);
   input reset, clock, botao;
   input reg [15:0] instrucao;
+  
   
   output logic [1:0] EXcontrole; 
   output logic [2:0] BR_Sel_E_SA, BR_Sel_SB;
   output reg [7:0] ULA_OP;
   output reg [10:0] EXconstante;
-  output logic controlePC, Rom_sink_ren, Rom_sink_cen, BR_Hab_Escrita, MD_Hab_Escrita, Controle_Mux1, Controle_Mux2;
+  output reg [15:0] jump_pc;
+  output logic controlePC, Rom_sink_ren, Rom_sink_cen, BR_Hab_Escrita, MD_Hab_Escrita, Controle_Mux1, Controle_Mux2, hab_jump;
   
   reg [1:0] estado, prox_estado;
   reg [4:0] RegFlag_Controle;
@@ -72,7 +74,8 @@ module Controle(clock, reset, instrucao, controlePC, Rom_sink_ren, Rom_sink_cen,
 			end if(instrucao[13:12] == 2'b01) begin                 // Jump True
 			
 			end if(instrucao[13:12] == 2'b10) begin                 // Jump Incondicional
-			
+				jump_pc = instrucao[11:0];
+				hab_jump = 1'b1;
 			end if(instrucao[13:12] == 2'b11) begin      
 				if(instrucao[11] == 1'b0) begin                     // Jump and Link
 				
@@ -86,6 +89,7 @@ module Controle(clock, reset, instrucao, controlePC, Rom_sink_ren, Rom_sink_cen,
      2'b10:begin  // ==================================================================================================  
         prox_estado = 2'b11;
 		
+		hab_jump = 1'b0;
 		Controle_Mux1 = 1'b1;                             
 	      
 		if(instrucao[15:14] == 2'b10) begin
