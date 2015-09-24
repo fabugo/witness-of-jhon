@@ -7,7 +7,6 @@ module IntegracaoModulos(clock, botao);
   wire [2:0] BR_Sel_E_SA, BR_Sel_SB;
   wire [7:0] ULA_OP;
   wire [10:0] EXconstante;
-
   wire [15:0] instrucao, Saida_ULA, Saida_MemoriaDados, A, B, constanteExtendida, jump_pc;
   
   Controle Controle(
@@ -34,17 +33,11 @@ module IntegracaoModulos(clock, botao);
   IF IF(
   .clock(clock),
   .instrucao(instrucao),
-<<<<<<< HEAD
   .controle_PC(controlePC), 
   .Rom_sink_ren(Rom_sink_ren), 
   .Rom_sink_cen(Rom_sink_cen),
   .jumpPC(jump_pc),
   .habJump(hab_jump)
-=======
-  .controle_PC(controlePC),
-  .Rom_sink_ren(Rom_sink_ren),
-  .Rom_sink_cen(Rom_sink_cen)
->>>>>>> origin/jump
   );
 
   ID_RF ID_RF(
