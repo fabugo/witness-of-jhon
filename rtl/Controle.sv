@@ -69,11 +69,17 @@ module Controle(clock, reset, instrucao, controlePC, Rom_sink_ren, Rom_sink_cen,
 				
 		end else if(instrucao[15:14] == 2'b00) begin                // Jump
 			if(instrucao[13:12] == 2'b00) begin                     // Jump False
+				EXconstante = instrucao[7:0];                                                                          
+				EXcontrole = 3'b011;
+				
 				controleMUX_PC = 1'b0;
 				condicaoJump = instrucao[11:8];
 				hab_jump = 1'b0;
 				
 			end if(instrucao[13:12] == 2'b01) begin                 // Jump True
+				EXconstante = instrucao[7:0];                                                                          
+				EXcontrole = 3'b011;
+				
 				controleMUX_PC = 1'b0; 
 				condicaoJump = instrucao[11:8];
 				hab_jump = 1'b1;
