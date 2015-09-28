@@ -124,7 +124,7 @@ module ULA_AR (
 
 		if(!RESU)
 			Z = 1;
-		else
+
 		/*if(OP == 5'b00011 && AUX[bits] == 1)//OP = Incremento 
 			C = 1;
 		if(Z == 1 && (A == ~B+1 || OP == 5'b00001)) // Z == 1 and A == notB+1 or OP == adicao com incremento or OP == subtracao com decremento
