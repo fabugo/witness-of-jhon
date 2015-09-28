@@ -5,12 +5,12 @@
 */
 module Registrador_Flags(Z, C, S, O, controleOperacao, ZCSO, clock, reset);
 
-	input reg Z, C, S, O; 			// Flag Zero | Flag Carry | Flag Sinal | Flag Overflow 
-	input [4:0] controleOperacao;   // Controle RE - Enable Específico: [Z][C][N][O]
+	input reg Z, C, S, O; 			// Flag Zero 0| Flag Carry 1| Flag Sinal 2| Flag Overflow 3 
+	input [4:0] controleOperacao;   // Controle RE - Enable Específico: [Z][C][S][O]
 	output reg [3:0] ZCSO;          // Saída das flags
 	input clock, reset;
 	
-always @(posedge clock or posedge reset or controleOperacao)
+always @(negedge clock or posedge reset or controleOperacao)
 	begin
 		if(reset) begin
 			ZCSO[0] = 1'b0;
