@@ -1,6 +1,6 @@
 module test_flags(opcode, condicao, flags, saida_mux);
 
-	input reg [1:0]opcode; /* 2 bits para indicar o tipo de instrução de controle.
+	input reg opcode; /* 1 bit para indicar se é jtrue ou jfalse [ 1 = true ; 0=false].
 	1 => true 0 => false*/
 	input reg [3:0] flags; // Z = 0; C = 1; S = 2; O = 3
 	input reg [3:0] condicao;// sinal de controle que vem da UC.
@@ -80,7 +80,10 @@ module test_flags(opcode, condicao, flags, saida_mux);
 		4'b1111:	begin // Não fazer nada
 						saida_mux = 1'b0;
 					end
-		//Vale lembrar que ainda falta adicionar a lógica para outras instruções de controle, JumpRegister, Jump and link, Jump incondicional e etc ...
+					
+		4'b1100: begin //Para instruções de salto incondicional, jlink e jregister ;
+						saida_mux = 1'b1;
+					end
 
 		default: begin
 						saida_mux = 1'b0;
