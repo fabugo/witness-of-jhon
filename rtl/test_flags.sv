@@ -1,6 +1,6 @@
 module test_flags(opcode, condicao, flags, saida_mux);
 
-	input reg opcode; /* só 1 bit, pra dizer se é jfalse ou jtrue , sinal que vem da UC.
+	input reg [1:0]opcode; /* 2 bits para indicar o tipo de instrução de controle.
 	1 => true 0 => false*/
 	input reg [3:0] flags; // Z = 0; C = 1; S = 2; O = 3
 	input reg [3:0] condicao;// sinal de controle que vem da UC.
@@ -9,7 +9,7 @@ module test_flags(opcode, condicao, flags, saida_mux);
 	
 	always_comb
 	
-	case (condicao)
+		case (condicao)
 	
 		4'b0100: begin  // resultado da ALU deu negativo
 						if (opcode)begin//jtrue
@@ -86,4 +86,5 @@ module test_flags(opcode, condicao, flags, saida_mux);
 						saida_mux = 1'b0;
 					end
 	endcase
+	
 endmodule
