@@ -80,7 +80,7 @@ module test_flags(opcode, condicao, flags, saida_mux);
 		4'b1111:	begin // Não fazer nada
 						saida_mux = 1'b0;
 					end
-
+		//Vale lembrar que ainda falta adicionar a lógica para outras instruções de controle, JumpRegister, Jump and link, Jump incondicional e etc ...
 
 		default: begin
 						saida_mux = 1'b0;
