@@ -12,69 +12,27 @@ module test_flags(opcode, condicao, flags, saida_mux);
 		case (condicao)
 	
 		4'b0100: begin  // resultado da ALU deu negativo
-						if (opcode)begin//jtrue
-							if(flags[2]) saida_mux = 1'b1;
-							else saida_mux = 1'b0;
-						end
-						else begin//jfalse
-							if (flags[2]) saida_mux = 1'b0;
-							else saida_mux = 1'b1;
-						end
+						saida_mux = opcode ~^ flags[2];
 					end
-
+					
 		4'b0101:	begin //Resultado ALU zero
-						if (opcode)begin//jtrue
-							if(flags[0]) saida_mux = 1'b1;
-							else saida_mux = 1'b0;
-						end
-						else begin//jfalse
-							if (flags[0]) saida_mux = 1'b0;
-							else saida_mux = 1'b1;
-						end
+						saida_mux = opcode ~^ flags[0];
 					end
 
 		4'b0110: begin //Carry da ALU
-						if (opcode)begin//jtrue
-							if(flags[1]) saida_mux = 1'b1;
-							else saida_mux = 1'b0;
-						end
-						else begin//jfalse
-							if (flags[1]) saida_mux = 1'b0;
-							else saida_mux = 1'b1;
-						end
+						saida_mux = opcode ~^ flags[1];
 					end
 
 		4'b0111:	begin //Resultado ALU negativo ou zero
-						if (opcode)begin//jtrue
-							if(flags[0] || flags[2]) saida_mux = 1'b1;
-							else saida_mux = 1'b0;
-						end
-						else begin//jfalse
-							if (flags[0] || flags[2]) saida_mux = 1'b0;
-							else saida_mux = 1'b1;
-						end
+						saida_mux = (opcode ~^ flags[2]) | (opcode ~^ flags[0]) ;
 					end
 
 		4'b0000: begin //Resultado ALU diferente de zero
-						if (opcode)begin//jtrue
-							if(!flags[0]) saida_mux = 1'b1;
-							else saida_mux = 1'b0;
-						end
-						else begin//jfalse
-							if (!flags[0]) saida_mux = 1'b0;
-							else saida_mux = 1'b1;
-						end
+						saida_mux = opcode ^ flags[0];
 					end
 
 		4'b0011:	begin //Resultado ALU overflow
-						if (opcode)begin//jtrue
-							if(flags[3]) saida_mux = 1'b1;
-							else saida_mux = 1'b0;
-						end
-						else begin//jfalse
-							if (flags[3]) saida_mux = 1'b0;
-							else saida_mux = 1'b1;
-						end
+						saida_mux = opcode ~^ flags[3];
 					end
 
 		4'b1111:	begin // Não fazer nada
