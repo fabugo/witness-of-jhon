@@ -3,9 +3,6 @@
 * Module: ULA
 * Purpose: bloco que une as 2 ULAS: AR/LO em uma unica ULA
 */
-include "ULA_AR.sv";
-include "ULA_LO.sv";
-include "ULA_C.sv";
 
 module ULA (
 	A,

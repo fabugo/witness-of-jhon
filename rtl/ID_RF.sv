@@ -1,7 +1,3 @@
-include "Banco_Registro.sv";
-include "Extensor.sv";
-include "MUX_RESULTADO.sv";
- 
 module ID_RF(clock, BR_Hab_Escrita, EXcontrole, BR_Sel_E_SA, BR_Sel_SB, entrada_ULA, controle, entrada_MD, EXconstante, A, B, constanteExtendida);
   input clock;
   input wire BR_Hab_Escrita, controle;
