@@ -1,11 +1,12 @@
 include "IF.sv"; 
 include "ID_RF.sv";
 include "EX_MEN.sv";
-include "Controle.sv";
+include "Controle.sv"; //Controle
 
 module IntegracaoModulos(clock, botao);
   input clock, botao;
-  wire controlePC, Rom_sink_ren, Rom_sink_cen, BR_Hab_Escrita, Controle_Mux2, MD_Hab_Escrita, Controle_Mux1, Jump_Ver_Fal, controleMUX_PC, s_hab_jump;
+  wire controlePC, Rom_sink_ren, Rom_sink_cen, BR_Hab_Escrita, MD_Hab_Escrita, Controle_Mux1, Jump_Ver_Fal, controleMUX_PC, s_hab_jump;
+  wire [1:0] Controle_Mux2;
   wire [2:0] EXcontrole, BR_Sel_E_SA, BR_Sel_SB;
   wire [3:0] condicaoJump;
   wire [4:0] atualizaFlag;
@@ -61,6 +62,7 @@ module IntegracaoModulos(clock, botao);
   .A(A), 
   .B(B), 
   .constanteExtendida(constanteExtendida)
+  .entrada_PC(PC)
   );
   
   EX_MEN EX_MEN(

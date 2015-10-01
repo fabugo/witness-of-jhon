@@ -3,12 +3,13 @@ module Controle(clock, reset, instrucao, controlePC, Rom_sink_ren, Rom_sink_cen,
   input reset, clock, botao;
   input reg [15:0] instrucao;
   
+  output logic [1:0] Controle_Mux2;
   output logic [2:0] EXcontrole, BR_Sel_E_SA, BR_Sel_SB;
   output reg [3:0] condicaoJump;
   output reg [4:0] atualizaFlag;
   output reg [7:0] ULA_OP;
   output reg [11:0] EXconstante;
-  output logic controlePC, Rom_sink_ren, Rom_sink_cen, BR_Hab_Escrita, MD_Hab_Escrita, Controle_Mux1, Controle_Mux2, hab_jump, controleMUX_PC;
+  output logic controlePC, Rom_sink_ren, Rom_sink_cen, BR_Hab_Escrita, MD_Hab_Escrita, Controle_Mux1, hab_jump, controleMUX_PC;
   
   reg [1:0] estado, prox_estado;
   reg [4:0] RegFlag_Controle;
@@ -69,17 +70,11 @@ module Controle(clock, reset, instrucao, controlePC, Rom_sink_ren, Rom_sink_cen,
 				
 		end else if(instrucao[15:14] == 2'b00) begin                // Jump
 			if(instrucao[13:12] == 2'b00) begin                     // Jump False
-				EXconstante = instrucao[7:0];                                                                          
-				EXcontrole = 3'b011;
-				
 				controleMUX_PC = 1'b0;
 				condicaoJump = instrucao[11:8];
 				hab_jump = 1'b0;
 				
 			end if(instrucao[13:12] == 2'b01) begin                 // Jump True
-				EXconstante = instrucao[7:0];                                                                          
-				EXcontrole = 3'b011;
-				
 				controleMUX_PC = 1'b0; 
 				condicaoJump = instrucao[11:8];
 				hab_jump = 1'b1;
@@ -90,9 +85,15 @@ module Controle(clock, reset, instrucao, controlePC, Rom_sink_ren, Rom_sink_cen,
 
 			end if(instrucao[13:12] == 2'b11) begin      
 				if(instrucao[11] == 1'b0) begin                     // Jump and Link
-				
+					BR_Sel_SB = 3'b111;                             // Escreve em R7 o valor de PC+1
+					Controle_Mux2 = 2'b01;                          // Indica que a saída do mux será o pc+1
+					BR_Hab_Escrita = 1'b1;                          // Habilita a escrita no banco de registradores
+
+					BR_Sel_SB = instrucao[2:0];                     // Mando para a saída do banco o valor do registrador referenciado por RB
+
 				end if(instrucao[11] == 1'b1) begin                 // Jump Register
-				
+					BR_Sel_SB = instrucao[2:0]; 
+
 				end
 			end
 		end
@@ -110,6 +111,14 @@ module Controle(clock, reset, instrucao, controlePC, Rom_sink_ren, Rom_sink_cen,
 			atualizaFlag = instrucao[10:6];
 		else
 			atualizaFlag = 5'b11111;
+
+		if(instrucao[15:14] == 2'b00) begin  // Se é jump (faço o jump enviando o valor do RB para o PC)
+			if (instrucao[13:12] == 2'b11) begin  //Se é jump formato III
+				    auxULA_OP[4:0] = 5'b10011;    //Operação passb (pego o valor da saída B do banco de registradores)
+				    condicaoJump = 4'b0000;       //Indica por testador de flags pra fazer o jump
+				    hab_jump = 1'b1;              //Indico que a condição precisa ser verdadeira 
+			end
+		end
 		
 		if(instrucao[15:14] == 2'b10) begin
 			Controle_Mux1 = 1'b0; 
@@ -151,13 +160,13 @@ module Controle(clock, reset, instrucao, controlePC, Rom_sink_ren, Rom_sink_cen,
       2'b11:begin // ================================================================================================== 
         prox_estado = 2'b00;
 				
-		Controle_Mux2 = 1'b0;		
+		Controle_Mux2 = 2'b00;		
 		BR_Hab_Escrita = 1'b1;	
 		BR_Sel_E_SA = instrucao[13:11];
 		hab_jump = 1'b0;
 		
 		if((instrucao[15:14] == 2'b10) & (instrucao[10:6] == 5'b01010))   // Load
-		    Controle_Mux2 = 1'b1;
+		    Controle_Mux2 = 2'b01;
 			
 		if(
 			((instrucao[15:14] == 2'b10) & (instrucao[10:6] == 5'b01011)) |
@@ -165,7 +174,6 @@ module Controle(clock, reset, instrucao, controlePC, Rom_sink_ren, Rom_sink_cen,
 		) 	// operacao Store ou Jump
 			BR_Hab_Escrita = 1'b0;
 		
-		MD_Hab_Escrita = 1'b0;
       end
         default: begin // =============================================================================================
 			prox_estado = 2'b00;
