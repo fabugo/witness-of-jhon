@@ -41,7 +41,8 @@ module Banco_Registro (
 			end
 			else if(Hab_Escrita) begin 
 				registro[Sel_E_SA] = E; 
-				A = registro[Sel_E_SA];
+			//	A = registro[Sel_E_SA];	   
+			//	B = registro[Sel_SB];
 		    end else begin
 				A = registro[Sel_E_SA]; 	   
 				B = registro[Sel_SB];
