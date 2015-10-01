@@ -165,6 +165,7 @@ module Controle(clock, reset, instrucao, controlePC, Rom_sink_ren, Rom_sink_cen,
 		) 	// operacao Store ou Jump
 			BR_Hab_Escrita = 1'b0;
 		
+		MD_Hab_Escrita = 1'b0;
       end
         default: begin // =============================================================================================
 			prox_estado = 2'b00;

@@ -28,9 +28,10 @@ module Memoria_Dados (
 		else if(Hab_Escrita) begin 
 			dado_mem[endereco] = Entrada; 
 			Saida = dado_mem[endereco];
-		end 
+		end else begin
 		
 		Saida = dado_mem[endereco]; 
+		end
 	end
 	
 endmodule
