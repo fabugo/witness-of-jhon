@@ -1,3 +1,5 @@
+include "IntegracaoModulos.sv";
+
 module INDEX();
   logic clock;
   integer count_stop = 1'd0;

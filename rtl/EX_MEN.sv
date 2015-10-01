@@ -1,3 +1,11 @@
+include "Registrador_Flags.sv";
+include "TesteFlagsTemporario.sv";
+include "MUX_ULA_PC.sv";
+include "MUX_ULA.sv";
+include "ULA.sv";
+include "Memoria_Dados.sv";
+
+
 module EX_MEN(clock, MD_Hab_Escrita, controleMUX_ULA, ULA_OP, A, B, constanteExtendida, Saida_ULA, Saida_MemoriaDados, PC, controleMUX_PC, atualizaFlag, condicaoJump, Jump_Ver_Fal, s_hab_jump);
   input clock;
   input wire MD_Hab_Escrita, controleMUX_ULA, controleMUX_PC, Jump_Ver_Fal;
