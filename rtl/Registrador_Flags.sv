@@ -10,17 +10,20 @@ module Registrador_Flags(Z, C, S, O, controleOperacao, ZCSO, clock, reset);
 	output reg [3:0] ZCSO;          // Saída das flags
 	input clock, reset;
 	
-always @(negedge clock or posedge reset or controleOperacao)
+always @(negedge clock)
 	begin
 		if(reset) begin
-			ZCSO[0] = 1'b0;
-			ZCSO[1] = 1'b0;
-			ZCSO[2] = 1'b0;
-			ZCSO[3] = 1'b0;
+			ZCSO[0] = 1'b0; // Z
+			ZCSO[1] = 1'b0; // C
+			ZCSO[2] = 1'b0; // S
+			ZCSO[3] = 1'b0; // O
 		end
 	
 		case(controleOperacao)
-
+			5'b10000: begin
+				ZCSO[0] = Z;
+				end
+		
 			5'b01000, 5'b01001: begin // Flag's atualizadas: S, C, Z
 				ZCSO[0] = Z;
 				ZCSO[1] = C;

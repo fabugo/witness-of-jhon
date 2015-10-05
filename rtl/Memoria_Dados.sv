@@ -1,3 +1,4 @@
+
 module Memoria_Dados (
   Hab_Escrita, 
   endereco,    

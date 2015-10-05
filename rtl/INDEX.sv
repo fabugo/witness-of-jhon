@@ -1,4 +1,4 @@
-include "IntegracaoModulos.sv";
+include "IntegracaoModulos.sv"; 
 
 module INDEX();
   logic clock;

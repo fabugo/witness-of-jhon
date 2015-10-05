@@ -1,22 +1,31 @@
 include "Banco_Registro.sv";
 include "Extensor.sv";
 include "MUX_RESULTADO.sv";
-
-
-module ID_RF(clock, BR_Hab_Escrita, EXcontrole, BR_Sel_E_SA, BR_Sel_SB, entrada_ULA, controle, entrada_MD, EXconstante, A, B, constanteExtendida);
+include "Registrador_Copia_PC.sv";
+ 
+module ID_RF(clock, BR_Hab_Escrita, EXcontrole, BR_Sel_E_SA, BR_Sel_SB, entrada_ULA, controleMuxResu, entrada_MD, EXconstante, A, B, constanteExtendida, PC, controlePCcopia);
   input clock;
-  input wire BR_Hab_Escrita, controle;
+  input wire BR_Hab_Escrita, controlePCcopia;
+  input wire [1:0] controleMuxResu;
   input wire [2:0] EXcontrole, BR_Sel_E_SA, BR_Sel_SB;
   input reg [11:0] EXconstante;
-  input reg [15:0] entrada_ULA, entrada_MD;
+  input reg [15:0] entrada_ULA, entrada_MD, PC;
   output reg [15:0] A, B, constanteExtendida;
-  wire [15:0] saida_Mux;
+  wire [15:0] saida_Mux, copiaPC;
+  
+  Registrador_Copia_PC Registrador_Copia_PC(
+    .clock(clock),
+	.PC(PC), 
+	.controle(controlePCcopia), 
+	.CopiaPC(copiaPC)
+  );
   
   MUX_RESULTADO MUX_RESULTADO(
   .entrada_ULA(entrada_ULA), 
   .entrada_MD(entrada_MD), 
   .saida_Mux(saida_Mux),
-  .controle(controle)
+  .controle(controleMuxResu),
+  .entrada_PC(copiaPC)
   );	
   
   Banco_Registro Banco_Registro(

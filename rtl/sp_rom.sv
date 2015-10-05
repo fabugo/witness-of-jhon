@@ -24,7 +24,7 @@
 
 // Define Input File if it isnt iet
 `ifndef ROM_FILE
-  `define ROM_FILE "Arquivos_Instrucao/test3.out"
+  `define ROM_FILE "Arquivos_Instrucao/test3Copia.out"
 `endif
 
 module sp_rom #(

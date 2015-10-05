@@ -1,5 +1,5 @@
 Fitter report for Labx1
-Wed Sep 23 09:27:22 2015
+Thu Oct 01 13:04:05 2015
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -70,17 +70,17 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Fitter Summary                                                                  ;
 +------------------------------------+--------------------------------------------+
-; Fitter Status                      ; Successful - Wed Sep 23 09:27:22 2015      ;
+; Fitter Status                      ; Successful - Thu Oct 01 13:04:05 2015      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; Labx1                                      ;
 ; Top-level Entity Name              ; Labx1                                      ;
 ; Family                             ; Cyclone IV E                               ;
 ; Device                             ; EP4CE30F23C7                               ;
 ; Timing Models                      ; Final                                      ;
-; Total logic elements               ; 224 / 28,848 ( < 1 % )                     ;
-;     Total combinational functions  ; 218 / 28,848 ( < 1 % )                     ;
-;     Dedicated logic registers      ; 103 / 28,848 ( < 1 % )                     ;
-; Total registers                    ; 103                                        ;
+; Total logic elements               ; 516 / 28,848 ( 2 % )                       ;
+;     Total combinational functions  ; 505 / 28,848 ( 2 % )                       ;
+;     Dedicated logic registers      ; 239 / 28,848 ( < 1 % )                     ;
+; Total registers                    ; 239                                        ;
 ; Total pins                         ; 46 / 329 ( 14 % )                          ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0 / 608,256 ( 0 % )                        ;
@@ -156,12 +156,12 @@ applicable agreement for further details.
 ; Number detected on machine ; 2           ;
 ; Maximum allowed            ; 2           ;
 ;                            ;             ;
-; Average used               ; 1.13        ;
+; Average used               ; 1.10        ;
 ; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  13.3%      ;
+;     Processor 2            ;   9.5%      ;
 +----------------------------+-------------+
 
 
@@ -444,8 +444,8 @@ applicable agreement for further details.
 ; Type                ; Total [A + B]      ; From Design Partitions [A] ; From Rapid Recompile [B] ;
 +---------------------+--------------------+----------------------------+--------------------------+
 ; Placement (by node) ;                    ;                            ;                          ;
-;     -- Requested    ; 0.00 % ( 0 / 431 ) ; 0.00 % ( 0 / 431 )         ; 0.00 % ( 0 / 431 )       ;
-;     -- Achieved     ; 0.00 % ( 0 / 431 ) ; 0.00 % ( 0 / 431 )         ; 0.00 % ( 0 / 431 )       ;
+;     -- Requested    ; 0.00 % ( 0 / 855 ) ; 0.00 % ( 0 / 855 )         ; 0.00 % ( 0 / 855 )       ;
+;     -- Achieved     ; 0.00 % ( 0 / 855 ) ; 0.00 % ( 0 / 855 )         ; 0.00 % ( 0 / 855 )       ;
 ;                     ;                    ;                            ;                          ;
 ; Routing (by net)    ;                    ;                            ;                          ;
 ;     -- Requested    ; 0.00 % ( 0 / 0 )   ; 0.00 % ( 0 / 0 )           ; 0.00 % ( 0 / 0 )         ;
@@ -468,15 +468,15 @@ applicable agreement for further details.
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 ; Partition Name                 ; Preservation Achieved ; Preservation Level Used ; Netlist Type Used ; Preservation Method ; Notes ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
-; Top                            ; 0.00 % ( 0 / 419 )    ; N/A                     ; Source File       ; N/A                 ;       ;
-; hard_block:auto_generated_inst ; 0.00 % ( 0 / 12 )     ; N/A                     ; Source File       ; N/A                 ;       ;
+; Top                            ; 0.00 % ( 0 / 842 )    ; N/A                     ; Source File       ; N/A                 ;       ;
+; hard_block:auto_generated_inst ; 0.00 % ( 0 / 13 )     ; N/A                     ; Source File       ; N/A                 ;       ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 
 
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in C:/Mercurio IV/labx1/quartus/output_files/Labx1.pin.
+The pin-out file can be found in C:/ProjetosModelSim/witnesses-of-jhon/fpga/quartus/output_files/Labx1.pin.
 
 
 +----------------------------------------------------------------------+
@@ -484,48 +484,48 @@ The pin-out file can be found in C:/Mercurio IV/labx1/quartus/output_files/Labx1
 +---------------------------------------------+------------------------+
 ; Resource                                    ; Usage                  ;
 +---------------------------------------------+------------------------+
-; Total logic elements                        ; 224 / 28,848 ( < 1 % ) ;
-;     -- Combinational with no register       ; 121                    ;
-;     -- Register only                        ; 6                      ;
-;     -- Combinational with a register        ; 97                     ;
+; Total logic elements                        ; 516 / 28,848 ( 2 % )   ;
+;     -- Combinational with no register       ; 277                    ;
+;     -- Register only                        ; 11                     ;
+;     -- Combinational with a register        ; 228                    ;
 ;                                             ;                        ;
 ; Logic element usage by number of LUT inputs ;                        ;
-;     -- 4 input functions                    ; 109                    ;
-;     -- 3 input functions                    ; 32                     ;
-;     -- <=2 input functions                  ; 77                     ;
-;     -- Register only                        ; 6                      ;
+;     -- 4 input functions                    ; 235                    ;
+;     -- 3 input functions                    ; 75                     ;
+;     -- <=2 input functions                  ; 195                    ;
+;     -- Register only                        ; 11                     ;
 ;                                             ;                        ;
 ; Logic elements by mode                      ;                        ;
-;     -- normal mode                          ; 167                    ;
-;     -- arithmetic mode                      ; 51                     ;
+;     -- normal mode                          ; 372                    ;
+;     -- arithmetic mode                      ; 133                    ;
 ;                                             ;                        ;
-; Total registers*                            ; 103 / 30,421 ( < 1 % ) ;
-;     -- Dedicated logic registers            ; 103 / 28,848 ( < 1 % ) ;
+; Total registers*                            ; 239 / 30,421 ( < 1 % ) ;
+;     -- Dedicated logic registers            ; 239 / 28,848 ( < 1 % ) ;
 ;     -- I/O registers                        ; 0 / 1,573 ( 0 % )      ;
 ;                                             ;                        ;
-; Total LABs:  partially or completely used   ; 18 / 1,803 ( < 1 % )   ;
+; Total LABs:  partially or completely used   ; 39 / 1,803 ( 2 % )     ;
 ; Virtual pins                                ; 0                      ;
 ; I/O pins                                    ; 46 / 329 ( 14 % )      ;
 ;     -- Clock pins                           ; 1 / 7 ( 14 % )         ;
 ;     -- Dedicated input pins                 ; 0 / 9 ( 0 % )          ;
 ;                                             ;                        ;
-; Global signals                              ; 1                      ;
+; Global signals                              ; 3                      ;
 ; M9Ks                                        ; 0 / 66 ( 0 % )         ;
 ; Total block memory bits                     ; 0 / 608,256 ( 0 % )    ;
 ; Total block memory implementation bits      ; 0 / 608,256 ( 0 % )    ;
 ; Embedded Multiplier 9-bit elements          ; 0 / 132 ( 0 % )        ;
 ; PLLs                                        ; 1 / 4 ( 25 % )         ;
-; Global clocks                               ; 1 / 20 ( 5 % )         ;
+; Global clocks                               ; 3 / 20 ( 15 % )        ;
 ; JTAGs                                       ; 0 / 1 ( 0 % )          ;
 ; CRC blocks                                  ; 0 / 1 ( 0 % )          ;
 ; ASMI blocks                                 ; 0 / 1 ( 0 % )          ;
 ; Impedance control blocks                    ; 0 / 4 ( 0 % )          ;
 ; Average interconnect usage (total/H/V)      ; 0% / 0% / 0%           ;
-; Peak interconnect usage (total/H/V)         ; 1% / 1% / 1%           ;
-; Maximum fan-out                             ; 103                    ;
-; Highest non-global fan-out                  ; 100                    ;
-; Total fan-out                               ; 1139                   ;
-; Average fan-out                             ; 2.59                   ;
+; Peak interconnect usage (total/H/V)         ; 2% / 2% / 1%           ;
+; Maximum fan-out                             ; 194                    ;
+; Highest non-global fan-out                  ; 42                     ;
+; Total fan-out                               ; 2462                   ;
+; Average fan-out                             ; 2.83                   ;
 +---------------------------------------------+------------------------+
 *  Register count does not include registers inside RAM blocks or DSP blocks.
 
@@ -538,26 +538,26 @@ The pin-out file can be found in C:/Mercurio IV/labx1/quartus/output_files/Labx1
 +---------------------------------------------+-----------------------+--------------------------------+
 ; Difficulty Clustering Region                ; Low                   ; Low                            ;
 ;                                             ;                       ;                                ;
-; Total logic elements                        ; 224 / 28848 ( < 1 % ) ; 0 / 28848 ( 0 % )              ;
-;     -- Combinational with no register       ; 121                   ; 0                              ;
-;     -- Register only                        ; 6                     ; 0                              ;
-;     -- Combinational with a register        ; 97                    ; 0                              ;
+; Total logic elements                        ; 516 / 28848 ( 2 % )   ; 0 / 28848 ( 0 % )              ;
+;     -- Combinational with no register       ; 277                   ; 0                              ;
+;     -- Register only                        ; 11                    ; 0                              ;
+;     -- Combinational with a register        ; 228                   ; 0                              ;
 ;                                             ;                       ;                                ;
 ; Logic element usage by number of LUT inputs ;                       ;                                ;
-;     -- 4 input functions                    ; 109                   ; 0                              ;
-;     -- 3 input functions                    ; 32                    ; 0                              ;
-;     -- <=2 input functions                  ; 77                    ; 0                              ;
-;     -- Register only                        ; 6                     ; 0                              ;
+;     -- 4 input functions                    ; 235                   ; 0                              ;
+;     -- 3 input functions                    ; 75                    ; 0                              ;
+;     -- <=2 input functions                  ; 195                   ; 0                              ;
+;     -- Register only                        ; 11                    ; 0                              ;
 ;                                             ;                       ;                                ;
 ; Logic elements by mode                      ;                       ;                                ;
-;     -- normal mode                          ; 167                   ; 0                              ;
-;     -- arithmetic mode                      ; 51                    ; 0                              ;
+;     -- normal mode                          ; 372                   ; 0                              ;
+;     -- arithmetic mode                      ; 133                   ; 0                              ;
 ;                                             ;                       ;                                ;
-; Total registers                             ; 103                   ; 0                              ;
-;     -- Dedicated logic registers            ; 103 / 28848 ( < 1 % ) ; 0 / 28848 ( 0 % )              ;
+; Total registers                             ; 239                   ; 0                              ;
+;     -- Dedicated logic registers            ; 239 / 28848 ( < 1 % ) ; 0 / 28848 ( 0 % )              ;
 ;     -- I/O registers                        ; 0                     ; 0                              ;
 ;                                             ;                       ;                                ;
-; Total LABs:  partially or completely used   ; 18 / 1803 ( < 1 % )   ; 0 / 1803 ( 0 % )               ;
+; Total LABs:  partially or completely used   ; 39 / 1803 ( 2 % )     ; 0 / 1803 ( 0 % )               ;
 ;                                             ;                       ;                                ;
 ; Virtual pins                                ; 0                     ; 0                              ;
 ; I/O pins                                    ; 46                    ; 0                              ;
@@ -565,25 +565,25 @@ The pin-out file can be found in C:/Mercurio IV/labx1/quartus/output_files/Labx1
 ; Total memory bits                           ; 0                     ; 0                              ;
 ; Total RAM block bits                        ; 0                     ; 0                              ;
 ; PLL                                         ; 0 / 4 ( 0 % )         ; 1 / 4 ( 25 % )                 ;
-; Clock control block                         ; 0 / 24 ( 0 % )        ; 1 / 24 ( 4 % )                 ;
+; Clock control block                         ; 1 / 24 ( 4 % )        ; 2 / 24 ( 8 % )                 ;
 ;                                             ;                       ;                                ;
 ; Connections                                 ;                       ;                                ;
-;     -- Input Connections                    ; 111                   ; 1                              ;
-;     -- Registered Input Connections         ; 103                   ; 0                              ;
-;     -- Output Connections                   ; 9                     ; 103                            ;
+;     -- Input Connections                    ; 247                   ; 1                              ;
+;     -- Registered Input Connections         ; 239                   ; 0                              ;
+;     -- Output Connections                   ; 9                     ; 239                            ;
 ;     -- Registered Output Connections        ; 0                     ; 0                              ;
 ;                                             ;                       ;                                ;
 ; Internal Connections                        ;                       ;                                ;
-;     -- Total Connections                    ; 1132                  ; 111                            ;
-;     -- Registered Connections               ; 659                   ; 0                              ;
+;     -- Total Connections                    ; 2454                  ; 248                            ;
+;     -- Registered Connections               ; 1178                  ; 0                              ;
 ;                                             ;                       ;                                ;
 ; External Connections                        ;                       ;                                ;
-;     -- Top                                  ; 16                    ; 104                            ;
-;     -- hard_block:auto_generated_inst       ; 104                   ; 0                              ;
+;     -- Top                                  ; 16                    ; 240                            ;
+;     -- hard_block:auto_generated_inst       ; 240                   ; 0                              ;
 ;                                             ;                       ;                                ;
 ; Partition Interface                         ;                       ;                                ;
 ;     -- Input Ports                          ; 17                    ; 1                              ;
-;     -- Output Ports                         ; 21                    ; 1                              ;
+;     -- Output Ports                         ; 21                    ; 2                              ;
 ;     -- Bidir Ports                          ; 8                     ; 0                              ;
 ;                                             ;                       ;                                ;
 ; Registered Ports                            ;                       ;                                ;
@@ -608,7 +608,7 @@ The pin-out file can be found in C:/Mercurio IV/labx1/quartus/output_files/Labx1
 ; Name        ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Combinational Fan-Out ; Registered Fan-Out ; Global ; Input Register ; Power Up High ; PCI I/O Enabled ; Bus Hold ; Weak Pull Up ; I/O Standard ; Termination Control Block ; Location assigned by ;
 +-------------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+---------------------------+----------------------+
 ; CLOCK_50MHz ; T1    ; 2        ; 0            ; 21           ; 21           ; 1                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ;
-; KEY[0]      ; V22   ; 5        ; 67           ; 10           ; 7            ; 3                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ;
+; KEY[0]      ; V22   ; 5        ; 67           ; 10           ; 7            ; 6                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ;
 ; KEY[10]     ; U17   ; 4        ; 63           ; 0            ; 28           ; 0                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ;
 ; KEY[11]     ; Y17   ; 4        ; 61           ; 0            ; 28           ; 0                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ;
 ; KEY[1]      ; U20   ; 5        ; 67           ; 7            ; 14           ; 0                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ;
@@ -1219,22 +1219,22 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 ; Input frequency 0             ; 50.0 MHz                                                                              ;
 ; Input frequency 1             ; --                                                                                    ;
 ; Nominal PFD frequency         ; 50.0 MHz                                                                              ;
-; Nominal VCO frequency         ; 600.0 MHz                                                                             ;
+; Nominal VCO frequency         ; 500.0 MHz                                                                             ;
 ; VCO post scale K counter      ; 2                                                                                     ;
 ; VCO frequency control         ; Auto                                                                                  ;
-; VCO phase shift step          ; 208 ps                                                                                ;
+; VCO phase shift step          ; 250 ps                                                                                ;
 ; VCO multiply                  ; --                                                                                    ;
 ; VCO divide                    ; --                                                                                    ;
-; Freq min lock                 ; 25.0 MHz                                                                              ;
-; Freq max lock                 ; 54.18 MHz                                                                             ;
+; Freq min lock                 ; 30.0 MHz                                                                              ;
+; Freq max lock                 ; 65.02 MHz                                                                             ;
 ; M VCO Tap                     ; 0                                                                                     ;
 ; M Initial                     ; 1                                                                                     ;
-; M value                       ; 12                                                                                    ;
+; M value                       ; 10                                                                                    ;
 ; N value                       ; 1                                                                                     ;
 ; Charge pump current           ; setting 1                                                                             ;
 ; Loop filter resistance        ; setting 27                                                                            ;
 ; Loop filter capacitance       ; setting 0                                                                             ;
-; Bandwidth                     ; 680 kHz to 980 kHz                                                                    ;
+; Bandwidth                     ; 1.03 MHz to 1.97 MHz                                                                  ;
 ; Bandwidth type                ; Medium                                                                                ;
 ; Real time reconfigurable      ; Off                                                                                   ;
 ; Scan chain MIF file           ; --                                                                                    ;
@@ -1247,13 +1247,15 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +-------------------------------+---------------------------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; PLL Usage                                                                                                                                                                                                                                                                                                                              ;
-+---------------------------------------------------------------------------------------------------+--------------+------+-----+------------------+-------------+------------------+------------+---------+---------------+------------+---------------+---------+---------+------------------------------------------------------------+
-; Name                                                                                              ; Output Clock ; Mult ; Div ; Output Frequency ; Phase Shift ; Phase Shift Step ; Duty Cycle ; Counter ; Counter Value ; High / Low ; Cascade Input ; Initial ; VCO Tap ; SDC Pin Name                                               ;
-+---------------------------------------------------------------------------------------------------+--------------+------+-----+------------------+-------------+------------------+------------+---------+---------------+------------+---------------+---------+---------+------------------------------------------------------------+
-; my_altpll:my_altpll_inst|altpll:altpll_component|my_altpll_altpll:auto_generated|wire_pll1_clk[0] ; clock0       ; 1    ; 1   ; 50.0 MHz         ; 0 (0 ps)    ; 3.75 (208 ps)    ; 50/50      ; C0      ; 12            ; 6/6 Even   ; --            ; 1       ; 0       ; my_altpll_inst|altpll_component|auto_generated|pll1|clk[0] ;
-+---------------------------------------------------------------------------------------------------+--------------+------+-----+------------------+-------------+------------------+------------+---------+---------------+------------+---------------+---------+---------+------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; PLL Usage                                                                                                                                                                                                                                                                                                                                             ;
++--------------------------------------------------------------------------------------------------------------+--------------+------+-------+------------------+-------------+------------------+------------+---------+---------------+--------------+---------------+---------+---------+------------------------------------------------------------+
+; Name                                                                                                         ; Output Clock ; Mult ; Div   ; Output Frequency ; Phase Shift ; Phase Shift Step ; Duty Cycle ; Counter ; Counter Value ; High / Low   ; Cascade Input ; Initial ; VCO Tap ; SDC Pin Name                                               ;
++--------------------------------------------------------------------------------------------------------------+--------------+------+-------+------------------+-------------+------------------+------------+---------+---------------+--------------+---------------+---------+---------+------------------------------------------------------------+
+; my_altpll:my_altpll_inst|altpll:altpll_component|my_altpll_altpll:auto_generated|wire_pll1_clk[0]            ; clock0       ; 1    ; 1     ; 50.0 MHz         ; 0 (0 ps)    ; 4.50 (250 ps)    ; 50/50      ; C0      ; 10            ; 5/5 Even     ; --            ; 1       ; 0       ; my_altpll_inst|altpll_component|auto_generated|pll1|clk[0] ;
+; my_altpll:my_altpll_inst|altpll:altpll_component|my_altpll_altpll:auto_generated|wire_pll1_clk[2]            ; clock2       ; 1    ; 25000 ; 0.0 MHz          ; 0 (0 ps)    ; 0.09 (250 ps)    ; 50/50      ; C2      ; 500           ; 250/250 Even ; C1            ; 1       ; 0       ; my_altpll_inst|altpll_component|auto_generated|pll1|clk[2] ;
+; my_altpll:my_altpll_inst|altpll:altpll_component|my_altpll_altpll:auto_generated|wire_pll1_clk[2]~cascade_in ; --           ; --   ; --    ; --               ; --          ; --               ; --         ; C1      ; 500           ; 250/250 Even ; --            ; 1       ; 0       ;                                                            ;
++--------------------------------------------------------------------------------------------------------------+--------------+------+-------+------------------+-------------+------------------+------------+---------+---------------+--------------+---------------+---------+---------+------------------------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -1261,14 +1263,17 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +--------------------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                       ; Logic Cells ; Dedicated Logic Registers ; I/O Registers ; Memory Bits ; M9Ks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Full Hierarchy Name                                                                            ; Library Name ;
 +--------------------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+------------------------------------------------------------------------------------------------+--------------+
-; |Labx1                                           ; 224 (0)     ; 103 (0)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 46   ; 0            ; 121 (0)      ; 6 (0)             ; 97 (0)           ; |Labx1                                                                                         ; work         ;
-;    |display_top_component_Mercurio:inst_lcd_top| ; 221 (62)    ; 100 (25)                  ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 121 (37)     ; 4 (0)             ; 96 (27)          ; |Labx1|display_top_component_Mercurio:inst_lcd_top                                             ; work         ;
-;       |lcd_top:inst_lcd_top|                     ; 159 (71)    ; 75 (34)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 84 (37)      ; 4 (4)             ; 71 (31)          ; |Labx1|display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top                        ; work         ;
+; |Labx1                                           ; 516 (158)   ; 239 (84)                  ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 46   ; 0            ; 277 (74)     ; 11 (0)            ; 228 (84)         ; |Labx1                                                                                         ; work         ;
+;    |display_top_component_Mercurio:inst_lcd_top| ; 219 (61)    ; 100 (25)                  ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 119 (36)     ; 4 (0)             ; 96 (27)          ; |Labx1|display_top_component_Mercurio:inst_lcd_top                                             ; work         ;
+;       |lcd_top:inst_lcd_top|                     ; 158 (70)    ; 75 (34)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 83 (36)      ; 4 (4)             ; 71 (31)          ; |Labx1|display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top                        ; work         ;
 ;          |lcd_ctrl:lcd_ctrl_inst|                ; 88 (88)     ; 41 (41)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 47 (47)      ; 0 (0)             ; 41 (41)          ; |Labx1|display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst ; work         ;
+;    |matriz_leds:inst_matriz_leds|                ; 99 (99)     ; 25 (25)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 74 (74)      ; 2 (2)             ; 23 (23)          ; |Labx1|matriz_leds:inst_matriz_leds                                                            ; work         ;
 ;    |my_altpll:my_altpll_inst|                    ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |Labx1|my_altpll:my_altpll_inst                                                                ; work         ;
 ;       |altpll:altpll_component|                  ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |Labx1|my_altpll:my_altpll_inst|altpll:altpll_component                                        ; work         ;
 ;          |my_altpll_altpll:auto_generated|       ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |Labx1|my_altpll:my_altpll_inst|altpll:altpll_component|my_altpll_altpll:auto_generated        ; work         ;
+;    |reset_sync:reset_synch_2khz_inst|            ; 3 (3)       ; 3 (3)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 2 (2)             ; 1 (1)            ; |Labx1|reset_sync:reset_synch_2khz_inst                                                        ; work         ;
 ;    |reset_sync:reset_synch_50mhz_inst|           ; 3 (3)       ; 3 (3)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 2 (2)             ; 1 (1)            ; |Labx1|reset_sync:reset_synch_50mhz_inst                                                       ; work         ;
+;    |uart:uart_inst|                              ; 34 (34)     ; 24 (24)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 10 (10)      ; 1 (1)             ; 23 (23)          ; |Labx1|uart:uart_inst                                                                          ; work         ;
 +--------------------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -1360,37 +1365,52 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; KEY[0]                                                ;                   ;         ;
 ;      - reset_sync:reset_synch_50mhz_inst|r_rst_sync_2 ; 1                 ; 6       ;
 ;      - reset_sync:reset_synch_50mhz_inst|r_rst_sync_1 ; 1                 ; 6       ;
+;      - reset_sync:reset_synch_2khz_inst|r_rst_sync_2  ; 1                 ; 6       ;
+;      - reset_sync:reset_synch_2khz_inst|r_rst_sync_1  ; 1                 ; 6       ;
 ;      - reset_sync:reset_synch_50mhz_inst|r_rst_sync_0 ; 1                 ; 6       ;
+;      - reset_sync:reset_synch_2khz_inst|r_rst_sync_0  ; 1                 ; 6       ;
 +-------------------------------------------------------+-------------------+---------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Control Signals                                                                                                                                                                                                                               ;
-+----------------------------------------------------------------------------------------------------+--------------------+---------+----------------------------+--------+----------------------+------------------+---------------------------+
-; Name                                                                                               ; Location           ; Fan-Out ; Usage                      ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+----------------------------------------------------------------------------------------------------+--------------------+---------+----------------------------+--------+----------------------+------------------+---------------------------+
-; CLOCK_50MHz                                                                                        ; PIN_T1             ; 1       ; Clock                      ; no     ; --                   ; --               ; --                        ;
-; KEY[0]                                                                                             ; PIN_V22            ; 3       ; Async. clear               ; no     ; --                   ; --               ; --                        ;
-; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA.WRLCD                          ; FF_X52_Y34_N21     ; 19      ; Sync. load                 ; no     ; --                   ; --               ; --                        ;
-; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector10~0                      ; LCCOMB_X52_Y34_N26 ; 4       ; Clock enable               ; no     ; --                   ; --               ; --                        ;
-; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector27~1                      ; LCCOMB_X51_Y34_N8  ; 5       ; Clock enable               ; no     ; --                   ; --               ; --                        ;
-; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|data[5]~0                         ; LCCOMB_X54_Y36_N8  ; 6       ; Clock enable               ; no     ; --                   ; --               ; --                        ;
-; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|LCD_DATA~0 ; LCCOMB_X52_Y33_N30 ; 9       ; Output enable              ; no     ; --                   ; --               ; --                        ;
-; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|WideOr5~0  ; LCCOMB_X53_Y36_N8  ; 11      ; Sync. clear                ; no     ; --                   ; --               ; --                        ;
-; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|clk_en     ; FF_X51_Y35_N9      ; 29      ; Clock enable               ; no     ; --                   ; --               ; --                        ;
-; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|data[6]~5  ; LCCOMB_X52_Y33_N14 ; 3       ; Clock enable               ; no     ; --                   ; --               ; --                        ;
-; my_altpll:my_altpll_inst|altpll:altpll_component|my_altpll_altpll:auto_generated|wire_pll1_clk[0]  ; PLL_1              ; 103     ; Clock                      ; yes    ; Global Clock         ; GCLK3            ; --                        ;
-; reset_sync:reset_synch_50mhz_inst|r_rst_sync_2                                                     ; FF_X55_Y22_N9      ; 100     ; Async. clear, Clock enable ; no     ; --                   ; --               ; --                        ;
-+----------------------------------------------------------------------------------------------------+--------------------+---------+----------------------------+--------+----------------------+------------------+---------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Control Signals                                                                                                                                                                                                                                          ;
++----------------------------------------------------------------------------------------------------+--------------------+---------+---------------------------------------+--------+----------------------+------------------+---------------------------+
+; Name                                                                                               ; Location           ; Fan-Out ; Usage                                 ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++----------------------------------------------------------------------------------------------------+--------------------+---------+---------------------------------------+--------+----------------------+------------------+---------------------------+
+; CLOCK_50MHz                                                                                        ; PIN_T1             ; 1       ; Clock                                 ; no     ; --                   ; --               ; --                        ;
+; Data_send~8                                                                                        ; LCCOMB_X49_Y41_N8  ; 27      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; Equal2~3                                                                                           ; LCCOMB_X53_Y41_N20 ; 5       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; KEY[0]                                                                                             ; PIN_V22            ; 6       ; Async. clear                          ; no     ; --                   ; --               ; --                        ;
+; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA.WRLCD                          ; FF_X50_Y34_N19     ; 19      ; Sync. load                            ; no     ; --                   ; --               ; --                        ;
+; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector10~0                      ; LCCOMB_X50_Y35_N30 ; 4       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector27~1                      ; LCCOMB_X50_Y35_N8  ; 5       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|data[1]~0                         ; LCCOMB_X48_Y35_N8  ; 6       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|LCD_DATA~0 ; LCCOMB_X41_Y31_N24 ; 9       ; Output enable                         ; no     ; --                   ; --               ; --                        ;
+; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|WideOr5~0  ; LCCOMB_X39_Y31_N28 ; 11      ; Sync. clear                           ; no     ; --                   ; --               ; --                        ;
+; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|clk_en     ; FF_X49_Y23_N1      ; 29      ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|data[6]~5  ; LCCOMB_X41_Y30_N28 ; 3       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; matriz_leds:inst_matriz_leds|sg_out_col[0]~0                                                       ; LCCOMB_X54_Y40_N16 ; 6       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; my_altpll:my_altpll_inst|altpll:altpll_component|my_altpll_altpll:auto_generated|wire_pll1_clk[0]  ; PLL_1              ; 194     ; Clock                                 ; yes    ; Global Clock         ; GCLK3            ; --                        ;
+; my_altpll:my_altpll_inst|altpll:altpll_component|my_altpll_altpll:auto_generated|wire_pll1_clk[2]  ; PLL_1              ; 45      ; Clock                                 ; yes    ; Global Clock         ; GCLK2            ; --                        ;
+; reset_sync:reset_synch_2khz_inst|r_rst_sync_2                                                      ; FF_X51_Y24_N27     ; 42      ; Async. clear, Clock enable            ; no     ; --                   ; --               ; --                        ;
+; reset_sync:reset_synch_50mhz_inst|r_rst_sync_2                                                     ; FF_X51_Y24_N1      ; 2       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; reset_sync:reset_synch_50mhz_inst|r_rst_sync_2                                                     ; FF_X51_Y24_N1      ; 166     ; Async. clear                          ; yes    ; Global Clock         ; GCLK14           ; --                        ;
+; uart:uart_inst|LessThan0~2                                                                         ; LCCOMB_X49_Y40_N28 ; 10      ; Sync. clear                           ; no     ; --                   ; --               ; --                        ;
+; uart:uart_inst|buffer_tx[3]~3                                                                      ; LCCOMB_X44_Y41_N28 ; 7       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; uart:uart_inst|count_bit_tx[1]~1                                                                   ; LCCOMB_X45_Y39_N4  ; 4       ; Clock enable                          ; no     ; --                   ; --               ; --                        ;
+; uart:uart_inst|tx_busy                                                                             ; FF_X44_Y41_N25     ; 22      ; Clock enable, Sync. clear, Sync. load ; no     ; --                   ; --               ; --                        ;
++----------------------------------------------------------------------------------------------------+--------------------+---------+---------------------------------------+--------+----------------------+------------------+---------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Global & Other Fast Signals                                                                                                                                                                                                         ;
-+---------------------------------------------------------------------------------------------------+----------+---------+--------------------------------------+----------------------+------------------+---------------------------+
-; Name                                                                                              ; Location ; Fan-Out ; Fan-Out Using Intentional Clock Skew ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+---------------------------------------------------------------------------------------------------+----------+---------+--------------------------------------+----------------------+------------------+---------------------------+
-; my_altpll:my_altpll_inst|altpll:altpll_component|my_altpll_altpll:auto_generated|wire_pll1_clk[0] ; PLL_1    ; 103     ; 0                                    ; Global Clock         ; GCLK3            ; --                        ;
-+---------------------------------------------------------------------------------------------------+----------+---------+--------------------------------------+----------------------+------------------+---------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Global & Other Fast Signals                                                                                                                                                                                                              ;
++---------------------------------------------------------------------------------------------------+---------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
+; Name                                                                                              ; Location      ; Fan-Out ; Fan-Out Using Intentional Clock Skew ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++---------------------------------------------------------------------------------------------------+---------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
+; my_altpll:my_altpll_inst|altpll:altpll_component|my_altpll_altpll:auto_generated|wire_pll1_clk[0] ; PLL_1         ; 194     ; 0                                    ; Global Clock         ; GCLK3            ; --                        ;
+; my_altpll:my_altpll_inst|altpll:altpll_component|my_altpll_altpll:auto_generated|wire_pll1_clk[2] ; PLL_1         ; 45      ; 0                                    ; Global Clock         ; GCLK2            ; --                        ;
+; reset_sync:reset_synch_50mhz_inst|r_rst_sync_2                                                    ; FF_X51_Y24_N1 ; 166     ; 0                                    ; Global Clock         ; GCLK14           ; --                        ;
++---------------------------------------------------------------------------------------------------+---------------+---------+--------------------------------------+----------------------+------------------+---------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------+
@@ -1398,47 +1418,81 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------------------------------------------------------------------------------------------+---------+
 ; Name                                                                                                   ; Fan-Out ;
 +--------------------------------------------------------------------------------------------------------+---------+
-; reset_sync:reset_synch_50mhz_inst|r_rst_sync_2                                                         ; 100     ;
+; reset_sync:reset_synch_2khz_inst|r_rst_sync_2                                                          ; 42      ;
+; char[2]                                                                                                ; 32      ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|clk_en         ; 29      ;
+; char[1]                                                                                                ; 28      ;
+; Data_send~8                                                                                            ; 27      ;
+; matriz_leds:inst_matriz_leds|col~4                                                                     ; 24      ;
+; matriz_leds:inst_matriz_leds|col~3                                                                     ; 22      ;
+; uart:uart_inst|tx_busy                                                                                 ; 22      ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA.TESTWORD                           ; 19      ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA.WRLCD                              ; 19      ;
+; char[0]                                                                                                ; 19      ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|cnt_data[0]                           ; 16      ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|cnt_data[2]                           ; 15      ;
+; Equal0~5                                                                                               ; 15      ;
+; Equal0~0                                                                                               ; 15      ;
+; idx[1]                                                                                                 ; 14      ;
+; char[3]                                                                                                ; 14      ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|EA.AWAIT       ; 14      ;
+; Equal0~8                                                                                               ; 14      ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|EA.WRLCD       ; 14      ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|cnt_data[1]                           ; 13      ;
+; idx[3]                                                                                                 ; 13      ;
+; idx[2]                                                                                                 ; 13      ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|cnt_data[3]                           ; 12      ;
+; idx[0]                                                                                                 ; 12      ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|EA.INIT        ; 12      ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|cnt_data[5]                           ; 11      ;
+; idx[4]                                                                                                 ; 11      ;
+; char[4]                                                                                                ; 11      ;
+; matriz_leds:inst_matriz_leds|col~2                                                                     ; 11      ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|WideOr5~0      ; 11      ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|index[1]       ; 11      ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|index[0]       ; 11      ;
-; display_top_component_Mercurio:inst_lcd_top|Equal0~4                                                   ; 10      ;
+; display_top_component_Mercurio:inst_lcd_top|Equal0~6                                                   ; 10      ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|cnt_data[4]                           ; 10      ;
+; uart:uart_inst|LessThan0~2                                                                             ; 10      ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA.AWAIT                              ; 9       ;
+; idx[5]                                                                                                 ; 9       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|cnt[0]         ; 9       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|LCD_DATA~0     ; 9       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|EA.CADDR       ; 9       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|EA.CLRLCD      ; 9       ;
+; matriz_leds:inst_matriz_leds|Mux4~3                                                                    ; 8       ;
+; display_top_component_Mercurio:inst_lcd_top|Equal1~1                                                   ; 8       ;
+; Equal2~2                                                                                               ; 8       ;
+; Equal2~1                                                                                               ; 8       ;
+; Equal2~0                                                                                               ; 8       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Equal0~1       ; 8       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Equal0~0       ; 8       ;
+; matriz_leds:inst_matriz_leds|clk_en                                                                    ; 8       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|index[2]       ; 8       ;
-; display_top_component_Mercurio:inst_lcd_top|Add0~46                                                    ; 8       ;
-; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|ready_o        ; 7       ;
+; matriz_leds:inst_matriz_leds|mux[6]~1                                                                  ; 7       ;
+; uart:uart_inst|buffer_tx[3]~3                                                                          ; 7       ;
+; uart:uart_inst|count_bit_tx[0]                                                                         ; 7       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|index[3]       ; 7       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|count[2]       ; 7       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|count[0]       ; 7       ;
-; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|data[5]~0                             ; 6       ;
+; KEY[0]~input                                                                                           ; 6       ;
+; uart:uart_inst|buffer_tx[3]~10                                                                         ; 6       ;
+; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|data[1]~0                             ; 6       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|ptr[4]                                ; 6       ;
+; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|ready_o        ; 6       ;
+; matriz_leds:inst_matriz_leds|mux[1]~0                                                                  ; 6       ;
+; matriz_leds:inst_matriz_leds|col[0]                                                                    ; 6       ;
+; matriz_leds:inst_matriz_leds|sg_out_col[0]~0                                                           ; 6       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|cmd[0]                                ; 6       ;
-; display_top_component_Mercurio:inst_lcd_top|count_2~19                                                 ; 5       ;
+; uart:uart_inst|clock_baud_tx                                                                           ; 6       ;
+; uart:uart_inst|Equal7~0                                                                                ; 6       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector27~1                          ; 5       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|data[6]                               ; 5       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|line_st                               ; 5       ;
+; Equal2~3                                                                                               ; 5       ;
+; matriz_leds:inst_matriz_leds|Mux4~2                                                                    ; 5       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|cmd[1]                                ; 5       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Equal2~2       ; 5       ;
-; display_top_component_Mercurio:inst_lcd_top|Add0~44                                                    ; 5       ;
-; display_top_component_Mercurio:inst_lcd_top|Equal1~1                                                   ; 4       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector10~0                          ; 4       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA.WAITLCD2                           ; 4       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Equal2~1                              ; 4       ;
@@ -1450,24 +1504,59 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA.WAITLCD1                           ; 4       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA.BOOT                               ; 4       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA.CLRLCD                             ; 4       ;
+; uart:uart_inst|count_bit_tx[1]~1                                                                       ; 4       ;
+; matriz_leds:inst_matriz_leds|Mux16~17                                                                  ; 4       ;
+; matriz_leds:inst_matriz_leds|Mux15~5                                                                   ; 4       ;
+; matriz_leds:inst_matriz_leds|Mux10~0                                                                   ; 4       ;
+; matriz_leds:inst_matriz_leds|col~1                                                                     ; 4       ;
+; matriz_leds:inst_matriz_leds|Equal0~1                                                                  ; 4       ;
+; matriz_leds:inst_matriz_leds|Equal0~0                                                                  ; 4       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|EA.BOOT        ; 4       ;
-; display_top_component_Mercurio:inst_lcd_top|Add0~14                                                    ; 4       ;
+; uart:uart_inst|Transmitting_data~0                                                                     ; 4       ;
+; uart:uart_inst|falling_clock_tx                                                                        ; 4       ;
+; LED_RGB[2]                                                                                             ; 4       ;
+; LED_RGB[1]                                                                                             ; 4       ;
+; LED_RGB[0]                                                                                             ; 4       ;
 ; display_top_component_Mercurio:inst_lcd_top|Add0~12                                                    ; 4       ;
+; uart:uart_inst|count_bit_tx[1]                                                                         ; 4       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|count[3]       ; 4       ;
-; KEY[0]~input                                                                                           ; 3       ;
-; display_top_component_Mercurio:inst_lcd_top|Equal0~8                                                   ; 3       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|process_2~3                           ; 3       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|WideOr6                               ; 3       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|data[7]                               ; 3       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|data[6]~5      ; 3       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|data[0]~2      ; 3       ;
-; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA~18                                 ; 3       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Equal3~0                              ; 3       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA.LINE1                              ; 3       ;
+; matriz_leds:inst_matriz_leds|Mux11~5                                                                   ; 3       ;
+; matriz_leds:inst_matriz_leds|Mux11~2                                                                   ; 3       ;
+; matriz_leds:inst_matriz_leds|Mux15~3                                                                   ; 3       ;
+; matriz_leds:inst_matriz_leds|Mux16~12                                                                  ; 3       ;
+; matriz_leds:inst_matriz_leds|Mux15~2                                                                   ; 3       ;
+; matriz_leds:inst_matriz_leds|col~0                                                                     ; 3       ;
+; matriz_leds:inst_matriz_leds|col[1]                                                                    ; 3       ;
+; matriz_leds:inst_matriz_leds|col[2]                                                                    ; 3       ;
+; matriz_leds:inst_matriz_leds|mux[1]                                                                    ; 3       ;
+; matriz_leds:inst_matriz_leds|mux[0]                                                                    ; 3       ;
+; matriz_leds:inst_matriz_leds|mux[2]                                                                    ; 3       ;
+; matriz_leds:inst_matriz_leds|mux[3]                                                                    ; 3       ;
+; matriz_leds:inst_matriz_leds|mux[4]                                                                    ; 3       ;
+; matriz_leds:inst_matriz_leds|mux[5]                                                                    ; 3       ;
+; matriz_leds:inst_matriz_leds|mux[6]                                                                    ; 3       ;
+; start_tx                                                                                               ; 3       ;
+; matriz_leds:inst_matriz_leds|sg_out_col[3]                                                             ; 3       ;
+; matriz_leds:inst_matriz_leds|sg_out_col[2]                                                             ; 3       ;
+; matriz_leds:inst_matriz_leds|sg_out_col[1]                                                             ; 3       ;
+; matriz_leds:inst_matriz_leds|sg_out_col[0]                                                             ; 3       ;
+; display_top_component_Mercurio:inst_lcd_top|Add0~14                                                    ; 3       ;
 ; display_top_component_Mercurio:inst_lcd_top|Add0~10                                                    ; 3       ;
 ; display_top_component_Mercurio:inst_lcd_top|Add0~8                                                     ; 3       ;
 ; display_top_component_Mercurio:inst_lcd_top|Add0~6                                                     ; 3       ;
 ; display_top_component_Mercurio:inst_lcd_top|Add0~4                                                     ; 3       ;
+; Add0~46                                                                                                ; 3       ;
+; Add0~44                                                                                                ; 3       ;
+; Add0~42                                                                                                ; 3       ;
+; Add0~40                                                                                                ; 3       ;
+; uart:uart_inst|count_bit_tx[2]                                                                         ; 3       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|count[7]       ; 3       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|count[6]       ; 3       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|count[5]       ; 3       ;
@@ -1476,11 +1565,13 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|count[9]       ; 3       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|count[8]       ; 3       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|count[4]       ; 3       ;
+; word~13                                                                                                ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|Equal1~0                                                   ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|word~15                                                    ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Equal4~0                              ; 2       ;
+; Equal5~0                                                                                               ; 2       ;
+; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA~19                                 ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Equal3~1                              ; 2       ;
-; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector0~2                           ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Equal2~0                              ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|ptr[1]                                ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|ptr[2]                                ; 2       ;
@@ -1491,6 +1582,20 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|data[4]        ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|data[2]        ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|data[1]        ; 2       ;
+; Equal3~1                                                                                               ; 2       ;
+; cnt[0]                                                                                                 ; 2       ;
+; cnt[1]                                                                                                 ; 2       ;
+; cnt[2]                                                                                                 ; 2       ;
+; cnt[3]                                                                                                 ; 2       ;
+; cnt[4]                                                                                                 ; 2       ;
+; cnt[6]                                                                                                 ; 2       ;
+; cnt[5]                                                                                                 ; 2       ;
+; cnt[7]                                                                                                 ; 2       ;
+; cnt[8]                                                                                                 ; 2       ;
+; cnt[9]                                                                                                 ; 2       ;
+; cnt[10]                                                                                                ; 2       ;
+; cnt[11]                                                                                                ; 2       ;
+; matriz_leds:inst_matriz_leds|cnt                                                                       ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|WideOr9                               ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|cnt[1]         ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|cnt[3]         ; 2       ;
@@ -1501,6 +1606,41 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|cnt[7]         ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|cnt[8]         ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Equal1~1       ; 2       ;
+; \Data_send:count[0]                                                                                    ; 2       ;
+; \Data_send:count[1]                                                                                    ; 2       ;
+; \Data_send:count[3]                                                                                    ; 2       ;
+; \Data_send:count[4]                                                                                    ; 2       ;
+; \Data_send:count[5]                                                                                    ; 2       ;
+; \Data_send:count[2]                                                                                    ; 2       ;
+; \Data_send:count[6]                                                                                    ; 2       ;
+; \Data_send:count[7]                                                                                    ; 2       ;
+; \Data_send:count[8]                                                                                    ; 2       ;
+; \Data_send:count[9]                                                                                    ; 2       ;
+; \Data_send:count[11]                                                                                   ; 2       ;
+; \Data_send:count[13]                                                                                   ; 2       ;
+; \Data_send:count[10]                                                                                   ; 2       ;
+; \Data_send:count[12]                                                                                   ; 2       ;
+; \Data_send:count[14]                                                                                   ; 2       ;
+; \Data_send:count[15]                                                                                   ; 2       ;
+; \Data_send:count[16]                                                                                   ; 2       ;
+; \Data_send:count[17]                                                                                   ; 2       ;
+; \Data_send:count[19]                                                                                   ; 2       ;
+; \Data_send:count[21]                                                                                   ; 2       ;
+; \Data_send:count[18]                                                                                   ; 2       ;
+; \Data_send:count[20]                                                                                   ; 2       ;
+; \Data_send:count[22]                                                                                   ; 2       ;
+; \Data_send:count[23]                                                                                   ; 2       ;
+; \Data_send:count[24]                                                                                   ; 2       ;
+; \Data_send:count[25]                                                                                   ; 2       ;
+; matriz_leds:inst_matriz_leds|Mux13~6                                                                   ; 2       ;
+; matriz_leds:inst_matriz_leds|Mux13~3                                                                   ; 2       ;
+; matriz_leds:inst_matriz_leds|Mux14~2                                                                   ; 2       ;
+; matriz_leds:inst_matriz_leds|Mux15~4                                                                   ; 2       ;
+; Equal3~0                                                                                               ; 2       ;
+; matriz_leds:inst_matriz_leds|Mux16~15                                                                  ; 2       ;
+; matriz_leds:inst_matriz_leds|Mux16~13                                                                  ; 2       ;
+; matriz_leds:inst_matriz_leds|Mux16~5                                                                   ; 2       ;
+; matriz_leds:inst_matriz_leds|Mux16~2                                                                   ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Selector0~0    ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Equal4~2       ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Equal4~1       ; 2       ;
@@ -1509,8 +1649,13 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Add2~0         ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Equal2~3       ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Selector3~0    ; 2       ;
+; Equal0~7                                                                                               ; 2       ;
+; matriz_leds:inst_matriz_leds|sg_out_col[4]                                                             ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Equal2~0       ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|LCD_RS~0       ; 2       ;
+; uart:uart_inst|pin_tx                                                                                  ; 2       ;
+; display_top_component_Mercurio:inst_lcd_top|Add0~46                                                    ; 2       ;
+; display_top_component_Mercurio:inst_lcd_top|Add0~44                                                    ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|Add0~42                                                    ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|Add0~40                                                    ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|Add0~38                                                    ; 2       ;
@@ -1533,22 +1678,85 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|data[2]                               ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|data[1]                               ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|data[0]                               ; 2       ;
+; uart:uart_inst|count_baud_tx[8]                                                                        ; 2       ;
+; uart:uart_inst|count_baud_tx[7]                                                                        ; 2       ;
+; uart:uart_inst|count_baud_tx[6]                                                                        ; 2       ;
+; uart:uart_inst|count_baud_tx[5]                                                                        ; 2       ;
+; uart:uart_inst|count_baud_tx[4]                                                                        ; 2       ;
+; uart:uart_inst|count_baud_tx[3]                                                                        ; 2       ;
+; uart:uart_inst|count_baud_tx[2]                                                                        ; 2       ;
+; uart:uart_inst|count_baud_tx[1]                                                                        ; 2       ;
+; uart:uart_inst|count_baud_tx[0]                                                                        ; 2       ;
+; Add0~38                                                                                                ; 2       ;
+; Add0~36                                                                                                ; 2       ;
+; Add0~34                                                                                                ; 2       ;
+; Add0~32                                                                                                ; 2       ;
+; Add0~30                                                                                                ; 2       ;
+; Add0~28                                                                                                ; 2       ;
+; Add0~26                                                                                                ; 2       ;
+; Add0~24                                                                                                ; 2       ;
+; Add0~22                                                                                                ; 2       ;
+; Add0~20                                                                                                ; 2       ;
+; Add0~18                                                                                                ; 2       ;
+; Add0~16                                                                                                ; 2       ;
+; Add0~14                                                                                                ; 2       ;
+; Add0~12                                                                                                ; 2       ;
+; Add0~10                                                                                                ; 2       ;
+; Add0~8                                                                                                 ; 2       ;
+; Add0~6                                                                                                 ; 2       ;
+; Add0~4                                                                                                 ; 2       ;
+; Add0~2                                                                                                 ; 2       ;
+; Add0~0                                                                                                 ; 2       ;
+; uart:uart_inst|count_bit_tx[3]                                                                         ; 2       ;
+; reset_sync:reset_synch_2khz_inst|r_rst_sync_0~feeder                                                   ; 1       ;
 ; reset_sync:reset_synch_50mhz_inst|r_rst_sync_0~feeder                                                  ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA.IDLE~feeder                        ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|EA.IDLE~feeder ; 1       ;
 ; CLOCK_50MHz~input                                                                                      ; 1       ;
 ; SW[0]~input                                                                                            ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector0~6                           ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|data[6]~9      ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|count_2~18                                                 ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|count_2~17                                                 ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|count_2~16                                                 ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|count_2~15                                                 ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|count_2~14                                                 ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|count_2~13                                                 ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|count_2~12                                                 ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|count_2~11                                                 ; 1       ;
+; idx[0]~1                                                                                               ; 1       ;
+; matriz_leds:inst_matriz_leds|cnt~0                                                                     ; 1       ;
+; matriz_leds:inst_matriz_leds|sg_out_col[1]~2                                                           ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|count_2~10                                                 ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|data[6]~9      ; 1       ;
+; cnt~10                                                                                                 ; 1       ;
+; cnt~9                                                                                                  ; 1       ;
+; uart:uart_inst|tx_busy~2                                                                               ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~29                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux13~8                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux14~3                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux15~6                                                                   ; 1       ;
+; word~18                                                                                                ; 1       ;
+; word~17                                                                                                ; 1       ;
+; uart:uart_inst|buffer_tx~9                                                                             ; 1       ;
+; serial_write[6]                                                                                        ; 1       ;
+; word~16                                                                                                ; 1       ;
+; word~15                                                                                                ; 1       ;
+; word~14                                                                                                ; 1       ;
+; uart:uart_inst|buffer_tx~8                                                                             ; 1       ;
+; uart:uart_inst|buffer_tx[6]                                                                            ; 1       ;
+; serial_write[5]                                                                                        ; 1       ;
+; word~12                                                                                                ; 1       ;
+; word~11                                                                                                ; 1       ;
+; uart:uart_inst|buffer_tx~7                                                                             ; 1       ;
+; uart:uart_inst|buffer_tx[5]                                                                            ; 1       ;
+; serial_write[4]                                                                                        ; 1       ;
+; word~10                                                                                                ; 1       ;
+; word~9                                                                                                 ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|count_2~9                                                  ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|count_2~8                                                  ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|count_2~7                                                  ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|count_2~6                                                  ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|count_2~5                                                  ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|count_2~4                                                  ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|count_2~3                                                  ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|count_2~2                                                  ; 1       ;
+; uart:uart_inst|buffer_tx~6                                                                             ; 1       ;
+; uart:uart_inst|buffer_tx[4]                                                                            ; 1       ;
+; serial_write[3]                                                                                        ; 1       ;
+; word~8                                                                                                 ; 1       ;
+; word~7                                                                                                 ; 1       ;
+; word~6                                                                                                 ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector16~0                          ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector17~2                          ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector17~1                          ; 1       ;
@@ -1592,27 +1800,17 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector26~0                          ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector11~0                          ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector27~0                          ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector0~5                           ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector0~4                           ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector0~3                           ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector0~2                           ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector0~1                           ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector0~0                           ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|Equal0~8                                                   ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|Equal0~7                                                   ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|Equal0~6                                                   ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|Equal0~5                                                   ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|count_2[22]                                                ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|count_2[23]                                                ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|Equal0~4                                                   ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|Equal0~3                                                   ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|Equal0~2                                                   ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|Equal0~1                                                   ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|Equal0~0                                                   ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|count_2[21]                                                ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|count_2[20]                                                ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|count_2[0]                                                 ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|count_2[1]                                                 ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|count_2[2]                                                 ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|count_2[3]                                                 ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|count_2[4]                                                 ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|count_2[5]                                                 ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|count_2[6]                                                 ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|count_2[7]                                                 ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|count_2[8]                                                 ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|count_2[9]                                                 ; 1       ;
@@ -1626,6 +1824,24 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; display_top_component_Mercurio:inst_lcd_top|count_2[17]                                                ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|count_2[18]                                                ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|count_2[19]                                                ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|count_2[20]                                                ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|count_2[21]                                                ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|count_2[22]                                                ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|count_2[23]                                                ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|count_2[0]                                                 ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|count_2[1]                                                 ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|count_2[2]                                                 ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|count_2[3]                                                 ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|count_2[4]                                                 ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|count_2[5]                                                 ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|count_2[6]                                                 ; 1       ;
+; uart:uart_inst|buffer_tx~5                                                                             ; 1       ;
+; uart:uart_inst|buffer_tx[3]                                                                            ; 1       ;
+; serial_write[2]                                                                                        ; 1       ;
+; word~5                                                                                                 ; 1       ;
+; word~4                                                                                                 ; 1       ;
+; word~3                                                                                                 ; 1       ;
+; idx~0                                                                                                  ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Selector20~1   ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Selector20~0   ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|data[6]~8      ; 1       ;
@@ -1644,10 +1860,17 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Selector26~0   ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|data[0]~4      ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|data[0]~3      ; 1       ;
-; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA~19                                 ; 1       ;
+; cnt~8                                                                                                  ; 1       ;
+; cnt~7                                                                                                  ; 1       ;
+; cnt~6                                                                                                  ; 1       ;
+; cnt~5                                                                                                  ; 1       ;
+; cnt~4                                                                                                  ; 1       ;
+; reset_sync:reset_synch_2khz_inst|r_rst_sync_0                                                          ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA~20                                 ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|PE.LINE1~0                            ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector1~1                           ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector1~0                           ; 1       ;
+; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA~18                                 ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA~17                                 ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA~16                                 ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA~15                                 ; 1       ;
@@ -1660,9 +1883,38 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|cnt~1          ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|cnt~0          ; 1       ;
 ; reset_sync:reset_synch_50mhz_inst|r_rst_sync_0                                                         ; 1       ;
+; count~25                                                                                               ; 1       ;
+; count~24                                                                                               ; 1       ;
+; count~23                                                                                               ; 1       ;
+; count~22                                                                                               ; 1       ;
+; count~21                                                                                               ; 1       ;
+; count~20                                                                                               ; 1       ;
+; count~19                                                                                               ; 1       ;
+; count~18                                                                                               ; 1       ;
+; count~17                                                                                               ; 1       ;
+; count~16                                                                                               ; 1       ;
+; count~15                                                                                               ; 1       ;
+; count~14                                                                                               ; 1       ;
+; count~13                                                                                               ; 1       ;
+; uart:uart_inst|buffer_tx~4                                                                             ; 1       ;
+; uart:uart_inst|buffer_tx[2]                                                                            ; 1       ;
+; serial_write[1]                                                                                        ; 1       ;
+; word~2                                                                                                 ; 1       ;
+; word~1                                                                                                 ; 1       ;
+; word~0                                                                                                 ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|data[6]        ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|data[3]        ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|data[0]        ; 1       ;
+; char~1                                                                                                 ; 1       ;
+; char~0                                                                                                 ; 1       ;
+; matriz_leds:inst_matriz_leds|mux[1]~8                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|mux[0]~7                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|mux[2]~6                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|mux[3]~5                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|mux[4]~4                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|mux[5]~3                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|mux[6]~2                                                                  ; 1       ;
+; reset_sync:reset_synch_2khz_inst|r_rst_sync_1                                                          ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Selector1~3    ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Selector1~2    ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Selector1~1    ; 1       ;
@@ -1670,11 +1922,91 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector24~0                          ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|Selector25~0                          ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Equal0~2       ; 1       ;
-; reset_sync:reset_synch_50mhz_inst|r_rst_sync_1                                                         ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Selector0~1    ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|LessThan0~0    ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|EA~18          ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Equal1~0       ; 1       ;
+; reset_sync:reset_synch_50mhz_inst|r_rst_sync_1                                                         ; 1       ;
+; count~12                                                                                               ; 1       ;
+; count~11                                                                                               ; 1       ;
+; count~10                                                                                               ; 1       ;
+; count~9                                                                                                ; 1       ;
+; count~8                                                                                                ; 1       ;
+; count~7                                                                                                ; 1       ;
+; count~6                                                                                                ; 1       ;
+; count~5                                                                                                ; 1       ;
+; count~4                                                                                                ; 1       ;
+; count~3                                                                                                ; 1       ;
+; count~2                                                                                                ; 1       ;
+; count~1                                                                                                ; 1       ;
+; count~0                                                                                                ; 1       ;
+; Data_send~7                                                                                            ; 1       ;
+; Data_send~6                                                                                            ; 1       ;
+; Data_send~5                                                                                            ; 1       ;
+; Data_send~4                                                                                            ; 1       ;
+; Data_send~3                                                                                            ; 1       ;
+; Data_send~2                                                                                            ; 1       ;
+; Data_send~1                                                                                            ; 1       ;
+; Data_send~0                                                                                            ; 1       ;
+; uart:uart_inst|buffer_tx~2                                                                             ; 1       ;
+; uart:uart_inst|buffer_tx[1]                                                                            ; 1       ;
+; serial_write[0]                                                                                        ; 1       ;
+; uart:uart_inst|clock_baud_tx~0                                                                         ; 1       ;
+; uart:uart_inst|LessThan0~1                                                                             ; 1       ;
+; uart:uart_inst|LessThan0~0                                                                             ; 1       ;
+; uart:uart_inst|Add4~2                                                                                  ; 1       ;
+; uart:uart_inst|Add4~1                                                                                  ; 1       ;
+; uart:uart_inst|Add4~0                                                                                  ; 1       ;
+; uart:uart_inst|count_bit_tx~0                                                                          ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux9~2                                                                    ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux9~1                                                                    ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~28                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux9~0                                                                    ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~27                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~26                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~25                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux10~4                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux11~12                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux11~11                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux11~10                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~24                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux11~9                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux10~3                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux10~2                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux10~1                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux11~8                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux11~7                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux11~6                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux12~2                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux12~1                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux12~0                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~23                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~22                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~21                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~20                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~19                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux13~7                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux13~5                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux13~4                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux13~2                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux11~4                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~18                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux11~3                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~16                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux11~1                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux11~0                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~14                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~11                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~10                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~9                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~8                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~7                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~6                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~4                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Mux16~3                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Add2~0                                                                    ; 1       ;
+; matriz_leds:inst_matriz_leds|Equal2~1                                                                  ; 1       ;
+; matriz_leds:inst_matriz_leds|Equal2~0                                                                  ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Selector4~1    ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Selector4~0    ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Selector3~2    ; 1       ;
@@ -1687,6 +2019,52 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Selector16~1   ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Selector16~0   ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Selector19~0   ; 1       ;
+; LED_RGB[2]~3                                                                                           ; 1       ;
+; LED_RGB[2]~2                                                                                           ; 1       ;
+; LED_RGB[1]~1                                                                                           ; 1       ;
+; reset_sync:reset_synch_50mhz_inst|r_rst_sync_2                                                         ; 1       ;
+; LED_RGB[0]~0                                                                                           ; 1       ;
+; Equal0~6                                                                                               ; 1       ;
+; Equal0~4                                                                                               ; 1       ;
+; Equal0~3                                                                                               ; 1       ;
+; Equal0~2                                                                                               ; 1       ;
+; Equal0~1                                                                                               ; 1       ;
+; count[23]                                                                                              ; 1       ;
+; count[20]                                                                                              ; 1       ;
+; count[21]                                                                                              ; 1       ;
+; count[22]                                                                                              ; 1       ;
+; count[19]                                                                                              ; 1       ;
+; count[18]                                                                                              ; 1       ;
+; count[17]                                                                                              ; 1       ;
+; count[0]                                                                                               ; 1       ;
+; count[1]                                                                                               ; 1       ;
+; count[2]                                                                                               ; 1       ;
+; count[3]                                                                                               ; 1       ;
+; count[4]                                                                                               ; 1       ;
+; count[5]                                                                                               ; 1       ;
+; count[6]                                                                                               ; 1       ;
+; count[7]                                                                                               ; 1       ;
+; count[8]                                                                                               ; 1       ;
+; count[9]                                                                                               ; 1       ;
+; count[10]                                                                                              ; 1       ;
+; count[11]                                                                                              ; 1       ;
+; count[12]                                                                                              ; 1       ;
+; count[13]                                                                                              ; 1       ;
+; count[14]                                                                                              ; 1       ;
+; count[15]                                                                                              ; 1       ;
+; count[16]                                                                                              ; 1       ;
+; uart:uart_inst|pin_tx~2                                                                                ; 1       ;
+; uart:uart_inst|pin_tx~1                                                                                ; 1       ;
+; uart:uart_inst|buffer_tx[0]                                                                            ; 1       ;
+; uart:uart_inst|pin_tx~0                                                                                ; 1       ;
+; matriz_leds:inst_matriz_leds|sg_out_row[7]                                                             ; 1       ;
+; matriz_leds:inst_matriz_leds|sg_out_row[6]                                                             ; 1       ;
+; matriz_leds:inst_matriz_leds|sg_out_row[5]                                                             ; 1       ;
+; matriz_leds:inst_matriz_leds|sg_out_row[4]                                                             ; 1       ;
+; matriz_leds:inst_matriz_leds|sg_out_row[3]                                                             ; 1       ;
+; matriz_leds:inst_matriz_leds|sg_out_row[2]                                                             ; 1       ;
+; matriz_leds:inst_matriz_leds|sg_out_row[1]                                                             ; 1       ;
+; matriz_leds:inst_matriz_leds|sg_out_row[0]                                                             ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|LCD_EN         ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Equal2~1       ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|LCD_RS         ; 1       ;
@@ -1735,6 +2113,39 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; display_top_component_Mercurio:inst_lcd_top|Add0~5                                                     ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|Add0~3                                                     ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|Add0~1                                                     ; 1       ;
+; Add4~10                                                                                                ; 1       ;
+; Add4~9                                                                                                 ; 1       ;
+; Add4~8                                                                                                 ; 1       ;
+; Add4~7                                                                                                 ; 1       ;
+; Add4~6                                                                                                 ; 1       ;
+; Add4~5                                                                                                 ; 1       ;
+; Add4~4                                                                                                 ; 1       ;
+; Add4~3                                                                                                 ; 1       ;
+; Add4~2                                                                                                 ; 1       ;
+; Add4~1                                                                                                 ; 1       ;
+; Add3~22                                                                                                ; 1       ;
+; Add3~21                                                                                                ; 1       ;
+; Add3~20                                                                                                ; 1       ;
+; Add3~19                                                                                                ; 1       ;
+; Add3~18                                                                                                ; 1       ;
+; Add3~17                                                                                                ; 1       ;
+; Add3~16                                                                                                ; 1       ;
+; Add3~15                                                                                                ; 1       ;
+; Add3~14                                                                                                ; 1       ;
+; Add3~13                                                                                                ; 1       ;
+; Add3~12                                                                                                ; 1       ;
+; Add3~11                                                                                                ; 1       ;
+; Add3~10                                                                                                ; 1       ;
+; Add3~9                                                                                                 ; 1       ;
+; Add3~8                                                                                                 ; 1       ;
+; Add3~7                                                                                                 ; 1       ;
+; Add3~6                                                                                                 ; 1       ;
+; Add3~5                                                                                                 ; 1       ;
+; Add3~4                                                                                                 ; 1       ;
+; Add3~3                                                                                                 ; 1       ;
+; Add3~2                                                                                                 ; 1       ;
+; Add3~1                                                                                                 ; 1       ;
+; Add3~0                                                                                                 ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Add0~16        ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Add0~15        ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Add0~14        ; 1       ;
@@ -1752,6 +2163,96 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Add0~2         ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Add0~1         ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|Add0~0         ; 1       ;
+; Add5~50                                                                                                ; 1       ;
+; Add5~49                                                                                                ; 1       ;
+; Add5~48                                                                                                ; 1       ;
+; Add5~47                                                                                                ; 1       ;
+; Add5~46                                                                                                ; 1       ;
+; Add5~45                                                                                                ; 1       ;
+; Add5~44                                                                                                ; 1       ;
+; Add5~43                                                                                                ; 1       ;
+; Add5~42                                                                                                ; 1       ;
+; Add5~41                                                                                                ; 1       ;
+; Add5~40                                                                                                ; 1       ;
+; Add5~39                                                                                                ; 1       ;
+; Add5~38                                                                                                ; 1       ;
+; Add5~37                                                                                                ; 1       ;
+; Add5~36                                                                                                ; 1       ;
+; Add5~35                                                                                                ; 1       ;
+; Add5~34                                                                                                ; 1       ;
+; Add5~33                                                                                                ; 1       ;
+; Add5~32                                                                                                ; 1       ;
+; Add5~31                                                                                                ; 1       ;
+; Add5~30                                                                                                ; 1       ;
+; Add5~29                                                                                                ; 1       ;
+; Add5~28                                                                                                ; 1       ;
+; Add5~27                                                                                                ; 1       ;
+; Add5~26                                                                                                ; 1       ;
+; Add5~25                                                                                                ; 1       ;
+; Add5~24                                                                                                ; 1       ;
+; Add5~23                                                                                                ; 1       ;
+; Add5~22                                                                                                ; 1       ;
+; Add5~21                                                                                                ; 1       ;
+; Add5~20                                                                                                ; 1       ;
+; Add5~19                                                                                                ; 1       ;
+; Add5~18                                                                                                ; 1       ;
+; Add5~17                                                                                                ; 1       ;
+; Add5~16                                                                                                ; 1       ;
+; Add5~15                                                                                                ; 1       ;
+; Add5~14                                                                                                ; 1       ;
+; Add5~13                                                                                                ; 1       ;
+; Add5~12                                                                                                ; 1       ;
+; Add5~11                                                                                                ; 1       ;
+; Add5~10                                                                                                ; 1       ;
+; Add5~9                                                                                                 ; 1       ;
+; Add5~8                                                                                                 ; 1       ;
+; Add5~7                                                                                                 ; 1       ;
+; Add5~6                                                                                                 ; 1       ;
+; Add5~5                                                                                                 ; 1       ;
+; Add5~4                                                                                                 ; 1       ;
+; Add5~3                                                                                                 ; 1       ;
+; Add5~2                                                                                                 ; 1       ;
+; Add5~1                                                                                                 ; 1       ;
+; Add5~0                                                                                                 ; 1       ;
+; uart:uart_inst|count_baud_tx[8]~25                                                                     ; 1       ;
+; uart:uart_inst|count_baud_tx[7]~24                                                                     ; 1       ;
+; uart:uart_inst|count_baud_tx[7]~23                                                                     ; 1       ;
+; uart:uart_inst|count_baud_tx[6]~22                                                                     ; 1       ;
+; uart:uart_inst|count_baud_tx[6]~21                                                                     ; 1       ;
+; uart:uart_inst|count_baud_tx[5]~20                                                                     ; 1       ;
+; uart:uart_inst|count_baud_tx[5]~19                                                                     ; 1       ;
+; uart:uart_inst|count_baud_tx[4]~18                                                                     ; 1       ;
+; uart:uart_inst|count_baud_tx[4]~17                                                                     ; 1       ;
+; uart:uart_inst|count_baud_tx[3]~16                                                                     ; 1       ;
+; uart:uart_inst|count_baud_tx[3]~15                                                                     ; 1       ;
+; uart:uart_inst|count_baud_tx[2]~14                                                                     ; 1       ;
+; uart:uart_inst|count_baud_tx[2]~13                                                                     ; 1       ;
+; uart:uart_inst|count_baud_tx[1]~12                                                                     ; 1       ;
+; uart:uart_inst|count_baud_tx[1]~11                                                                     ; 1       ;
+; uart:uart_inst|count_baud_tx[0]~10                                                                     ; 1       ;
+; uart:uart_inst|count_baud_tx[0]~9                                                                      ; 1       ;
+; Add2~8                                                                                                 ; 1       ;
+; Add2~7                                                                                                 ; 1       ;
+; Add2~6                                                                                                 ; 1       ;
+; Add2~5                                                                                                 ; 1       ;
+; Add2~4                                                                                                 ; 1       ;
+; Add2~3                                                                                                 ; 1       ;
+; Add2~2                                                                                                 ; 1       ;
+; Add2~1                                                                                                 ; 1       ;
+; Add2~0                                                                                                 ; 1       ;
+; matriz_leds:inst_matriz_leds|Add1~12                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Add1~11                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Add1~10                                                                   ; 1       ;
+; matriz_leds:inst_matriz_leds|Add1~9                                                                    ; 1       ;
+; matriz_leds:inst_matriz_leds|Add1~8                                                                    ; 1       ;
+; matriz_leds:inst_matriz_leds|Add1~7                                                                    ; 1       ;
+; matriz_leds:inst_matriz_leds|Add1~6                                                                    ; 1       ;
+; matriz_leds:inst_matriz_leds|Add1~5                                                                    ; 1       ;
+; matriz_leds:inst_matriz_leds|Add1~4                                                                    ; 1       ;
+; matriz_leds:inst_matriz_leds|Add1~3                                                                    ; 1       ;
+; matriz_leds:inst_matriz_leds|Add1~2                                                                    ; 1       ;
+; matriz_leds:inst_matriz_leds|Add1~1                                                                    ; 1       ;
+; matriz_leds:inst_matriz_leds|Add1~0                                                                    ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|count[10]~31   ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|count[9]~30    ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|count[9]~29    ; 1       ;
@@ -1773,6 +2274,29 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|count[1]~13    ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|count[0]~12    ; 1       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|count[0]~11    ; 1       ;
+; Add0~45                                                                                                ; 1       ;
+; Add0~43                                                                                                ; 1       ;
+; Add0~41                                                                                                ; 1       ;
+; Add0~39                                                                                                ; 1       ;
+; Add0~37                                                                                                ; 1       ;
+; Add0~35                                                                                                ; 1       ;
+; Add0~33                                                                                                ; 1       ;
+; Add0~31                                                                                                ; 1       ;
+; Add0~29                                                                                                ; 1       ;
+; Add0~27                                                                                                ; 1       ;
+; Add0~25                                                                                                ; 1       ;
+; Add0~23                                                                                                ; 1       ;
+; Add0~21                                                                                                ; 1       ;
+; Add0~19                                                                                                ; 1       ;
+; Add0~17                                                                                                ; 1       ;
+; Add0~15                                                                                                ; 1       ;
+; Add0~13                                                                                                ; 1       ;
+; Add0~11                                                                                                ; 1       ;
+; Add0~9                                                                                                 ; 1       ;
+; Add0~7                                                                                                 ; 1       ;
+; Add0~5                                                                                                 ; 1       ;
+; Add0~3                                                                                                 ; 1       ;
+; Add0~1                                                                                                 ; 1       ;
 ; my_altpll:my_altpll_inst|altpll:altpll_component|my_altpll_altpll:auto_generated|wire_pll1_fbout       ; 1       ;
 +--------------------------------------------------------------------------------------------------------+---------+
 
@@ -1782,135 +2306,146 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-------------------------+
 ; Routing Resource Type ; Usage                   ;
 +-----------------------+-------------------------+
-; Block interconnects   ; 197 / 116,715 ( < 1 % ) ;
-; C16 interconnects     ; 22 / 3,886 ( < 1 % )    ;
-; C4 interconnects      ; 87 / 73,752 ( < 1 % )   ;
-; Direct links          ; 83 / 116,715 ( < 1 % )  ;
-; Global clocks         ; 1 / 20 ( 5 % )          ;
-; Local interconnects   ; 149 / 39,600 ( < 1 % )  ;
-; R24 interconnects     ; 25 / 3,777 ( < 1 % )    ;
-; R4 interconnects      ; 81 / 99,858 ( < 1 % )   ;
+; Block interconnects   ; 435 / 116,715 ( < 1 % ) ;
+; C16 interconnects     ; 21 / 3,886 ( < 1 % )    ;
+; C4 interconnects      ; 213 / 73,752 ( < 1 % )  ;
+; Direct links          ; 182 / 116,715 ( < 1 % ) ;
+; Global clocks         ; 3 / 20 ( 15 % )         ;
+; Local interconnects   ; 335 / 39,600 ( < 1 % )  ;
+; R24 interconnects     ; 40 / 3,777 ( 1 % )      ;
+; R4 interconnects      ; 224 / 99,858 ( < 1 % )  ;
 +-----------------------+-------------------------+
 
 
 +----------------------------------------------------------------------------+
 ; LAB Logic Elements                                                         ;
 +---------------------------------------------+------------------------------+
-; Number of Logic Elements  (Average = 12.44) ; Number of LABs  (Total = 18) ;
+; Number of Logic Elements  (Average = 13.23) ; Number of LABs  (Total = 39) ;
 +---------------------------------------------+------------------------------+
-; 1                                           ; 1                            ;
+; 1                                           ; 0                            ;
 ; 2                                           ; 0                            ;
-; 3                                           ; 3                            ;
-; 4                                           ; 0                            ;
-; 5                                           ; 0                            ;
-; 6                                           ; 0                            ;
+; 3                                           ; 1                            ;
+; 4                                           ; 1                            ;
+; 5                                           ; 4                            ;
+; 6                                           ; 1                            ;
 ; 7                                           ; 0                            ;
 ; 8                                           ; 0                            ;
-; 9                                           ; 1                            ;
+; 9                                           ; 0                            ;
 ; 10                                          ; 0                            ;
 ; 11                                          ; 0                            ;
-; 12                                          ; 0                            ;
-; 13                                          ; 0                            ;
-; 14                                          ; 0                            ;
-; 15                                          ; 3                            ;
-; 16                                          ; 10                           ;
+; 12                                          ; 4                            ;
+; 13                                          ; 1                            ;
+; 14                                          ; 3                            ;
+; 15                                          ; 4                            ;
+; 16                                          ; 20                           ;
 +---------------------------------------------+------------------------------+
 
 
 +-------------------------------------------------------------------+
 ; LAB-wide Signals                                                  ;
 +------------------------------------+------------------------------+
-; LAB-wide Signals  (Average = 2.33) ; Number of LABs  (Total = 18) ;
+; LAB-wide Signals  (Average = 2.13) ; Number of LABs  (Total = 39) ;
 +------------------------------------+------------------------------+
-; 1 Async. clear                     ; 16                           ;
-; 1 Clock                            ; 16                           ;
-; 1 Clock enable                     ; 8                            ;
-; 1 Sync. clear                      ; 1                            ;
-; 1 Sync. load                       ; 1                            ;
+; 1 Async. clear                     ; 30                           ;
+; 1 Clock                            ; 35                           ;
+; 1 Clock enable                     ; 15                           ;
+; 1 Sync. clear                      ; 2                            ;
+; 2 Clocks                           ; 1                            ;
 +------------------------------------+------------------------------+
 
 
 +-----------------------------------------------------------------------------+
 ; LAB Signals Sourced                                                         ;
 +----------------------------------------------+------------------------------+
-; Number of Signals Sourced  (Average = 18.17) ; Number of LABs  (Total = 18) ;
+; Number of Signals Sourced  (Average = 19.33) ; Number of LABs  (Total = 39) ;
 +----------------------------------------------+------------------------------+
 ; 0                                            ; 0                            ;
-; 1                                            ; 1                            ;
+; 1                                            ; 0                            ;
 ; 2                                            ; 0                            ;
 ; 3                                            ; 0                            ;
 ; 4                                            ; 0                            ;
 ; 5                                            ; 0                            ;
-; 6                                            ; 3                            ;
-; 7                                            ; 0                            ;
-; 8                                            ; 0                            ;
-; 9                                            ; 0                            ;
-; 10                                           ; 0                            ;
+; 6                                            ; 2                            ;
+; 7                                            ; 1                            ;
+; 8                                            ; 1                            ;
+; 9                                            ; 1                            ;
+; 10                                           ; 1                            ;
 ; 11                                           ; 0                            ;
-; 12                                           ; 0                            ;
+; 12                                           ; 1                            ;
 ; 13                                           ; 0                            ;
-; 14                                           ; 1                            ;
-; 15                                           ; 0                            ;
-; 16                                           ; 1                            ;
-; 17                                           ; 0                            ;
+; 14                                           ; 0                            ;
+; 15                                           ; 1                            ;
+; 16                                           ; 3                            ;
+; 17                                           ; 1                            ;
 ; 18                                           ; 0                            ;
-; 19                                           ; 1                            ;
+; 19                                           ; 3                            ;
 ; 20                                           ; 1                            ;
-; 21                                           ; 0                            ;
-; 22                                           ; 2                            ;
-; 23                                           ; 3                            ;
-; 24                                           ; 1                            ;
-; 25                                           ; 3                            ;
-; 26                                           ; 0                            ;
-; 27                                           ; 1                            ;
+; 21                                           ; 4                            ;
+; 22                                           ; 4                            ;
+; 23                                           ; 6                            ;
+; 24                                           ; 4                            ;
+; 25                                           ; 1                            ;
+; 26                                           ; 1                            ;
+; 27                                           ; 2                            ;
+; 28                                           ; 1                            ;
 +----------------------------------------------+------------------------------+
 
 
 +--------------------------------------------------------------------------------+
 ; LAB Signals Sourced Out                                                        ;
 +-------------------------------------------------+------------------------------+
-; Number of Signals Sourced Out  (Average = 6.56) ; Number of LABs  (Total = 18) ;
+; Number of Signals Sourced Out  (Average = 6.92) ; Number of LABs  (Total = 39) ;
 +-------------------------------------------------+------------------------------+
 ; 0                                               ; 0                            ;
-; 1                                               ; 2                            ;
-; 2                                               ; 0                            ;
-; 3                                               ; 3                            ;
-; 4                                               ; 1                            ;
-; 5                                               ; 0                            ;
+; 1                                               ; 1                            ;
+; 2                                               ; 4                            ;
+; 3                                               ; 5                            ;
+; 4                                               ; 2                            ;
+; 5                                               ; 3                            ;
 ; 6                                               ; 0                            ;
-; 7                                               ; 2                            ;
-; 8                                               ; 4                            ;
-; 9                                               ; 4                            ;
-; 10                                              ; 1                            ;
-; 11                                              ; 1                            ;
+; 7                                               ; 4                            ;
+; 8                                               ; 5                            ;
+; 9                                               ; 7                            ;
+; 10                                              ; 3                            ;
+; 11                                              ; 2                            ;
+; 12                                              ; 2                            ;
+; 13                                              ; 0                            ;
+; 14                                              ; 0                            ;
+; 15                                              ; 0                            ;
+; 16                                              ; 1                            ;
 +-------------------------------------------------+------------------------------+
 
 
 +----------------------------------------------------------------------------+
 ; LAB Distinct Inputs                                                        ;
 +---------------------------------------------+------------------------------+
-; Number of Distinct Inputs  (Average = 9.11) ; Number of LABs  (Total = 18) ;
+; Number of Distinct Inputs  (Average = 9.64) ; Number of LABs  (Total = 39) ;
 +---------------------------------------------+------------------------------+
 ; 0                                           ; 0                            ;
 ; 1                                           ; 0                            ;
 ; 2                                           ; 1                            ;
-; 3                                           ; 1                            ;
-; 4                                           ; 2                            ;
-; 5                                           ; 2                            ;
+; 3                                           ; 3                            ;
+; 4                                           ; 3                            ;
+; 5                                           ; 3                            ;
 ; 6                                           ; 2                            ;
-; 7                                           ; 1                            ;
-; 8                                           ; 1                            ;
-; 9                                           ; 0                            ;
-; 10                                          ; 0                            ;
-; 11                                          ; 2                            ;
-; 12                                          ; 2                            ;
+; 7                                           ; 5                            ;
+; 8                                           ; 2                            ;
+; 9                                           ; 7                            ;
+; 10                                          ; 1                            ;
+; 11                                          ; 1                            ;
+; 12                                          ; 0                            ;
 ; 13                                          ; 0                            ;
-; 14                                          ; 0                            ;
+; 14                                          ; 2                            ;
 ; 15                                          ; 1                            ;
-; 16                                          ; 0                            ;
-; 17                                          ; 2                            ;
-; 18                                          ; 0                            ;
-; 19                                          ; 1                            ;
+; 16                                          ; 2                            ;
+; 17                                          ; 1                            ;
+; 18                                          ; 1                            ;
+; 19                                          ; 3                            ;
+; 20                                          ; 0                            ;
+; 21                                          ; 0                            ;
+; 22                                          ; 0                            ;
+; 23                                          ; 0                            ;
+; 24                                          ; 1                            ;
 +---------------------------------------------+------------------------------+
 
 
@@ -2070,6 +2605,7 @@ Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
 Info (15535): Implemented PLL "my_altpll:my_altpll_inst|altpll:altpll_component|my_altpll_altpll:auto_generated|pll1" as Cyclone IV E PLL type
     Info (15099): Implementing clock multiplication of 1, clock division of 1, and phase shift of 0 degrees (0 ps) for my_altpll:my_altpll_inst|altpll:altpll_component|my_altpll_altpll:auto_generated|wire_pll1_clk[0] port
+    Info (15099): Implementing clock multiplication of 1, clock division of 25000, and phase shift of 0 degrees (0 ps) for my_altpll:my_altpll_inst|altpll:altpll_component|my_altpll_altpll:auto_generated|wire_pll1_clk[2] port
 Info (171003): Fitter is performing an Auto Fit compilation, which may decrease Fitter effort to reduce compilation time
 Warning (292013): Feature LogicLock is only available with a valid subscription license. You can purchase a software subscription to gain full access to this feature.
 Info (176444): Device migration not selected. If you intend to use device migration later, you may need to change the pin assignments as they may be incompatible with other devices
@@ -2097,16 +2633,24 @@ Warning (15714): Some pins have incomplete I/O assignments. Refer to the I/O Ass
 Info (332104): Reading SDC File: 'Labx1.sdc'
 Info (332110): Deriving PLL clocks
     Info (332110): create_generated_clock -source {my_altpll_inst|altpll_component|auto_generated|pll1|inclk[0]} -duty_cycle 50.00 -name {my_altpll_inst|altpll_component|auto_generated|pll1|clk[0]} {my_altpll_inst|altpll_component|auto_generated|pll1|clk[0]}
+    Info (332110): create_generated_clock -source {my_altpll_inst|altpll_component|auto_generated|pll1|inclk[0]} -divide_by 25000 -duty_cycle 50.00 -name {my_altpll_inst|altpll_component|auto_generated|pll1|clk[2]} {my_altpll_inst|altpll_component|auto_generated|pll1|clk[2]}
 Info (332151): Clock uncertainty is not calculated until you update the timing netlist.
 Info (332154): The derive_clock_uncertainty command did not apply clock uncertainty to any clock-to-clock transfers.
 Info (332129): Detected timing requirements -- optimizing circuit to achieve only the specified requirements
-Info (332111): Found 2 clocks
+Info (332111): Found 3 clocks
     Info (332111):   Period   Clock Name
     Info (332111): ======== ============
     Info (332111):   20.000  CLOCK_50MHz
     Info (332111):   20.000 my_altpll_inst|altpll_component|auto_generated|pll1|clk[0]
+    Info (332111): 500000.000 my_altpll_inst|altpll_component|auto_generated|pll1|clk[2]
 Info (176353): Automatically promoted node my_altpll:my_altpll_inst|altpll:altpll_component|my_altpll_altpll:auto_generated|wire_pll1_clk[0] (placed in counter C0 of PLL_1)
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G3
+Info (176353): Automatically promoted node my_altpll:my_altpll_inst|altpll:altpll_component|my_altpll_altpll:auto_generated|wire_pll1_clk[2] (placed in counter C2 of PLL_1)
+    Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G2
+Info (176353): Automatically promoted node reset_sync:reset_synch_50mhz_inst|r_rst_sync_2 
+    Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
+    Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
+        Info (176357): Destination node display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|clk_en
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
@@ -2336,9 +2880,9 @@ Warning (15705): Ignored locations or region assignments to the following nodes
     Warning (15706): Node "VGA_R[2]" is assigned to location or region, but does not exist in design
     Warning (15706): Node "VGA_R[3]" is assigned to location or region, but does not exist in design
     Warning (15706): Node "VGA_VS" is assigned to location or region, but does not exist in design
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:03
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:05
 Info (170189): Fitter placement preparation operations beginning
-Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:00
+Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:01
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
 Info (170192): Fitter placement operations ending: elapsed time is 00:00:01
@@ -2349,24 +2893,24 @@ Info (170194): Fitter routing operations ending: elapsed time is 00:00:01
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
-Info (11888): Total time spent on timing analysis during the Fitter is 0.36 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.55 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:02
+Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:04
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
-Info (144001): Generated suppressed messages file C:/Mercurio IV/labx1/quartus/output_files/Labx1.fit.smsg
+Info (144001): Generated suppressed messages file C:/ProjetosModelSim/witnesses-of-jhon/fpga/quartus/output_files/Labx1.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 229 warnings
-    Info: Peak virtual memory: 1030 megabytes
-    Info: Processing ended: Wed Sep 23 09:27:23 2015
-    Info: Elapsed time: 00:00:17
-    Info: Total CPU time (on all processors): 00:00:19
+    Info: Peak virtual memory: 1024 megabytes
+    Info: Processing ended: Thu Oct 01 13:04:06 2015
+    Info: Elapsed time: 00:00:23
+    Info: Total CPU time (on all processors): 00:00:21
 
 
 +----------------------------+
 ; Fitter Suppressed Messages ;
 +----------------------------+
-The suppressed messages can be found in C:/Mercurio IV/labx1/quartus/output_files/Labx1.fit.smsg.
+The suppressed messages can be found in C:/ProjetosModelSim/witnesses-of-jhon/fpga/quartus/output_files/Labx1.fit.smsg.
 
 

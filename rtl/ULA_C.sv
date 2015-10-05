@@ -16,16 +16,20 @@ module ULA_C (dado, 		// OP_A
 	input reg R; // controle para o formato (11) carregar lcl: 0 / lch: 1
 	output reg [15:0] resultOP;
 	
+	reg [15:0] auxxxx;
+	
 	always @(constante or formato or R) begin
 		case (formato)
 			2'b01:begin//passa valor para resultado
 				resultOP = constante;
 			end
 			2'b11:begin
-				if(R)begin//carrega na direita
-					resultOP = constante | (dado & 16'b0000000011111111) ; 
-				end else begin//carrega na esquerda
-					resultOP = constante | (dado & 16'b1111111100000000) ;
+				if(R)begin//carrega na direita LCH
+					auxxxx = (dado & 16'b0000000011111111) ;
+					resultOP = constante | auxxxx; 
+				end else begin//carrega na esquerda LCL
+					auxxxx = (dado & 16'b1111111100000000) ;
+					resultOP = constante | auxxxx;
 				end
 			end
 			default : /* default */;

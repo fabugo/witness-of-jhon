@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Labx1
-Wed Sep 23 09:27:04 2015
+Thu Oct 01 13:03:40 2015
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -17,18 +17,22 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   9. State Machine - |Labx1|display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA
  10. State Machine - |Labx1|display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|EA
  11. Registers Removed During Synthesis
- 12. General Register Statistics
- 13. Inverted Register Statistics
- 14. Multiplexer Restructuring Statistics (Restructuring Performed)
- 15. Parameter Settings for User Entity Instance: Top-level Entity: |Labx1
- 16. Parameter Settings for User Entity Instance: my_altpll:my_altpll_inst|altpll:altpll_component
- 17. Parameter Settings for User Entity Instance: display_top_component_Mercurio:inst_lcd_top
- 18. Parameter Settings for User Entity Instance: display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top
- 19. Parameter Settings for User Entity Instance: display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst
- 20. altpll Parameter Settings by Entity Instance
- 21. Port Connectivity Checks: "display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top"
- 22. Elapsed Time Per Partition
- 23. Analysis & Synthesis Messages
+ 12. Removed Registers Triggering Further Register Optimizations
+ 13. General Register Statistics
+ 14. Inverted Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Parameter Settings for User Entity Instance: Top-level Entity: |Labx1
+ 17. Parameter Settings for User Entity Instance: my_altpll:my_altpll_inst|altpll:altpll_component
+ 18. Parameter Settings for User Entity Instance: display_top_component_Mercurio:inst_lcd_top
+ 19. Parameter Settings for User Entity Instance: display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top
+ 20. Parameter Settings for User Entity Instance: display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst
+ 21. Parameter Settings for User Entity Instance: matriz_leds:inst_matriz_leds
+ 22. Parameter Settings for User Entity Instance: uart:uart_inst
+ 23. altpll Parameter Settings by Entity Instance
+ 24. Port Connectivity Checks: "uart:uart_inst"
+ 25. Port Connectivity Checks: "display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top"
+ 26. Elapsed Time Per Partition
+ 27. Analysis & Synthesis Messages
 
 
 
@@ -54,15 +58,15 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Sep 23 09:27:04 2015      ;
+; Analysis & Synthesis Status        ; Successful - Thu Oct 01 13:03:40 2015      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; Labx1                                      ;
 ; Top-level Entity Name              ; Labx1                                      ;
 ; Family                             ; Cyclone IV E                               ;
-; Total logic elements               ; 222                                        ;
-;     Total combinational functions  ; 215                                        ;
-;     Dedicated logic registers      ; 103                                        ;
-; Total registers                    ; 103                                        ;
+; Total logic elements               ; 516                                        ;
+;     Total combinational functions  ; 501                                        ;
+;     Dedicated logic registers      ; 239                                        ;
+; Total registers                    ; 239                                        ;
 ; Total pins                         ; 46                                         ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
@@ -175,25 +179,28 @@ applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                     ;
-+----------------------------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------+---------+
-; File Name with User-Entered Path                   ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                         ; Library ;
-+----------------------------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------+---------+
-; ../rtl/reset_sync.bdf                              ; yes             ; User Block Diagram/Schematic File  ; C:/Mercurio IV/labx1/rtl/reset_sync.bdf                              ;         ;
-; ../rtl/Labx1.vhd                                   ; yes             ; User VHDL File                     ; C:/Mercurio IV/labx1/rtl/Labx1.vhd                                   ;         ;
-; ../rtl/LCD_demo/lcd_top.vhd                        ; yes             ; User VHDL File                     ; C:/Mercurio IV/labx1/rtl/LCD_demo/lcd_top.vhd                        ;         ;
-; ../rtl/LCD_demo/lcd_pkg.vhd                        ; yes             ; User VHDL File                     ; C:/Mercurio IV/labx1/rtl/LCD_demo/lcd_pkg.vhd                        ;         ;
-; ../rtl/LCD_demo/lcd_ctrl.vhd                       ; yes             ; User VHDL File                     ; C:/Mercurio IV/labx1/rtl/LCD_demo/lcd_ctrl.vhd                       ;         ;
-; ../rtl/LCD_demo/display_top_component_Mercurio.vhd ; yes             ; User VHDL File                     ; C:/Mercurio IV/labx1/rtl/LCD_demo/display_top_component_Mercurio.vhd ;         ;
-; my_altpll.vhd                                      ; yes             ; User Wizard-Generated File         ; C:/Mercurio IV/labx1/quartus/my_altpll.vhd                           ;         ;
-; altpll.tdf                                         ; yes             ; Megafunction                       ; c:/altera/13.1/quartus/libraries/megafunctions/altpll.tdf            ;         ;
-; aglobal131.inc                                     ; yes             ; Megafunction                       ; c:/altera/13.1/quartus/libraries/megafunctions/aglobal131.inc        ;         ;
-; stratix_pll.inc                                    ; yes             ; Megafunction                       ; c:/altera/13.1/quartus/libraries/megafunctions/stratix_pll.inc       ;         ;
-; stratixii_pll.inc                                  ; yes             ; Megafunction                       ; c:/altera/13.1/quartus/libraries/megafunctions/stratixii_pll.inc     ;         ;
-; cycloneii_pll.inc                                  ; yes             ; Megafunction                       ; c:/altera/13.1/quartus/libraries/megafunctions/cycloneii_pll.inc     ;         ;
-; db/my_altpll_altpll.v                              ; yes             ; Auto-Generated Megafunction        ; C:/Mercurio IV/labx1/quartus/db/my_altpll_altpll.v                   ;         ;
-+----------------------------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                           ;
++----------------------------------------------------+-----------------+------------------------------------+--------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                   ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                               ; Library ;
++----------------------------------------------------+-----------------+------------------------------------+--------------------------------------------------------------------------------------------+---------+
+; ../rtl/reset_sync.bdf                              ; yes             ; User Block Diagram/Schematic File  ; C:/ProjetosModelSim/witnesses-of-jhon/fpga/rtl/reset_sync.bdf                              ;         ;
+; ../rtl/Labx1.vhd                                   ; yes             ; User VHDL File                     ; C:/ProjetosModelSim/witnesses-of-jhon/fpga/rtl/Labx1.vhd                                   ;         ;
+; ../rtl/UART_demo/uart.vhd                          ; yes             ; User VHDL File                     ; C:/ProjetosModelSim/witnesses-of-jhon/fpga/rtl/UART_demo/uart.vhd                          ;         ;
+; ../rtl/Matriz_LEDs_demo/matriz_leds_pkg.vhd        ; yes             ; User VHDL File                     ; C:/ProjetosModelSim/witnesses-of-jhon/fpga/rtl/Matriz_LEDs_demo/matriz_leds_pkg.vhd        ;         ;
+; ../rtl/Matriz_LEDs_demo/matriz_leds.vhd            ; yes             ; User VHDL File                     ; C:/ProjetosModelSim/witnesses-of-jhon/fpga/rtl/Matriz_LEDs_demo/matriz_leds.vhd            ;         ;
+; ../rtl/LCD_demo/lcd_top.vhd                        ; yes             ; User VHDL File                     ; C:/ProjetosModelSim/witnesses-of-jhon/fpga/rtl/LCD_demo/lcd_top.vhd                        ;         ;
+; ../rtl/LCD_demo/lcd_pkg.vhd                        ; yes             ; User VHDL File                     ; C:/ProjetosModelSim/witnesses-of-jhon/fpga/rtl/LCD_demo/lcd_pkg.vhd                        ;         ;
+; ../rtl/LCD_demo/lcd_ctrl.vhd                       ; yes             ; User VHDL File                     ; C:/ProjetosModelSim/witnesses-of-jhon/fpga/rtl/LCD_demo/lcd_ctrl.vhd                       ;         ;
+; ../rtl/LCD_demo/display_top_component_Mercurio.vhd ; yes             ; User VHDL File                     ; C:/ProjetosModelSim/witnesses-of-jhon/fpga/rtl/LCD_demo/display_top_component_Mercurio.vhd ;         ;
+; my_altpll.vhd                                      ; yes             ; User Wizard-Generated File         ; C:/ProjetosModelSim/witnesses-of-jhon/fpga/quartus/my_altpll.vhd                           ;         ;
+; altpll.tdf                                         ; yes             ; Megafunction                       ; c:/altera/13.1/quartus/libraries/megafunctions/altpll.tdf                                  ;         ;
+; aglobal131.inc                                     ; yes             ; Megafunction                       ; c:/altera/13.1/quartus/libraries/megafunctions/aglobal131.inc                              ;         ;
+; stratix_pll.inc                                    ; yes             ; Megafunction                       ; c:/altera/13.1/quartus/libraries/megafunctions/stratix_pll.inc                             ;         ;
+; stratixii_pll.inc                                  ; yes             ; Megafunction                       ; c:/altera/13.1/quartus/libraries/megafunctions/stratixii_pll.inc                           ;         ;
+; cycloneii_pll.inc                                  ; yes             ; Megafunction                       ; c:/altera/13.1/quartus/libraries/megafunctions/cycloneii_pll.inc                           ;         ;
+; db/my_altpll_altpll.v                              ; yes             ; Auto-Generated Megafunction        ; C:/ProjetosModelSim/witnesses-of-jhon/fpga/quartus/db/my_altpll_altpll.v                   ;         ;
++----------------------------------------------------+-----------------+------------------------------------+--------------------------------------------------------------------------------------------+---------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -201,20 +208,20 @@ applicable agreement for further details.
 +---------------------------------------------+---------------------------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                                             ;
 +---------------------------------------------+---------------------------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 222                                                                                               ;
+; Estimated Total logic elements              ; 516                                                                                               ;
 ;                                             ;                                                                                                   ;
-; Total combinational functions               ; 215                                                                                               ;
+; Total combinational functions               ; 501                                                                                               ;
 ; Logic element usage by number of LUT inputs ;                                                                                                   ;
-;     -- 4 input functions                    ; 109                                                                                               ;
-;     -- 3 input functions                    ; 32                                                                                                ;
-;     -- <=2 input functions                  ; 74                                                                                                ;
+;     -- 4 input functions                    ; 235                                                                                               ;
+;     -- 3 input functions                    ; 75                                                                                                ;
+;     -- <=2 input functions                  ; 191                                                                                               ;
 ;                                             ;                                                                                                   ;
 ; Logic elements by mode                      ;                                                                                                   ;
-;     -- normal mode                          ; 164                                                                                               ;
-;     -- arithmetic mode                      ; 51                                                                                                ;
+;     -- normal mode                          ; 368                                                                                               ;
+;     -- arithmetic mode                      ; 133                                                                                               ;
 ;                                             ;                                                                                                   ;
-; Total registers                             ; 103                                                                                               ;
-;     -- Dedicated logic registers            ; 103                                                                                               ;
+; Total registers                             ; 239                                                                                               ;
+;     -- Dedicated logic registers            ; 239                                                                                               ;
 ;     -- I/O registers                        ; 0                                                                                                 ;
 ;                                             ;                                                                                                   ;
 ; I/O pins                                    ; 46                                                                                                ;
@@ -223,9 +230,9 @@ applicable agreement for further details.
 ;     -- PLLs                                 ; 1                                                                                                 ;
 ;                                             ;                                                                                                   ;
 ; Maximum fan-out node                        ; my_altpll:my_altpll_inst|altpll:altpll_component|my_altpll_altpll:auto_generated|wire_pll1_clk[0] ;
-; Maximum fan-out                             ; 104                                                                                               ;
-; Total fan-out                               ; 1124                                                                                              ;
-; Average fan-out                             ; 2.68                                                                                              ;
+; Maximum fan-out                             ; 240                                                                                               ;
+; Total fan-out                               ; 2439                                                                                              ;
+; Average fan-out                             ; 2.90                                                                                              ;
 +---------------------------------------------+---------------------------------------------------------------------------------------------------+
 
 
@@ -234,25 +241,28 @@ applicable agreement for further details.
 +--------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                       ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                            ; Library Name ;
 +--------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------+--------------+
-; |Labx1                                           ; 215 (0)           ; 103 (0)      ; 0           ; 0            ; 0       ; 0         ; 46   ; 0            ; |Labx1                                                                                         ; work         ;
-;    |display_top_component_Mercurio:inst_lcd_top| ; 215 (64)          ; 100 (25)     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Labx1|display_top_component_Mercurio:inst_lcd_top                                             ; work         ;
-;       |lcd_top:inst_lcd_top|                     ; 151 (65)          ; 75 (34)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Labx1|display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top                        ; work         ;
+; |Labx1                                           ; 501 (158)         ; 239 (84)     ; 0           ; 0            ; 0       ; 0         ; 46   ; 0            ; |Labx1                                                                                         ; work         ;
+;    |display_top_component_Mercurio:inst_lcd_top| ; 213 (63)          ; 100 (25)     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Labx1|display_top_component_Mercurio:inst_lcd_top                                             ; work         ;
+;       |lcd_top:inst_lcd_top|                     ; 150 (64)          ; 75 (34)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Labx1|display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top                        ; work         ;
 ;          |lcd_ctrl:lcd_ctrl_inst|                ; 86 (86)           ; 41 (41)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Labx1|display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst ; work         ;
+;    |matriz_leds:inst_matriz_leds|                ; 97 (97)           ; 25 (25)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Labx1|matriz_leds:inst_matriz_leds                                                            ; work         ;
 ;    |my_altpll:my_altpll_inst|                    ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Labx1|my_altpll:my_altpll_inst                                                                ; work         ;
 ;       |altpll:altpll_component|                  ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Labx1|my_altpll:my_altpll_inst|altpll:altpll_component                                        ; work         ;
 ;          |my_altpll_altpll:auto_generated|       ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Labx1|my_altpll:my_altpll_inst|altpll:altpll_component|my_altpll_altpll:auto_generated        ; work         ;
+;    |reset_sync:reset_synch_2khz_inst|            ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Labx1|reset_sync:reset_synch_2khz_inst                                                        ; work         ;
 ;    |reset_sync:reset_synch_50mhz_inst|           ; 0 (0)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Labx1|reset_sync:reset_synch_50mhz_inst                                                       ; work         ;
+;    |uart:uart_inst|                              ; 33 (33)           ; 24 (24)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Labx1|uart:uart_inst                                                                          ; work         ;
 +--------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis IP Cores Summary                                                                                                        ;
-+--------+--------------+---------+--------------+--------------+---------------------------------+--------------------------------------------+
-; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                 ; IP Include File                            ;
-+--------+--------------+---------+--------------+--------------+---------------------------------+--------------------------------------------+
-; Altera ; ALTPLL       ; 13.0    ; N/A          ; N/A          ; |Labx1|my_altpll:my_altpll_inst ; C:/Mercurio IV/labx1/quartus/my_altpll.vhd ;
-+--------+--------------+---------+--------------+--------------+---------------------------------+--------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                                              ;
++--------+--------------+---------+--------------+--------------+---------------------------------+------------------------------------------------------------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                 ; IP Include File                                                  ;
++--------+--------------+---------+--------------+--------------+---------------------------------+------------------------------------------------------------------+
+; Altera ; ALTPLL       ; 13.0    ; N/A          ; N/A          ; |Labx1|my_altpll:my_altpll_inst ; C:/ProjetosModelSim/witnesses-of-jhon/fpga/quartus/my_altpll.vhd ;
++--------+--------------+---------+--------------+--------------+---------------------------------+------------------------------------------------------------------+
 
 
 Encoding Type:  One-Hot
@@ -296,8 +306,20 @@ Encoding Type:  One-Hot
 ; Register name                                                             ; Reason for Removal                     ;
 +---------------------------------------------------------------------------+----------------------------------------+
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|cnt_char ; Stuck at VCC due to stuck port data_in ;
-; Total Number of Removed Registers = 1                                     ;                                        ;
+; serial_write[7]                                                           ; Stuck at GND due to stuck port data_in ;
+; uart:uart_inst|buffer_tx[7]                                               ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 3                                     ;                                        ;
 +---------------------------------------------------------------------------+----------------------------------------+
+
+
++--------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                          ;
++-----------------+---------------------------+----------------------------------------+
+; Register name   ; Reason for Removal        ; Registers Removed due to This Register ;
++-----------------+---------------------------+----------------------------------------+
+; serial_write[7] ; Stuck at GND              ; uart:uart_inst|buffer_tx[7]            ;
+;                 ; due to stuck port data_in ;                                        ;
++-----------------+---------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -305,12 +327,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 103   ;
-; Number of registers using Synchronous Clear  ; 11    ;
-; Number of registers using Synchronous Load   ; 6     ;
-; Number of registers using Asynchronous Clear ; 102   ;
+; Total registers                              ; 239   ;
+; Number of registers using Synchronous Clear  ; 23    ;
+; Number of registers using Synchronous Load   ; 7     ;
+; Number of registers using Asynchronous Clear ; 205   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 46    ;
+; Number of registers using Clock Enable       ; 99    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -320,11 +342,15 @@ Encoding Type:  One-Hot
 +--------------------------------------------------------------------------------------------------+---------+
 ; Inverted Register                                                                                ; Fan out ;
 +--------------------------------------------------------------------------------------------------+---------+
+; uart:uart_inst|pin_tx                                                                            ; 2       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|index[0] ; 11      ;
+; matriz_leds:inst_matriz_leds|sg_out_col[0]                                                       ; 3       ;
+; count[0]                                                                                         ; 1       ;
+; idx[0]                                                                                           ; 12      ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|ptr[0]                          ; 4       ;
 ; display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|cnt_data[0]                     ; 16      ;
 ; display_top_component_Mercurio:inst_lcd_top|count_2[0]                                           ; 1       ;
-; Total number of inverted registers = 4                                                           ;         ;
+; Total number of inverted registers = 8                                                           ;         ;
 +--------------------------------------------------------------------------------------------------+---------+
 
 
@@ -333,10 +359,15 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------+
-; 3:1                ; 23 bits   ; 46 LEs        ; 23 LEs               ; 23 LEs                 ; Yes        ; |Labx1|display_top_component_Mercurio:inst_lcd_top|count_2[21]                                         ;
-; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Labx1|display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|data[5]                        ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Labx1|uart:uart_inst|count_bit_tx[1]                                                                  ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |Labx1|LED_RGB[2]                                                                                      ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |Labx1|matriz_leds:inst_matriz_leds|mux[1]                                                             ;
+; 3:1                ; 23 bits   ; 46 LEs        ; 23 LEs               ; 23 LEs                 ; Yes        ; |Labx1|display_top_component_Mercurio:inst_lcd_top|count_2[11]                                         ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |Labx1|uart:uart_inst|buffer_tx[3]                                                                     ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |Labx1|display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|data[1]                        ;
 ; 12:1               ; 3 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; Yes        ; |Labx1|display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|data[6] ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Labx1|display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst|EA      ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Labx1|matriz_leds:inst_matriz_leds|col                                                                ;
 ; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Labx1|display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|EA                             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------+
 
@@ -782,6 +813,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: matriz_leds:inst_matriz_leds ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; prescaler      ; 1     ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uart:uart_inst ;
++-----------------+----------+--------------------------------+
+; Parameter Name  ; Value    ; Type                           ;
++-----------------+----------+--------------------------------+
+; clock_frequency ; 50000000 ; Signed Integer                 ;
+; baudrate_rx     ; 115200   ; Signed Integer                 ;
+; baudrate_tx     ; 115200   ; Signed Integer                 ;
+; clock_divider   ; 50       ; Signed Integer                 ;
++-----------------+----------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +----------------------------------------------------------------------------------+
 ; altpll Parameter Settings by Entity Instance                                     ;
 +-------------------------------+--------------------------------------------------+
@@ -797,6 +851,18 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     -- VCO_MULTIPLY_BY        ; 0                                                ;
 ;     -- VCO_DIVIDE_BY          ; 0                                                ;
 +-------------------------------+--------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "uart:uart_inst"                                                                              ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port          ; Type   ; Severity ; Details                                                                             ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; serial_rx_i   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; busy_rx_o     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; valid_rx_o    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; serial_read_o ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------+
@@ -815,7 +881,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:04     ;
 +----------------+--------------+
 
 
@@ -825,44 +891,37 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Wed Sep 23 09:26:59 2015
+    Info: Processing started: Thu Oct 01 13:03:27 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Labx1 -c Labx1
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
-Info (12021): Found 1 design units, including 1 entities, in source file /mercurio iv/labx1/rtl/reset_sync.bdf
+Info (12021): Found 1 design units, including 1 entities, in source file /projetosmodelsim/witnesses-of-jhon/fpga/rtl/reset_sync.bdf
     Info (12023): Found entity 1: reset_sync
-Info (12021): Found 2 design units, including 1 entities, in source file /mercurio iv/labx1/rtl/labx1.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file /projetosmodelsim/witnesses-of-jhon/fpga/rtl/labx1.vhd
     Info (12022): Found design unit 1: Labx1-behavior
     Info (12023): Found entity 1: Labx1
-Info (12021): Found 2 design units, including 1 entities, in source file /mercurio iv/labx1/rtl/uart_demo/uart.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file /projetosmodelsim/witnesses-of-jhon/fpga/rtl/uart_demo/uart.vhd
     Info (12022): Found design unit 1: uart-behavior
     Info (12023): Found entity 1: uart
-Info (12021): Found 1 design units, including 0 entities, in source file /mercurio iv/labx1/rtl/matriz_leds_demo/matriz_leds_pkg.vhd
+Info (12021): Found 1 design units, including 0 entities, in source file /projetosmodelsim/witnesses-of-jhon/fpga/rtl/matriz_leds_demo/matriz_leds_pkg.vhd
     Info (12022): Found design unit 1: matriz_leds_pkg
-Info (12021): Found 2 design units, including 1 entities, in source file /mercurio iv/labx1/rtl/matriz_leds_demo/matriz_leds.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file /projetosmodelsim/witnesses-of-jhon/fpga/rtl/matriz_leds_demo/matriz_leds.vhd
     Info (12022): Found design unit 1: matriz_leds-behavior
     Info (12023): Found entity 1: matriz_leds
-Info (12021): Found 2 design units, including 1 entities, in source file /mercurio iv/labx1/rtl/lcd_demo/lcd_top.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file /projetosmodelsim/witnesses-of-jhon/fpga/rtl/lcd_demo/lcd_top.vhd
     Info (12022): Found design unit 1: lcd_top-behavior
     Info (12023): Found entity 1: lcd_top
-Info (12021): Found 1 design units, including 0 entities, in source file /mercurio iv/labx1/rtl/lcd_demo/lcd_pkg.vhd
+Info (12021): Found 1 design units, including 0 entities, in source file /projetosmodelsim/witnesses-of-jhon/fpga/rtl/lcd_demo/lcd_pkg.vhd
     Info (12022): Found design unit 1: lcd_pkg
-Info (12021): Found 2 design units, including 1 entities, in source file /mercurio iv/labx1/rtl/lcd_demo/lcd_ctrl.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file /projetosmodelsim/witnesses-of-jhon/fpga/rtl/lcd_demo/lcd_ctrl.vhd
     Info (12022): Found design unit 1: lcd_ctrl-RTL
     Info (12023): Found entity 1: lcd_ctrl
-Info (12021): Found 2 design units, including 1 entities, in source file /mercurio iv/labx1/rtl/lcd_demo/display_top_component_mercurio.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file /projetosmodelsim/witnesses-of-jhon/fpga/rtl/lcd_demo/display_top_component_mercurio.vhd
     Info (12022): Found design unit 1: display_top_component_Mercurio-RTL
     Info (12023): Found entity 1: display_top_component_Mercurio
 Info (12021): Found 2 design units, including 1 entities, in source file my_altpll.vhd
     Info (12022): Found design unit 1: my_altpll-SYN
     Info (12023): Found entity 1: my_altpll
 Info (12127): Elaborating entity "Labx1" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at Labx1.vhd(34): used implicit default value for signal "UART_TXD" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at Labx1.vhd(36): used implicit default value for signal "LED_R" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at Labx1.vhd(37): used implicit default value for signal "LED_G" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at Labx1.vhd(38): used implicit default value for signal "LED_B" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at Labx1.vhd(46): used implicit default value for signal "LEDM_C" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at Labx1.vhd(47): used implicit default value for signal "LEDM_R" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10036): Verilog HDL or VHDL warning at Labx1.vhd(55): object "w_reset_2khz" assigned a value but never read
 Info (12128): Elaborating entity "my_altpll" for hierarchy "my_altpll:my_altpll_inst"
 Info (12128): Elaborating entity "altpll" for hierarchy "my_altpll:my_altpll_inst|altpll:altpll_component"
 Info (12130): Elaborated megafunction instantiation "my_altpll:my_altpll_inst|altpll:altpll_component"
@@ -932,36 +991,24 @@ Info (12128): Elaborating entity "reset_sync" for hierarchy "reset_sync:reset_sy
 Info (12128): Elaborating entity "display_top_component_Mercurio" for hierarchy "display_top_component_Mercurio:inst_lcd_top"
 Info (12128): Elaborating entity "lcd_top" for hierarchy "display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top"
 Info (12128): Elaborating entity "lcd_ctrl" for hierarchy "display_top_component_Mercurio:inst_lcd_top|lcd_top:inst_lcd_top|lcd_ctrl:lcd_ctrl_inst"
-Info (276014): Found 1 instances of uninferred RAM logic
+Info (12128): Elaborating entity "matriz_leds" for hierarchy "matriz_leds:inst_matriz_leds"
+Info (12128): Elaborating entity "uart" for hierarchy "uart:uart_inst"
+Info (276014): Found 2 instances of uninferred RAM logic
+    Info (276004): RAM logic "word" is uninferred due to inappropriate RAM size
     Info (276004): RAM logic "display_top_component_Mercurio:inst_lcd_top|word" is uninferred due to inappropriate RAM size
+Warning (113028): 32 out of 64 addresses are uninitialized. The Quartus II software will initialize them to "0". There are 2 warnings found, and 2 warnings are reported.
+    Warning (113026): Memory Initialization File Address 0 is not initialized
+    Warning (113027): Addresses ranging from 33 to 63 are not initialized
 Warning (113028): 32 out of 64 addresses are uninitialized. The Quartus II software will initialize them to "0". There are 2 warnings found, and 2 warnings are reported.
     Warning (113026): Memory Initialization File Address 0 is not initialized
     Warning (113027): Addresses ranging from 33 to 63 are not initialized
 Info (13000): Registers with preset signals will power-up high
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "UART_TXD" is stuck at GND
-    Warning (13410): Pin "LED_R" is stuck at GND
-    Warning (13410): Pin "LED_G" is stuck at GND
-    Warning (13410): Pin "LED_B" is stuck at GND
     Warning (13410): Pin "LCD_RW" is stuck at GND
-    Warning (13410): Pin "LEDM_C[0]" is stuck at GND
-    Warning (13410): Pin "LEDM_C[1]" is stuck at GND
-    Warning (13410): Pin "LEDM_C[2]" is stuck at GND
-    Warning (13410): Pin "LEDM_C[3]" is stuck at GND
-    Warning (13410): Pin "LEDM_C[4]" is stuck at GND
-    Warning (13410): Pin "LEDM_R[0]" is stuck at GND
-    Warning (13410): Pin "LEDM_R[1]" is stuck at GND
-    Warning (13410): Pin "LEDM_R[2]" is stuck at GND
-    Warning (13410): Pin "LEDM_R[3]" is stuck at GND
-    Warning (13410): Pin "LEDM_R[4]" is stuck at GND
-    Warning (13410): Pin "LEDM_R[5]" is stuck at GND
-    Warning (13410): Pin "LEDM_R[6]" is stuck at GND
-    Warning (13410): Pin "LEDM_R[7]" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Warning (15899): PLL "my_altpll:my_altpll_inst|altpll:altpll_component|my_altpll_altpll:auto_generated|pll1" has parameters clk2_multiply_by and clk2_divide_by specified but port CLK[2] is not connected
 Warning (21074): Design contains 14 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[1]"
     Warning (15610): No output dependent on input pin "SW[2]"
@@ -977,16 +1024,16 @@ Warning (21074): Design contains 14 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "KEY[9]"
     Warning (15610): No output dependent on input pin "KEY[10]"
     Warning (15610): No output dependent on input pin "KEY[11]"
-Info (21057): Implemented 284 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 593 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 17 input pins
     Info (21059): Implemented 21 output pins
     Info (21060): Implemented 8 bidirectional pins
-    Info (21061): Implemented 237 logic cells
+    Info (21061): Implemented 546 logic cells
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 45 warnings
-    Info: Peak virtual memory: 536 megabytes
-    Info: Processing ended: Wed Sep 23 09:27:04 2015
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:05
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 23 warnings
+    Info: Peak virtual memory: 540 megabytes
+    Info: Processing ended: Thu Oct 01 13:03:40 2015
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:08
 
 

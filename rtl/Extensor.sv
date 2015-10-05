@@ -24,7 +24,7 @@ module Extensor(controle, constante, constanteExtendida);
 		
 		3'b011: begin // Jump FI
 			constanteExtendida[15:8] =  {8{constante[7]}};
-			constanteExtendida[7:0] = constante;
+			constanteExtendida[7:0] = constante[7:0];
 		end	
 		
 		3'b100: begin // Jump FII
