@@ -21,8 +21,8 @@
 
 \DocumentTitle{Documento de Arquitetura}
 \Project{Microarquitetura}
-\Organization{Nome da Instituição}
-\Version{Build 1.4}
+\Organization{Chip over the Hill}
+\Version{Build 1.5}
 
 \capa
 \newpage
@@ -56,6 +56,7 @@
       15/09/2015 & Adição das tabelas de instrução & Lucas Morais \\ \hline
       15/09/2015 & Adição das imagens & Lucas Morais \\ \hline
       15/09/2015 &  Criação das tabelas de entrada e saída dos módulos & Patricia Gomes \\ \hline
+      30/09/2015 & Criação de descrição OP Jump & Fábio Almeida\\ \hline
 
     \end{longtable}
 \end{center}
@@ -69,7 +70,7 @@
 \newpage
 \section{Introdução}
   
- Este documento descreve a arquitetura do projeto \si\micro Risc, incluindo especificações do circuitos internos. Este documento também apresenta definições de entrada e saída, conjunto de instruções e a arquitetura geral do processador. O presente documento tem como objetivo especificar a arquitetura do processador de proposito geral que será implementado em FPGA.
+ Este documento descreve a arquitetura do projeto baseado no \si\micro Risc, incluindo especificações do circuitos internos. Este documento também apresenta definições de entrada e saída, conjunto de instruções e a arquitetura geral do processador. O presente documento tem como objetivo especificar a arquitetura do processador de proposito geral que será implementado em FPGA.
 
 \subsection{Visão Geral do Documento}
 O presente documento é apresentado como segue:
@@ -81,7 +82,7 @@ O presente documento é apresentado como segue:
        \item \textbf{Referências --} apresenta  as  referências  utilizadas  para  a  elaboração  deste documento;
   \end{itemize}
   
-  
+  \newpage
   % inicio da tabela de acronimos e abreviacoes do documento
   \subsection{Acrônimos e Abreviações}
     \FloatBarrier
@@ -108,18 +109,19 @@ O presente documento é apresentado como segue:
              WB     & \textit{Write Back}\\ \hline
              Const  & \textit{Constante}\\ \hline
              Const8 & \textit{Constante de 8 bits}\\ \hline
+             TF & \textit{Testador de Flag}\\ \hline
         \end{tabular}
       \end{center}
     \end{table}  
   % fim
   
   
-  
+  \newpage
 \section{Visão Geral da Arquitetura}
 
 
 \subsection{Datapath}
-Nesta seção é mostrada o Datapath completo do processador \si\micro Risc.
+Nesta seção é mostrada o Datapath completo do nosso processador baseado em \si\micro Risc.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{./pictures/datapath.png}
@@ -130,11 +132,12 @@ Nesta seção é mostrada o Datapath completo do processador \si\micro Risc.
 \subsection{Instruções lógico e aritméticas}
 %\begin{itemize}
     Detalhamento das instruções, assim como o layout da instrução, estão mostrados no documento de Especificação.
+    \newpage
 	\begin{table}[H]
 	\centering
 	\begin{tabular}{|c|m{6cm}|c|c|}
   	\hline 
-  	\textbf{CÓDIGO} & \textbf{OPERAçãO} & \textbf{MNEMÔNICO} & \textbf{FLAGS ATUALIZADAS} \\ 
+  	\textbf{CÓDIGO} & \textbf{OPERAÇÃO} & \textbf{MNEMÔNICO} & \textbf{FLAGS ATUALIZADAS} \\ 
   	\hline   	
   	00000 & C = A + B & add c, a, b & todas \\ \hline
   	00001 & C = A + B + 1 & addinc, c, a, b & todas \\ \hline
@@ -195,18 +198,17 @@ Detalhamento das instruções, assim como o layout da instrução, estão mostra
   	\caption{Operações de Acesso à Memória}
   \end{table}
   
-  \newpage
   Detalhamento das instruções, assim como o layout da instrução, estão mostrados no documento de Especificação.
   A instrução de Load segue o seguinte datapath:
   \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.8]{./pictures/load.png}
+	\includegraphics[scale=0.58]{./pictures/load.png}
 \end{figure}  
 \newpage
 A instrução de Store segue o seguinte datapath:
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.8]{./pictures/store.png}
+	\includegraphics[scale=0.58]{./pictures/store.png}
 \end{figure}  
   
   

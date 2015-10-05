@@ -1,6 +1,7 @@
 include "Banco_Registro.sv";
 include "Extensor.sv";
 include "MUX_RESULTADO.sv";
+<<<<<<< HEAD
 include "Registrador_Copia_PC.sv";
  
 module ID_RF(clock, BR_Hab_Escrita, EXcontrole, BR_Sel_E_SA, BR_Sel_SB, entrada_ULA, controleMuxResu, entrada_MD, EXconstante, A, B, constanteExtendida, PC, controlePCcopia);
@@ -10,6 +11,16 @@ module ID_RF(clock, BR_Hab_Escrita, EXcontrole, BR_Sel_E_SA, BR_Sel_SB, entrada_
   input wire [2:0] EXcontrole, BR_Sel_E_SA, BR_Sel_SB;
   input reg [11:0] EXconstante;
   input reg [15:0] entrada_ULA, entrada_MD, PC;
+=======
+ 
+module ID_RF(clock, BR_Hab_Escrita, EXcontrole, BR_Sel_E_SA, BR_Sel_SB, entrada_ULA, controle, entrada_MD, EXconstante, A, B, constanteExtendida);
+  input clock;
+  input wire BR_Hab_Escrita;
+  input wire [1:0] controle; // Seletor mux
+  input wire [2:0] EXcontrole, BR_Sel_E_SA, BR_Sel_SB;
+  input reg [11:0] EXconstante;
+  input reg [15:0] entrada_ULA, entrada_MD, entrada_PC;
+>>>>>>> origin/jump
   output reg [15:0] A, B, constanteExtendida;
   wire [15:0] saida_Mux, copiaPC;
   
@@ -23,6 +34,7 @@ module ID_RF(clock, BR_Hab_Escrita, EXcontrole, BR_Sel_E_SA, BR_Sel_SB, entrada_
   MUX_RESULTADO MUX_RESULTADO(
   .entrada_ULA(entrada_ULA), 
   .entrada_MD(entrada_MD), 
+  .entrada_PC(entrada_PC), 
   .saida_Mux(saida_Mux),
   .controle(controleMuxResu),
   .entrada_PC(copiaPC)

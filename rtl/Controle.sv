@@ -2,13 +2,23 @@
 module Controle(clock, reset, instrucao, controlePC, Rom_sink_ren, Rom_sink_cen, BR_Sel_E_SA, BR_Sel_SB, BR_Hab_Escrita, MD_Hab_Escrita, EXconstante, EXcontrole, ULA_OP, Controle_Mux1, Controle_Mux2, botao, jump_ver_fal, controleMUX_PC, atualizaFlag, condicaoJump, controlePCcopia);
   input reset, clock, botao;
   input reg [15:0] instrucao;
+<<<<<<< HEAD
   output reg [1:0] Controle_Mux2;
   output reg [2:0] EXcontrole, BR_Sel_E_SA, BR_Sel_SB;
+=======
+  
+  output logic [1:0] Controle_Mux2;
+  output logic [2:0] EXcontrole, BR_Sel_E_SA, BR_Sel_SB;
+>>>>>>> origin/jump
   output reg [3:0] condicaoJump;
   output reg [4:0] atualizaFlag;
   output reg [7:0] ULA_OP;
   output reg [11:0] EXconstante;
+<<<<<<< HEAD
   output logic controlePC, Rom_sink_ren, Rom_sink_cen, BR_Hab_Escrita, MD_Hab_Escrita, Controle_Mux1, jump_ver_fal, controleMUX_PC, controlePCcopia;
+=======
+  output logic controlePC, Rom_sink_ren, Rom_sink_cen, BR_Hab_Escrita, MD_Hab_Escrita, Controle_Mux1, hab_jump, controleMUX_PC;
+>>>>>>> origin/jump
   
   reg [1:0] estado, prox_estado;
   reg [4:0] RegFlag_Controle;
@@ -72,20 +82,48 @@ module Controle(clock, reset, instrucao, controlePC, Rom_sink_ren, Rom_sink_cen,
 				EXcontrole = 3'b010;  
 				
 		end else if(instrucao[15:14] == 2'b00) begin                // Jump
+<<<<<<< HEAD
 			if((instrucao[13:12] == 2'b00) | 
 				(instrucao[13:12] == 2'b01)) begin                   // Jump False ou Jump True
 				EXconstante = instrucao[7:0];                                                                          
 				EXcontrole = 3'b011;
+=======
+			if(instrucao[13:12] == 2'b00) begin                     // Jump False
+				controleMUX_PC = 1'b0;
+				condicaoJump = instrucao[11:8];
+				hab_jump = 1'b0;
+				
+			end if(instrucao[13:12] == 2'b01) begin                 // Jump True
+				controleMUX_PC = 1'b0; 
+				condicaoJump = instrucao[11:8];
+				hab_jump = 1'b1;
+>>>>>>> origin/jump
 				
 			end if(instrucao[13:12] == 2'b10) begin                 // Jump Incondicional
 				EXconstante = instrucao[11:0];                                                                          
 				EXcontrole = 3'b100;
+<<<<<<< HEAD
 				
 			end if(instrucao[13:12] == 2'b11) begin     
 				BR_Sel_SB = instrucao[2:0];                       // Jump Register e Jump and Link
 				
 				if(instrucao[11] == 1'b0)                         // Jump and Link
 					controlePCcopia = 1'b1;    
+=======
+
+			end if(instrucao[13:12] == 2'b11) begin      
+				if(instrucao[11] == 1'b0) begin                     // Jump and Link
+					BR_Sel_SB = 3'b111;                             // Escreve em R7 o valor de PC+1
+					Controle_Mux2 = 2'b01;                          // Indica que a saída do mux será o pc+1
+					BR_Hab_Escrita = 1'b1;                          // Habilita a escrita no banco de registradores
+
+					BR_Sel_SB = instrucao[2:0];                     // Mando para a saída do banco o valor do registrador referenciado por RB
+
+				end if(instrucao[11] == 1'b1) begin                 // Jump Register
+					BR_Sel_SB = instrucao[2:0]; 
+
+				end
+>>>>>>> origin/jump
 			end
 		end
 
@@ -101,6 +139,14 @@ module Controle(clock, reset, instrucao, controlePC, Rom_sink_ren, Rom_sink_cen,
 			atualizaFlag = instrucao[10:6];
 		else
 			atualizaFlag = 5'b11111;
+
+		if(instrucao[15:14] == 2'b00) begin  // Se é jump (faço o jump enviando o valor do RB para o PC)
+			if (instrucao[13:12] == 2'b11) begin  //Se é jump formato III
+				    auxULA_OP[4:0] = 5'b10011;    //Operação passb (pego o valor da saída B do banco de registradores)
+				    condicaoJump = 4'b0000;       //Indica por testador de flags pra fazer o jump
+				    hab_jump = 1'b1;              //Indico que a condição precisa ser verdadeira 
+			end
+		end
 		
 		if(instrucao[15:14] == 2'b10) begin						// L.A ou Load/Store   
 			Controle_Mux1 = 1'b0; 
@@ -136,7 +182,11 @@ module Controle(clock, reset, instrucao, controlePC, Rom_sink_ren, Rom_sink_cen,
       end
       2'b11:begin // ================================================================================================== 
         prox_estado = 2'b00;
+<<<<<<< HEAD
 		condicaoJump = 4'b1111;		
+=======
+				
+>>>>>>> origin/jump
 		Controle_Mux2 = 2'b00;		
 		BR_Hab_Escrita = 1'b1;	
 		MD_Hab_Escrita = 1'b0;
@@ -155,7 +205,11 @@ module Controle(clock, reset, instrucao, controlePC, Rom_sink_ren, Rom_sink_cen,
 			(instrucao[15:14] == 2'b00)
 		) 	// operacao Store ou Jump
 			BR_Hab_Escrita = 1'b0;
+<<<<<<< HEAD
 		 
+=======
+		
+>>>>>>> origin/jump
       end
         default: begin // =============================================================================================
 			prox_estado = 2'b00;
