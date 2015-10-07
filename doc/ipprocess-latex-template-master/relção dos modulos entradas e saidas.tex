@@ -1,0 +1,93 @@
+ADD_PC
+    in:
+        pc_in[5:0]
+        controle
+    out:
+        pc_put[5:0]
+Banco_Registro
+    in:
+        E[15:0]
+        clock
+        reset
+        Sel_E_SA
+        Sel_SB
+        Hav_Escrita
+    out:
+        A[15:0]
+        B[15:0]
+Controle
+    in:
+        reset
+        clock
+        botao
+        instrucao[15:0]
+    out:
+        Controle_Mux2[1:0]
+        EXcontrole[2:0]
+        BR_Sel_E_SA[2:0]*
+        BR_Sel_SB[2:0]*
+        condicaoJump[3:0]
+        atualizarFlag[3:0]
+        ULA_OP[7:0]
+        EXconstante[11:0]
+        controlePC
+        Rom_sink_ren
+        Rom_sink_cen
+        BR_Hab_Escrita
+        MD_Hab_Escrita
+        Controle_Mux1
+        jump_ver_fal
+        controleMUX_PC
+        controlePCcopia
+Extensor
+    in:
+        controle[2:0]
+        constante[11:0]
+    out:
+        constanteExtendida[15:0]
+Memoria_Dados
+    in:
+        reset
+        clock
+        Hab_Escrita
+        Entrada[15:0]
+        endereco [3:0]
+    out:
+        Saida [15:0]
+PC
+    in:
+        controle
+        hab_jump
+        clock
+        jump_pc[15:0]
+    out:
+        pc_out[15:0]
+Registrador_Copia_PC
+    in:
+        clock
+        controle
+        PC[15:0]
+    out:
+        CopiaPC
+Registrador_Flags
+    in:
+        Z
+        C
+        S
+        O
+        controleOperacao[4:0]
+        clock
+        reset
+    out:
+        ZCSO[3:0]
+ULA
+    in:
+        A[15:0]
+        B[15:0]
+        OP[7:0]
+    out:
+        RESU[15:0]
+        O
+        C
+        S
+        Z
