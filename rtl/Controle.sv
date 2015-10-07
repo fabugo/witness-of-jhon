@@ -73,48 +73,18 @@ module Controle(clock, reset, instrucao, controlePC, Rom_sink_ren, Rom_sink_cen,
 				EXcontrole = 3'b010;
 
 		end else if(instrucao[15:14] == 2'b00) begin                // Jump
-<<<<<<< HEAD
 			if((instrucao[13:12] == 2'b00) |
 				(instrucao[13:12] == 2'b01)) begin                   // Jump False ou Jump True
 				EXconstante = instrucao[7:0];
 				EXcontrole = 3'b011;
-=======
-			if(instrucao[13:12] == 2'b00) begin                     // Jump False
-				controleMUX_PC = 1'b0;
-				condicaoJump = instrucao[11:8];
-				hab_jump = 1'b0;
-
-			end if(instrucao[13:12] == 2'b01) begin                 // Jump True
-				controleMUX_PC = 1'b0;
-				condicaoJump = instrucao[11:8];
-				hab_jump = 1'b1;
->>>>>>> origin/jump
-
 			end if(instrucao[13:12] == 2'b10) begin                 // Jump Incondicional
 				EXconstante = instrucao[11:0];
 				EXcontrole = 3'b100;
-<<<<<<< HEAD
-
 			end if(instrucao[13:12] == 2'b11) begin
 				BR_Sel_SB = instrucao[2:0];                       // Jump Register e Jump and Link
 
 				if(instrucao[11] == 1'b0)                         // Jump and Link
 					controlePCcopia = 1'b1;
-=======
-
-			end if(instrucao[13:12] == 2'b11) begin
-				if(instrucao[11] == 1'b0) begin                     // Jump and Link
-					BR_Sel_SB = 3'b111;                             // Escreve em R7 o valor de PC+1
-					Controle_Mux2 = 2'b01;                          // Indica que a saída do mux será o pc+1
-					BR_Hab_Escrita = 1'b1;                          // Habilita a escrita no banco de registradores
-
-					BR_Sel_SB = instrucao[2:0];                     // Mando para a saída do banco o valor do registrador referenciado por RB
-
-				end if(instrucao[11] == 1'b1) begin                 // Jump Register
-					BR_Sel_SB = instrucao[2:0];
-
-				end
->>>>>>> origin/jump
 			end
 		end
 
