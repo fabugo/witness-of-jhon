@@ -5,12 +5,8 @@ include "Controle.sv"; //Controle
 
 module IntegracaoModulos(clock, botao);
   input clock, botao;
-<<<<<<< HEAD
   wire controlePC, Rom_sink_ren, Rom_sink_cen, BR_Hab_Escrita, MD_Hab_Escrita, 
 		Controle_Mux1, Jump_Ver_Fal, controleMUX_PC, s_hab_jump,controlePCcopia;
-=======
-  wire controlePC, Rom_sink_ren, Rom_sink_cen, BR_Hab_Escrita, MD_Hab_Escrita, Controle_Mux1, Jump_Ver_Fal, controleMUX_PC, s_hab_jump;
->>>>>>> origin/jump
   wire [1:0] Controle_Mux2;
   wire [2:0] EXcontrole, BR_Sel_E_SA, BR_Sel_SB;
   wire [3:0] condicaoJump;
@@ -67,14 +63,9 @@ module IntegracaoModulos(clock, botao);
   .EXconstante(EXconstante), 
   .A(A), 
   .B(B), 
-<<<<<<< HEAD
   .constanteExtendida(constanteExtendida),
   .PC(PC),
   .controlePCcopia(controlePCcopia)
-=======
-  .constanteExtendida(constanteExtendida)
-  .entrada_PC(PC)
->>>>>>> origin/jump
   );
   
   EX_MEN EX_MEN(
